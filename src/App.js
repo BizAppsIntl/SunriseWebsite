@@ -4,34 +4,33 @@ import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom'
 
-import FontsTesting from './FontsTesting';
+import FontsTesting from './FontsTesting'
+import LayoutLogin from './LayoutLogin'
+import Home from './Pages/Home'
+import About from './Pages/About'
 
 
 function App() {
   return (
     <div className="App">
-      <FontsTesting />
-
+      {/* <FontsTesting /> */}
 {/* <MyNavbar/> */}
+
+      <Routes>
+        <Route element={<LayoutLogin />}>
+          <Route exact path='/' element={<Home />} />
+          <Route path='About' element={<About />} />
+          <Route path='Contact' element={<Home />} />
+          <Route path='Services' element={<About />} />
+
+        </Route>
+      </Routes>
+
+
       <div className="text-5xl font-bold underline">
         Hello world!
       </div>
 
-
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
     </div>
   );
 }
