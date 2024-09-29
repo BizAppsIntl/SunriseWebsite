@@ -1,0 +1,38 @@
+"axios": "^1.2.1",
+    "cross-env": "^7.0.3",
+    "exceljs": "^4.4.0",
+    "moment": "^2.29.4",
+    "react-datepicker": "^4.8.0",
+    "react-icons": "^4.12.0",
+    "react-number-format": "^4.5.0",
+    "react-router-dom": "^6.4.4",
+    "react-select": "^5.7.3",
+    "react-to-print": "^2.14.12",
+    "react-toastify": "^9.1.1"
+
+PS F:\BizApps4Web\SRDWebApp> npm config set fetch-retry-maxtimeout 120000
+npm i axios cross-env exceljs moment react-datepicker
+npm i react-select react-router-dom react-icons react-number-format react-to-print react-toastify
+
+updated
+
+    "axios": "^1.7.7",
+    "cross-env": "^7.0.3",
+    "exceljs": "^4.4.0",
+    "moment": "^2.30.1",
+    "react": "^18.3.1",
+    "react-datepicker": "^7.4.0",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-number-format": "^5.4.2",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1",
+    "react-select": "^5.8.1",
+    "react-to-print": "^3.0.0",
+    "react-toastify": "^10.0.5"
+
+
+
+may be a problematic change:
+    "react-datepicker": "^7.4.0",
+    "react-number-format": "^5.4.2",
