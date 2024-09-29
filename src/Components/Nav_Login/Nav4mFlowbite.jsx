@@ -14,13 +14,15 @@ export default function Nav4mFlowbite() {
       <Navbar.Brand href="/" className="flex" data-tooltip-target="tooltip-signin" data-tooltip-placement="left"  >
 
         <div >
-          <div className="flex gap-1 md:gap-3 items-center border border-red-600">
-            <img src="/Logo.png" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
-              {/* <div className="self-center whitespace-nowrap text-3xl leading-none font-semibold tracking-widest ">WAVELAZ</div> */}
-            <div className="flex flex-col text-left justify-center">
-              <div className="whitespace-nowrap text-3xl leading-none font-semibold tracking-widest ">WAVELAZ</div>
+          <div className="flex gap-1 md:gap-3 items-center ">
+            <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
+              <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins font-semibold tracking-widest ">
+                Sunrise Dairy <span className=" font-thin" >Pvt Ltd</span>
+                </div>
+            {/* <div className="flex flex-col text-left justify-center">
+              <div className="whitespace-nowrap text-3xl leading-none font-semibold tracking-widest ">Sunrise</div>
               <div className="whitespace-nowrap text-gray-700 hidden md:block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div>
-            </div>
+            </div> */}
           </div>
 
           {/* <div className="self-center whitespace-nowrap text-gray-700 md:hidden block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div> */}

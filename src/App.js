@@ -12,7 +12,7 @@ import About from './Pages/About'
 
 function App() {
   return (
-    <div className="App">
+    <div className="w-full ">
       {/* <FontsTesting /> */}
 {/* <MyNavbar/> */}
 
@@ -25,11 +25,6 @@ function App() {
 
         </Route>
       </Routes>
-
-
-      <div className="text-5xl font-bold underline">
-        Hello world!
-      </div>
 
     </div>
   );
