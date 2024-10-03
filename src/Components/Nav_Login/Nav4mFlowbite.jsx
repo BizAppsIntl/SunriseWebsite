@@ -9,8 +9,10 @@ import { Avatar, Button, Dropdown, Navbar } from "flowbite-react";
 export default function Nav4mFlowbite() {
   // const router = useRouter()
   return (
-    // <Navbar fluid rounded className="py-1"> 
-    <Navbar className="py-1 border-b-2 w-full">
+    // <Navbar fluid rounded className="py-1">     
+    // <Navbar className="py-1 border-b-2 w-full "> with px-wide...
+    <Navbar fluid className="py-1 border-b-2 w-full ">
+      
       <Navbar.Brand href="/" className="flex" data-tooltip-target="tooltip-signin" data-tooltip-placement="left"  >
 
         <div >
@@ -91,8 +93,9 @@ export default function Nav4mFlowbite() {
         <Navbar.Link href="/" active>
           Home
         </Navbar.Link>
+        {/* <Navbar.Link href="/Services">Services</Navbar.Link> */}
+        <Navbar.Link href="/Items">Items</Navbar.Link>
         <Navbar.Link href="/About">About</Navbar.Link>
-        <Navbar.Link href="/Services">Services</Navbar.Link>
         <Navbar.Link href="#">Pricing</Navbar.Link>
         <Navbar.Link href="#">Contact</Navbar.Link>
         <Navbar.Link href="/Dashboard">Admin Panel</Navbar.Link>
