@@ -11,6 +11,13 @@
 @tailwind components;
 @tailwind utilities;
 
+/* My Classes for Cards etc */
+@import './MyStyles.css';   
+
+
+
+
+
 /* Define the Jameel Noori Nastaleeq font */
 @font-face {
   font-family: 'Jameel Noori Nastaleeq';

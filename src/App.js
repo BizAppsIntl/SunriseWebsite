@@ -14,6 +14,8 @@ import LayoutLogin from './LayoutLogin'
 import Home from './Pages/Home'
 import About from './Pages/About'
 import ManageItems from './Admin/Pages/Items/Manage';
+import { MobApp1 } from './Pages/MobApp1';
+import CodeTestPage from './Pages/CodeTestPage';
 
 
 function App() {
@@ -183,6 +185,10 @@ function App() {
           <Route path='Contact' element={<Home />} />
           {/* <Route path='Services' element={<Services />} /> */}
           <Route path='Items' element={<ManageItems />} />
+          <Route path='Test1' element={<MobApp1 />} />
+
+          <Route path='CodeTestPage' element={<CodeTestPage />} />
+
           {/* <Route path='Services' element={<About />} /> */}
 
         </Route>

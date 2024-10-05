@@ -19,7 +19,7 @@ export default function Nav4mFlowbite() {
           <div className="flex gap-1 md:gap-3 items-center ">
             <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
               <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins font-semibold tracking-widest ">
-                Sunrise Dairy <span className=" font-thin" >Pvt Ltd</span>
+                Sunrise Dairy <span className=" font-thin hidden md:visible" >Pvt Ltd</span>
                 </div>
             {/* <div className="flex flex-col text-left justify-center">
               <div className="whitespace-nowrap text-3xl leading-none font-semibold tracking-widest ">Sunrise</div>
@@ -28,7 +28,7 @@ export default function Nav4mFlowbite() {
           </div>
 
           {/* <div className="self-center whitespace-nowrap text-gray-700 md:hidden block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div> */}
-          <div className="text-left self-center whitespace-nowrap text-gray-700 md:hidden block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div>
+          {/* <div className="text-left self-center whitespace-nowrap text-gray-700 md:hidden block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div> */}
         </div>
 
 
@@ -96,8 +96,9 @@ export default function Nav4mFlowbite() {
         {/* <Navbar.Link href="/Services">Services</Navbar.Link> */}
         <Navbar.Link href="/Items">Items</Navbar.Link>
         <Navbar.Link href="/About">About</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link href="/Test1">TestCards</Navbar.Link>
+        {/* <Navbar.Link href="#">Contact</Navbar.Link> */}
+        <Navbar.Link href="/CodeTestPage">CodeTestPage</Navbar.Link>
         <Navbar.Link href="/Dashboard">Admin Panel</Navbar.Link>
         {/* <Navbar.Link href="/Signin">Sign In</Navbar.Link> */}
       </Navbar.Collapse>
