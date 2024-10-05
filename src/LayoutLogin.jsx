@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import Nav4mFlowbite from './Components/Nav_Login/Nav4mFlowbite'
-import Footer from './Components/Footer'
+import Footer from './Components/Footer.jsx'
 
 // const Layout = ({ children }) => {
   export default function LayoutLogin() {
