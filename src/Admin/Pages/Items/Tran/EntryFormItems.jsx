@@ -1153,7 +1153,7 @@ export default function EntryFormItems(props) {
                     placeholder="" value={Price} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="Price" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     Sale Price
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1189,9 +1189,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="QtyDef" name="QtyDef" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyDef} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyDef" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Default</span>
+                    <span className=' md:hidden'>Default</span>
                     <span className=' hidden md:block'>Default Addition</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1204,9 +1204,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="QtyInc" name="QtyInc" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyInc} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyInc" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Increase</span>
+                    <span className=' md:hidden'>Increase</span>
                     <span className=' hidden md:block'>Increase in Qty</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1220,9 +1220,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="QtyStep" name="QtyStep" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyStep} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyStep" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Increment</span>
+                    <span className=' md:hidden'>Increment</span>
                     <span className=' hidden md:block'>Incremental Step</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1239,9 +1239,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="QtyMin" name="QtyMin" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyMin} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyMin" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Min Stock</span>
+                    <span className=' md:hidden'>Min Stock</span>
                     <span className=' hidden md:block'>Min Stock Level</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1254,9 +1254,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="QtyMax" name="QtyMax" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyMax} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyMax" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Max Stock</span>
+                    <span className=' md:hidden'>Max Stock</span>
                     <span className=' hidden md:block'>Max Stock Level</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1318,7 +1318,7 @@ export default function EntryFormItems(props) {
                     placeholder="" value={Priority} maxLength={10} onChange={(e) => HandleInputs(e)} />
                   <label for="Priority" className="absolute text-end text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     Priority
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1336,9 +1336,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="OpBal" name="OpBal" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" disabled value={CrntBal} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="OpBal" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Op Stock</span>
+                    <span className=' md:hidden'>Op Stock</span>
                     <span className=' hidden md:block'>Opening Stock</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1351,9 +1351,9 @@ export default function EntryFormItems(props) {
                   <input type="text" id="CrntBal" name="CrntBal" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" disabled value={CrntBal} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="CrntBal" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                  <span className=' md:hidden'>Stock Bal.</span>
+                    <span className=' md:hidden'>Stock Bal.</span>
                     <span className=' hidden md:block'>Stock Balance</span>
-                    </label>
+                  </label>
                 </div>
               </div>
 
@@ -1397,6 +1397,9 @@ export default function EntryFormItems(props) {
 
           <div className="card-body py-4 md:px-4 text-left w-full " style={{}}>
 
+            {/* ........................................... */}
+            {/* ONLY FOR MOBILE, NOT FOR DESKTOP */}
+            {/* ........................................... */}
             <div className='flex justify-center  md:hidden'>
               <div className="card  p-2 m-0 w-[150px]  relative"  >
                 <span style={{ position: 'absolute', top: '0px', left: '0px', fontSize: '10px' }}
@@ -1424,45 +1427,54 @@ export default function EntryFormItems(props) {
             </div>
 
 
+            {/* ........................................... */}
+            {/* NOT FOR MOBILE, ONLY DISPLAY ON DESKTOP */}
+            {/* ........................................... */}
+            <div className='w-full hidden md:flex'>
 
+              <div className='flex-grow '>
+                <table className='w-full'><tbody>
+                  <tr>
+                    <th> <span className='text-xl font-bold ' >Ref Id#:  </span></th>
+                    {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
+                    {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
+                    <td> <span className='' > {OrderSheet.Code} </span> </td>
+                  </tr>
 
-            <div className='flex  w-full md:block hidden'>
+                  <tr>
+                    <th> <span className='text-xl font-bold ' >Ref No.:  </span></th>
+                    {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
+                    {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
+                    <td> <span className='' > {OrderSheet.Id} </span> </td>
+                  </tr>
 
-              <table className='flex w-[70%]'><tbody>
-                <tr>
-                  <th> <span className='text-xl font-bold ' >Ref Id#:  </span></th>
-                  {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
-                  {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
-                  <td> <span className='' > {OrderSheet.Code} </span> </td>
-                </tr>
+                  <tr>
+                    <th> <span className='text-xl font-bold  ' >Title:  </span></th>
+                    {/* {OrderSheet.AccC[0].Title && <td> <span className='fs- ' > {OrderSheet.AccC[0].Title}   </span> </td>} */}
+                    <td> <span className='' > {OrderSheet.Title}   </span> </td>
+                  </tr>
 
-                <tr>
-                  <th> <span className='text-xl font-bold ' >Ref No.:  </span></th>
-                  {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
-                  {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
-                  <td> <span className='' > {OrderSheet.Id} </span> </td>
-                </tr>
+                  <tr>
+                    <th> <span className='text-xl font-bold  ' >Description:  </span></th>
+                    <td> <span className='' > {OrderSheet.Desc}   </span> </td>
+                  </tr>
 
-                <tr>
-                  <th> <span className='text-xl font-bold  ' >Title:  </span></th>
-                  {/* {OrderSheet.AccC[0].Title && <td> <span className='fs- ' > {OrderSheet.AccC[0].Title}   </span> </td>} */}
-                  <td> <span className='' > {OrderSheet.Title}   </span> </td>
-                </tr>
+                  <tr>
+                    <th> <span className='text-xl font-bold  ' >Remarks:  </span></th>
+                    <td> <span className='' > {OrderSheet.Rem}   </span> </td>
+                  </tr>
+                </tbody></table>
+              </div>
 
-                <tr>
-                  <th> <span className='text-xl font-bold  ' >Description:  </span></th>
-                  <td> <span className='' > {OrderSheet.Desc}   </span> </td>
-                </tr>
-              </tbody></table>
-
-              <div className='w-[30%] p-0 m-0'>
+              <div className='w-[30%]'>
                 <img src={process.env.REACT_APP_API_URL + `Items/GetFile/${OrderSheet.PicURL}`} style={{ width: "100%", height: '100%' }} alt="..." />
               </div>
 
             </div>
           </div>
+
           <div className="card-footer h-14 px-2 flex gap-4  justify-center items-center bg-gradient-to-r from-teal-600 ">
-            <button className="p-2 bg-gray-500 text-white rounded" onClick={() => setShowDeleteModal(false)}>
+            <button className="p-2 bg-blue-600 text-white rounded" onClick={() => setShowDeleteModal(false)}>
               No. Do Not Delete
             </button>
 
