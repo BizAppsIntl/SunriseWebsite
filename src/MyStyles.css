@@ -1,0 +1,52 @@
+
+.BG-PortalHeader{
+   /* backgroundColor: '#E1BEE7' */
+   /* @apply bg-teal-500 */
+   @apply bg-cyan-600
+   /* @apply bg-sky-600 */
+  }
+  
+  .BG-PortalHeaderGradient{
+    @apply bg-gradient-to-r from-cyan-800
+    }
+  
+  .BG-PortalBody{
+    /* backgroundColor: '#E1BEE7' */
+    @apply bg-slate-100
+   }
+   
+
+   .BG-PageHeader{
+  @apply bg-purple-300
+  }
+   
+  .BG-PageHeaderGradient{
+  @apply bg-gradient-to-r from-indigo-300
+  }
+   
+  .BG-PageBody{
+  @apply bg-pink-100
+  }
+
+/* Card base styles */
+.card {
+  @apply w-full bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden;
+}
+
+/* Card Header */
+.card-header {
+  /* @apply p-4 border-b border-gray-300 bg-gray-100; */
+  @apply border-b border-gray-300 ;
+}
+
+/* Card Content */
+.card-body {
+  /* @apply p-4 text-gray-600; */
+  
+}
+
+/* Card Footer */
+.card-footer {
+  /* @apply p-4 border-t border-gray-300 text-right; */
+  @apply border-t border-gray-300;
+}

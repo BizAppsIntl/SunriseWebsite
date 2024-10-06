@@ -1,0 +1,22 @@
+.auto-width-25TO100 {
+    width: 24%;
+
+}
+.auto-width-25TO50 {
+    width: 24%;
+    font-size: medium;
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .auto-width-25TO100{
+        width: 100%;
+    }
+
+    .auto-width-25TO50{
+        width: 49%;
+        font-size:smaller;
+    }
+    
+}
