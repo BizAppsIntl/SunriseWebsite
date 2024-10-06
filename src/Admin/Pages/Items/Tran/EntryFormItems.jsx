@@ -1134,7 +1134,7 @@ export default function EntryFormItems(props) {
                   <GiPriceTag />
                 </span>
                 <div className="relative">
-                  <input type="text" id="PPrice" name="PPrice" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="PPrice" name="PPrice" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={PPrice} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="PPrice" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>P-Price</span>
@@ -1149,7 +1149,7 @@ export default function EntryFormItems(props) {
                   <GiPriceTag />
                 </span>
                 <div className="relative">
-                  <input type="text" id="Price" name="Price" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="Price" name="Price" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={Price} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="Price" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     Sale Price
@@ -1163,7 +1163,7 @@ export default function EntryFormItems(props) {
                   <GiPriceTag />
                 </span>
                 <div className="relative">
-                  <input type="text" id="Price" name="Price" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="Price" name="Price" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={Price} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="Price" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Margin</span>
@@ -1186,7 +1186,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineArrowDownTray />
                 </span>
                 <div className="relative">
-                  <input type="text" id="QtyDef" name="QtyDef" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="QtyDef" name="QtyDef" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyDef} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyDef" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Default</span>
@@ -1201,7 +1201,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineSquaresPlus />
                 </span>
                 <div className="relative">
-                  <input type="text" id="QtyInc" name="QtyInc" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="QtyInc" name="QtyInc" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyInc} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyInc" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Increase</span>
@@ -1217,7 +1217,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineSquares2X2 />
                 </span>
                 <div className="relative">
-                  <input type="text" id="QtyStep" name="QtyStep" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="QtyStep" name="QtyStep" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyStep} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyStep" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Increment</span>
@@ -1236,7 +1236,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineArrowDownOnSquareStack />
                 </span>
                 <div className="relative">
-                  <input type="text" id="QtyMin" name="QtyMin" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="QtyMin" name="QtyMin" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyMin} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyMin" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Min Stock</span>
@@ -1251,7 +1251,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineArrowUpOnSquareStack />
                 </span>
                 <div className="relative">
-                  <input type="text" id="QtyMax" name="QtyMax" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="QtyMax" name="QtyMax" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={QtyMax} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="QtyMax" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Max Stock</span>
@@ -1274,7 +1274,7 @@ export default function EntryFormItems(props) {
                 </span>
 
                 <div className="relative w-full">
-                  {/* <input type="text" id="Desc" name="Desc" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  {/* <input type="text" id="Desc" name="Desc" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                               placeholder="" value={Desc} maxLength={30} onChange={(e) => HandleInputs(e)} /> */}
 
                   <select class="block px-2.5 pb-0 pt-4  w-full text-end text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
@@ -1314,7 +1314,7 @@ export default function EntryFormItems(props) {
                   <MdLowPriority />
                 </span>
                 <div className="relative w-full">
-                  <input type="text" id="Priority" name="Priority" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="Priority" name="Priority" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" value={Priority} maxLength={10} onChange={(e) => HandleInputs(e)} />
                   <label for="Priority" className="absolute text-end text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     Priority
@@ -1333,7 +1333,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineArrowUpOnSquareStack />
                 </span>
                 <div className="relative">
-                  <input type="text" id="OpBal" name="OpBal" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="OpBal" name="OpBal" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" disabled value={CrntBal} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="OpBal" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Op Stock</span>
@@ -1348,7 +1348,7 @@ export default function EntryFormItems(props) {
                   <HiOutlineArrowUpOnSquareStack />
                 </span>
                 <div className="relative">
-                  <input type="text" id="CrntBal" name="CrntBal" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  <input type="text" id="CrntBal" name="CrntBal" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="" disabled value={CrntBal} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
                   <label for="CrntBal" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Stock Bal.</span>

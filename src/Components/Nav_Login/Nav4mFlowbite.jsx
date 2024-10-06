@@ -12,15 +12,15 @@ export default function Nav4mFlowbite() {
     // <Navbar fluid rounded className="py-1">     
     // <Navbar className="py-1 border-b-2 w-full "> with px-wide...
     <Navbar fluid className="py-1 border-b-2 w-full ">
-      
+
       <Navbar.Brand href="/" className="flex" data-tooltip-target="tooltip-signin" data-tooltip-placement="left"  >
 
         <div >
           <div className="flex gap-1 md:gap-3 items-center ">
             <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
-              <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins  tracking-wide ">
-                Sunrise Dairy <span className=" font-thin hidden md:visible" >Pvt Ltd</span>
-                </div>
+            <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins  tracking-wide ">
+              Sunrise Dairy <span className=" font-thin hidden md:visible" >Pvt Ltd</span>
+            </div>
             {/* <div className="flex flex-col text-left justify-center">
               <div className="whitespace-nowrap text-3xl leading-none font-semibold tracking-widest ">Sunrise</div>
               <div className="whitespace-nowrap text-gray-700 hidden md:block text-sm md:text-base ">Diagnostic & Refrective Surgery Center</div>
@@ -38,6 +38,7 @@ export default function Nav4mFlowbite() {
         </div>
       </Navbar.Brand>
 
+      {/* for MD appears at end */}
       <div className="flex gap-1 align-middle md:order-2">
 
         <div className='md:px-3 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'>
@@ -88,19 +89,43 @@ export default function Nav4mFlowbite() {
 
 
 
-
+      {/* for MD appears at start */}
       <Navbar.Collapse>
         <Navbar.Link href="/" active>
           Home
         </Navbar.Link>
         {/* <Navbar.Link href="/Services">Services</Navbar.Link> */}
         <Navbar.Link href="/Items">Items</Navbar.Link>
+        <Navbar.Link href="/Dashboard">Dashboard</Navbar.Link>
         <Navbar.Link href="/About">About</Navbar.Link>
         <Navbar.Link href="/Test1">TestCards</Navbar.Link>
         {/* <Navbar.Link href="#">Contact</Navbar.Link> */}
         <Navbar.Link href="/CodeTestPage">CodeTestPage</Navbar.Link>
-        <Navbar.Link href="/Dashboard">Admin Panel</Navbar.Link>
         {/* <Navbar.Link href="/Signin">Sign In</Navbar.Link> */}
+
+        <div className="my-2 mx-3 md:m-0">
+          <Dropdown
+            arrowIcon={true}
+            inline
+            label={'Admin Panel'}
+          >
+            {/* <Dropdown.Header>
+                <span className="block text-sm">Mufakhar Adaam</span>
+                <span className="block truncate text-sm font-medium">Mufakhar@BizApps.pk</span>
+              </Dropdown.Header> */}
+            <Dropdown.Item href="/Items">Sales Invoices</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/Items">Items Detail</Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item href="/">Distributors Profiles</Dropdown.Item>
+            <Dropdown.Item href="/">Venders Profiles</Dropdown.Item>
+          </Dropdown>
+        </div>
+
+
+
+
+
       </Navbar.Collapse>
 
 

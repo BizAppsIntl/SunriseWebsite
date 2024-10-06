@@ -366,7 +366,7 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
 
       //setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value });
       E.PicURL4Edit = E.PicURL
-      console.log('obj: ', E)
+      // console.log('obj: ', E)
       setRec(E)
 
     }
@@ -613,10 +613,10 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
       {/* ====================================================== */}
       {/* MAIN HEADER - PRG  */}  {/* background-color:F3E5F5 */}
       {/* ====================================================== */}
-      <div className="card-header px-2 flex  justify-between items-center BG-PortalHeaderGradient" style={{ height: '30px' }}>
+      <div className="card-header px-2 flex flex-wrap md:flex-nowrap justify-between items-center BG-PortalHeaderGradient">
 
         {/* ............. Display ICON & TITLE  ............. */}
-        <div className="flex  gap-2  items-center">
+        <div className="flex  gap-2  items-center w-full">
           {/* <span className="p-0 mb-2 text-xl text-danger" ><TbManualGearbox /></span> */}
           <img className="p-0 m-0" style={{ width: 28, height: 28, borderRadius: '50%' }} src={imgPortal} />
 
@@ -640,7 +640,7 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
         </div>
 
         {/* ............. Display BUTTONS toolbar  ............. */}
-        <div className="flex  gap-2 items-center relative">
+        <div className="flex  gap-2 items-center justify-end w-full relative">
 
           {/* ............. Display BUTTON SEARCH text and Icon  ............. */}
           {/* Only if ADD-NEW is Not Clicked */}
@@ -650,14 +650,14 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
               <>
                 <button type="button" className=" py-0 me-10 text-black" onClick={() => { HandleBtnCancel(false) }}>
                   {/* {BtnAddnewClicked ? 'Addition' : 'Update'} Process <FcCancel className='text-xl mb-1' /> */}
-                  <span className=' md:hidden'>{BtnAddnewClicked ? 'Addition' : 'Update'}</span>
-                  <span className=' hidden md:block'>Exit {BtnAddnewClicked ? 'Addition' : 'Update'} Process</span>
+                  <span className=' md:hidden'>{BtnAddnewClicked ? 'Addition' : 'Update'} Mode</span>
+                  <span className=' hidden md:block'>Exit {BtnAddnewClicked ? 'Addition' : 'Update'} Mode</span>
 
                 </button>
 
                 {/* EXIT GATE BUTTON */}
                 {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
-                <div className='cursor-pointer absolute top-[-8px] right-0 ' style={{ zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+                <div className='cursor-pointer absolute top-[-30px] md:top-[-8px] right-0 ' style={{ zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
                   <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-red-600' />
                   {/* <CgCloseO className='text-xl  text-danger '  /> */}
                   {/* <SlClose className='text-xl ms-auto text-danger '  /> */}

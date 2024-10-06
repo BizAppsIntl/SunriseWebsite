@@ -15,7 +15,8 @@ export default function Home() {
             <img src={BizAppLogo} style={{ height: '100px', width: '150px' }} alt="BizApps" />
           </div>
 
-          <div className='mb-2 font-poppins leading-1 font-thin' style={{ fontSize: '32px' }}>
+          {/* <div className='mb-2 font-poppins leading-1 font-thin' style={{ fontSize: '32px' }}> */}
+          <div className='mb-2 font-poppins leading-1 font-thin text-xl md:text-3xl' >
             {/* Consultancy & Diagnostics <br /> Management Information System */}
             Management Information System V10.01
           </div>
