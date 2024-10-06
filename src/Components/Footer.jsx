@@ -3,7 +3,7 @@ import { FaFacebook, FaInstagram, FaSnapchatGhost, FaTwitter, FaWhatsapp, FaYout
 
 export default function Footer() {
     return (
-        <div className="flex py-1 w-full  justify-center items-between" style={{ backgroundColor: '#B2BEB5' }}>
+        <div className="flex mt-4 py-1 w-full  justify-center items-between" style={{ backgroundColor: '#B2BEB5' }}>
             {/* <div className="mw-auto">
                 Status Bar
             </div> */}

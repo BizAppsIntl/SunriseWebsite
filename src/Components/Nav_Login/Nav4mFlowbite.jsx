@@ -18,7 +18,7 @@ export default function Nav4mFlowbite() {
         <div >
           <div className="flex gap-1 md:gap-3 items-center ">
             <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
-              <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins font-semibold tracking-widest ">
+              <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins  tracking-wide ">
                 Sunrise Dairy <span className=" font-thin hidden md:visible" >Pvt Ltd</span>
                 </div>
             {/* <div className="flex flex-col text-left justify-center">

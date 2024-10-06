@@ -19,7 +19,7 @@ import { FaMinus } from 'react-icons/fa'
 import { TbWiperWash } from 'react-icons/tb'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
 import { FaEnvelopeOpenText } from 'react-icons/fa'
-import { ImListNumbered } from 'react-icons/im'
+import { ImEnter, ImListNumbered } from 'react-icons/im'
 
 //Description Detail -Text  Records
 import { TbTextWrapDisabled } from 'react-icons/tb'
@@ -856,7 +856,7 @@ export default function EntryFormItems(props) {
   return (
     <>
 
-      <div className='card flex  m-0 p-1 flex-col text-start' style={{ width: '100%', fontSize: '12px', background: '#e0e0e0', borderRadius: '5px' }}>
+      <div className='card flex  m-0 p-1 flex-col text-start ' style={{ width: '100%', fontSize: '12px', background: '#e0e0e0', borderRadius: '5px' }}>
 
         {/* =================================================================================== */}
         {/* =====[    Main Prg /CARD HEADDER start            ]===========================================  */}

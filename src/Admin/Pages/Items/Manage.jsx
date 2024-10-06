@@ -66,6 +66,7 @@ import { AlertRec, SetPadLeftZero, DispAPIInAlert, DispArrayInAlert, DispRecInAl
 // [START: Icons : ..................................................]
 import { FaSave, FaUserPlus, FaUserEdit, FaUsers, FaUserCog, FaUserSlash, FaFolder } from 'react-icons/fa'
 import { FcCancel } from 'react-icons/fc'
+import { FaEdit } from "react-icons/fa";
 
 //Play, back, next, fwwd
 import { FaStepBackward, FaBackward, FaForward, FaStepForward } from 'react-icons/fa'
@@ -82,6 +83,7 @@ import { GrUserManager } from 'react-icons/gr'
 import { FaRegIdCard } from 'react-icons/fa'
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import { FaPhoneVolume } from 'react-icons/fa'
+import { RiFunctionAddLine } from "react-icons/ri"
 
 //Sear Icons
 import IconSearch from '../../ImagesAdminPanel/default/IconSearch.png'
@@ -649,10 +651,11 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
                 <button type="button" className=" py-0 me-10 text-black" onClick={() => { HandleBtnCancel(false) }}>
                   {/* {BtnAddnewClicked ? 'Addition' : 'Update'} Process <FcCancel className='text-xl mb-1' /> */}
                   <span className=' md:hidden'>{BtnAddnewClicked ? 'Addition' : 'Update'}</span>
-                    <span className=' hidden md:block'>Exit {BtnAddnewClicked ? 'Addition' : 'Update'} Process</span>
-                  
+                  <span className=' hidden md:block'>Exit {BtnAddnewClicked ? 'Addition' : 'Update'} Process</span>
+
                 </button>
 
+                {/* EXIT GATE BUTTON */}
                 {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
                 <div className='cursor-pointer absolute top-[-8px] right-0 ' style={{ zIndex: '0' }} onClick={() => HandleBtnCancel(true)}>
                   <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-green-600' />
@@ -665,21 +668,21 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
             {/* Display BUTTON ADD-NEW & CLEAR */}
             {(!(BtnEditClicked || BtnAddnewClicked) && Rec.Id > 0) &&
               // <button type="button" class="px-3 py-0 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-              <button type="button" class="px-2 md:px-4 py-1 md:py-0 mb-1 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 "
-
+              <button type="button" class="px-2 md:px-4 py-1 md:py-1 mb-1 md:mx-2 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 "
                 onClick={() => { HandleBtnEdit(true) }}>
-                Update 
-                    <span className=' hidden md:block'> &nbsp; <FaUserEdit className='mb-1' style={{ width: '20px', height: '20px' }}/></span>
+                Update &nbsp;
+                <span className='hidden md:flex'> &nbsp; <FaEdit className='' style={{ width: '20px', height: '20px' }} /></span>
               </button>
             }
             {!(BtnEditClicked || BtnAddnewClicked) &&
               // <button type="button" className=" mx-2"
               // <button type="button" class="px-3 py-0 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-              <button type="button" class="px-2 md:px-4 py-1 md:py-0  mx-2 mb-1 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 shadow-lg shadow-purple-500/50 "
+              <button type="button" class="px-2 md:px-4 py-1 md:py-1  mx-2 mb-1 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 shadow-lg shadow-purple-500/50 "
                 onClick={() => { HandleBtnAddnew(true) }}>
-                Add New &nbsp; 
-                <span className=' hidden md:block'> &nbsp; <FaUserPlus className='mb-1' style={{ width: '20px', height: '20px' }} /></span>
-                </button>
+                Add New &nbsp;
+                {/* <FaUserPlus className='mb-1' style={{ width: '20px', height: '20px' }} /> */}
+                <span className='hidden md:flex'> &nbsp; <RiFunctionAddLine className='' style={{ width: '20px', height: '20px' }} /></span>
+              </button>
             }
             {/* {!(BtnEditClicked || BtnAddnewClicked) && (Rec.Code > 0) &&
               <button type="button" className="btn btn-sm btn-danger"
@@ -710,8 +713,8 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
         {/* <div className="card px-2 pt-2 shadow-lg" style={{ width: (BtnAddnewClicked || Rec.Id > 0) ? '30%' : '80%' }}> */}
         <div className={
           (BtnAddnewClicked || Rec.Id > 0)
-            ? 'w-full md:w-[50%] p-2 '
-            : 'w-full p-4'
+            ? 'w-full md:w-[50%] md:p-2 p-0'
+            : 'w-full p-0 md:p-4'
         }
         >
           {RecsAll.Loading ? <div className='text-center w-full'><BoxLoading className='w-full' txt={'Processing ...'} /></div>
@@ -736,7 +739,7 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
         {(BtnAddnewClicked || Rec.Id > 0) &&
 
           // <div style={{ width: '70%' }}>
-          <div className="card p-2 items-start w-full md:w-[50%]" >
+          <div className="card p-2 items-start w-full md:w-[50%] relative" >
 
             {(!BtnAddnewClicked) && (!Rec.Id) &&
               <button className="w-full " style={{ color: 'black', background: '#f0c040', border: '1px solid #404040' }}>
@@ -752,6 +755,17 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
             }
 
             {/* Only if ADD-NEW/Update is Clicked */}
+            {((BtnAddnewClicked || BtnEditClicked)) &&
+
+              // {/* EXIT GATE BUTTON ============*/}
+              // {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
+              // <div className='md:hidden cursor-pointer absolute top-[40px] right-[0px] ' style={{zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+              <div className='md:hidden cursor-pointer absolute right-[0px] ' style={{top:`${BtnAddnewClicked ? "40px" : "60px"}`, zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+                <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-red-600' />
+              </div>
+              // {/* End- EXIT GATE BUTTON ============*/}
+            }
+
             {((BtnAddnewClicked || BtnEditClicked)) &&
               < EntryFormItems
 
@@ -789,9 +803,9 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
       {/* ................................................................................... */}
 
       {/* only for Printing Purpose */}
-      <div className='d-none'>
+      {/* <div className='d-none'>
         !!! PrnListItems here
-      </div>
+      </div> */}
 
       {/* ............  End:    PRINTING     ]............................................ */}
       {/* ................................................................................... */}
