@@ -657,8 +657,8 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
 
                 {/* EXIT GATE BUTTON */}
                 {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
-                <div className='cursor-pointer absolute top-[-8px] right-0 ' style={{ zIndex: '0' }} onClick={() => HandleBtnCancel(true)}>
-                  <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-green-600' />
+                <div className='cursor-pointer absolute top-[-8px] right-0 ' style={{ zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+                  <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-red-600' />
                   {/* <CgCloseO className='text-xl  text-danger '  /> */}
                   {/* <SlClose className='text-xl ms-auto text-danger '  /> */}
                 </div>
@@ -702,7 +702,7 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
       {/* =====[    Main content CARD BODY start            ]===========================================  */}
       {/* =================================================================================== */}
       {/* <div className="card-body p-1 flex flex-row justify-center portalBodyBG " style={{ background: '#F3E5F5' }}> */}
-      <div className="card-body p-1 flex flex-wrap BG-PortalBody " >
+      <div className="card-body p-1 flex flex-wrap BG-PortalBody justify-between" >
 
         {/* Transaction List */}
         {/* LEFT-PART for Vouchers List */}
@@ -713,7 +713,7 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
         {/* <div className="card px-2 pt-2 shadow-lg" style={{ width: (BtnAddnewClicked || Rec.Id > 0) ? '30%' : '80%' }}> */}
         <div className={
           (BtnAddnewClicked || Rec.Id > 0)
-            ? 'w-full md:w-[50%] md:p-2 p-0'
+            ? 'w-full md:w-[49%] p-0'
             : 'w-full p-0 md:p-4'
         }
         >

@@ -178,9 +178,9 @@ export default function EntryFormItems(props) {
   // ==============================================================
   //DELETE is clicked
   const HandleBtnDelete = (btnStatus) => {
-    alert('DELETE Record: Rec4M')
+    // alert('DELETE Record: Rec4M')
 
-    // CallDotAPI2Delete()
+    CallDotAPI2Delete()
   }
 
 

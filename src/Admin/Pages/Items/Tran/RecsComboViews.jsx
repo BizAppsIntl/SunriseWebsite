@@ -122,7 +122,7 @@ export default function RecsComboViews({ RecAll, HandleListItemClicked, HandleLi
                                     <div className="card shadow  p-0 m-0"  >
                                         <span style={{ position: 'absolute', top: '0px', left: '0px', fontSize: '8px' }}
                                             className={" text-secondary "} >
-                                            {E.Id}
+                                            {E.Code}/{E.Id}
                                         </span>
 
                                         <div className="card-img-top px-0 pt-0 mb-0 text-center " >
