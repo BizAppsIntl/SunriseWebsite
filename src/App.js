@@ -14,6 +14,9 @@ import LayoutLogin from './LayoutLogin'
 import Home from './Pages/Home'
 import About from './Pages/About'
 import ManageItems from './Admin/Pages/Items/Manage';
+import ManageCust from './Admin/Pages/TraderCust/Manage';
+import ManageSplr from './Admin/Pages/TraderSplr/Manage';
+
 import { MobApp1 } from './Pages/MobApp1';
 import CodeTestPage from './Pages/CodeTestPage';
 
@@ -184,9 +187,13 @@ function App() {
           <Route path='About' element={<About />} />
           <Route path='Contact' element={<Home />} />
           {/* <Route path='Services' element={<Services />} /> */}
-          <Route path='Items' element={<ManageItems />} />
-          <Route path='Test1' element={<MobApp1 />} />
 
+          <Route path='Items' element={<ManageItems />} />
+          <Route path='Distributors' element={<ManageCust />} />
+          <Route path='Vendors' element={<ManageSplr />} />
+
+
+          <Route path='Test1' element={<MobApp1 />} />
           <Route path='CodeTestPage' element={<CodeTestPage />} />
 
           {/* <Route path='Services' element={<About />} /> */}

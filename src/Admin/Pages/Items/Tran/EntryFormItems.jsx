@@ -1022,6 +1022,7 @@ export default function EntryFormItems(props) {
                 {/* ============================================================== */}
                 {/* divider line --------------------------------------------------------------------------*/}
                 <div className="mx-auto my-1 " style={{ width: '70%', borderTop: "2px solid lightgray " }}></div>
+                {/* ============================================================== */}
 
 
                 {/* BLOCK -- Staus Priority */}
@@ -1060,26 +1061,28 @@ export default function EntryFormItems(props) {
               </div>
             </div>
 
-            {/* ----------------------- [        ROW  1/2,  Col 1/3       ]----------------------------------- */}
+            {/* --PHOTO SESCTION--------------------- [        ROW  1/2,  Col 1/3       ]----------------------------------- */}
             <div className="card p-1 w-full md:w-[30%]">
 
               <div className="card p-1"  >
 
                 <div className=' flex justify-between items-center' style={{ height: '30px' }}>
-                  <label htmlFor='inputPhoto' id='SelectPhoto' className='btn btn-info m-0 p-0 btn-sm' >
-                    Select Photo
+
+                  <label htmlFor='inputPhoto' id='SelectPhoto' className="px-2 py-1 bg-blue-500 text-white rounded" >
+                    Change Photo
                   </label>
 
                   {/* {(selectedImage) && <label className=' m-0 p-0 fs-3 text-danger'
                       onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
-                  {(OrderSheet.PicURL || OrderSheet.Pic) && <label className=' m-0 p-0 fs-3 text-danger'
+                  {(OrderSheet.PicURL || OrderSheet.Pic) && <label className=' m-0 p-0 text-xl text-red-600'
                     // onClick={() => { setOrderSheet({ ...OrderSheet, PicURL: '' }); setImgURL(null) }}> <FiDelete />
                     onClick={() => {
                       (OrderSheet.Pic)
                         ? setOrderSheet({ ...OrderSheet, Pic: '', PicURL: '' })
                         : setOrderSheet({ ...OrderSheet, PicURL: '' })
                     }}>
-                    <FiDelete />
+                    {/* <FiDelete /> */}
+                    <FaTrashCan />
                   </label>}
                 </div>
 

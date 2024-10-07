@@ -1,0 +1,87 @@
+.MyDrpDnApp {
+    font-family: sans-serif;
+  }
+  
+  .MyDrpDndropdown-container {
+    width: 250px;
+    position: relative;
+  }
+  
+  .MyDrpDndropdown {
+    border: 1px solid black;
+    width: 100%;
+    border-bottom: none;
+    box-sizing: border-box;
+    position: absolute;
+    display: none;
+  }
+  
+  .MyDrpDndropdown.visible {
+    display: block;
+  }
+  
+  .MyDrpDnoption {
+    height: 36px;
+    border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+    background-color: white;
+  }
+  
+  .MyDrpDnoption:hover {
+    background-color: royalblue;
+  }
+  
+  .MyDrpDninput-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .MyDrpDndropdown-container input {
+    width: 100%;
+    padding: 0;
+    border-width: 1px;
+    height: 36px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+  .MyDrpDninput-arrow-container {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -2px;
+    cursor: pointer;
+  }
+  
+  .MyDrpDninput-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  
+  .MyDrpDninput-clean-container {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -2px;
+    cursor: pointer;
+  }
+  
+  .MyDrpDninput-clean {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  

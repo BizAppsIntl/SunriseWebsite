@@ -56,21 +56,20 @@ export default function RecsComboViews({ RecAll, HandleListItemClicked, HandleLi
             {/* <span className='ms-auto ' onClick={() => HandleDatabase('Add')}><AiFillAccountBook /></span> */}
             {/* <span className='ms-auto ' onClick={() => HandleDatabase('Empty')}>Edit<AiFillAccountBook /></span> */}
 
-            <div className='ms-auto mx-2 fs-6 ' onClick={() => setDispType(0)}><TfiViewList /></div>
-            <div className='fs-5 ' onClick={() => setDispType(1)}><HiOutlineViewGridAdd /></div>
-            <div className='fs-6  mx-2 ' onClick={() => setDispType(2)}><FaLayerGroup /></div>
+            <div className='ms-auto mx-2  ' onClick={() => setDispType(0)}><TfiViewList /></div>
+            <div className=' ' onClick={() => setDispType(1)}><HiOutlineViewGridAdd /></div>
+            <div className=' ' onClick={() => setDispType(2)}><FaLayerGroup /></div>
 
-            {PrintButton &&
+            {/* {PrintButton &&
                 <button className='btn btn-sm btn-info py-0 px-1 ' style={{ height: '25px' }} onClick={() => HandlePrinting()}>
                     <span style={{ fontSize: 'smaller' }}>Print</span> <GrPrint />
                 </button>
-            }
-
+            } */}
         </div>
 
         <div className="card-body p-0" style={{maxHeight: '75vh', overflowY: 'auto' }}>
             {DispType === 0         //0-list, 1-Grid, 2-group
-                ? <div className=" flex flex-column" >
+                ? <div className=" flex flex-col" >
                     {RecAll?.map((E, I) => {
                         // return <button className='flex mb-2 ' key={E.id} onClick={() =>{DispRecInAlert(E,'Selected'); HandleListItemClicked(E)}}>
                         return (
@@ -134,7 +133,7 @@ export default function RecsComboViews({ RecAll, HandleListItemClicked, HandleLi
 
                                         <div className="card-body p-0">
                                             {/* <div className="card-title m-0 p-0" style={{ lineHeight: 1 }}>{Title.trim()}</div> */}
-                                            <div className="card-title text-center text-black" style={{ fontSize: '10px', lineHeight: '1' }}>{E.Title}</div>
+                                            <div className=" text-center text-black" style={{ fontSize: '10px', lineHeight: '1' }}>{E.Title}</div>
                                             {/* <div className="card-title text-center text-black" style={{ fontSize: '10px', lineHeight: '1' }}>{E.TitleU.trim()}</div> */}
                                             {/* <div className="card-title text-center text-primary" style={{ fontSize: '10px' }}>{E.Title.trim()}</div> */}
                                         </div>

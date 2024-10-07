@@ -117,8 +117,8 @@ export default function Nav4mFlowbite() {
             <Dropdown.Divider />
             <Dropdown.Item href="/Items">Items Detail</Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item href="/">Distributors Profiles</Dropdown.Item>
-            <Dropdown.Item href="/">Venders Profiles</Dropdown.Item>
+            <Dropdown.Item href="/Distributors">Distributors Profiles</Dropdown.Item>
+            <Dropdown.Item href="/Vendors">Vendors Profiles</Dropdown.Item>
           </Dropdown>
         </div>
 

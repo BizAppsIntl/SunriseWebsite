@@ -711,12 +711,11 @@ export default function Manage({ _RecsState, _RecsDispatch }) {
 
 
         {/* <div className="card px-2 pt-2 shadow-lg" style={{ width: (BtnAddnewClicked || Rec.Id > 0) ? '30%' : '80%' }}> */}
-        <div className={
+        <div className={ 
           (BtnAddnewClicked || Rec.Id > 0)
             ? 'w-full md:w-[49%] p-0'
             : 'w-full p-0 md:p-4'
-        }
-        >
+        }>
           {RecsAll.Loading ? <div className='text-center w-full'><BoxLoading className='w-full' txt={'Processing ...'} /></div>
             : RecsAll.Data.length <= 0 ? <BoxMessage variant='danger' >Seems, There is No Data...</BoxMessage>
               : <>
