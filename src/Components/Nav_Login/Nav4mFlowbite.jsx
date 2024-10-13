@@ -99,6 +99,7 @@ export default function Nav4mFlowbite() {
         <Navbar.Link href="/Dashboard">Dashboard</Navbar.Link>
         <Navbar.Link href="/About">About</Navbar.Link>
         <Navbar.Link href="/Test1">TestCards</Navbar.Link>
+        <Navbar.Link href="/TestReactSelect">ReactSelect</Navbar.Link>
         {/* <Navbar.Link href="#">Contact</Navbar.Link> */}
         <Navbar.Link href="/CodeTestPage">CodeTestPage</Navbar.Link>
         {/* <Navbar.Link href="/Signin">Sign In</Navbar.Link> */}
@@ -113,7 +114,7 @@ export default function Nav4mFlowbite() {
                 <span className="block text-sm">Mufakhar Adaam</span>
                 <span className="block truncate text-sm font-medium">Mufakhar@BizApps.pk</span>
               </Dropdown.Header> */}
-            <Dropdown.Item href="/Items">Sales Invoices</Dropdown.Item>
+            <Dropdown.Item href="/Sales">Sales Invoices</Dropdown.Item>
             <Dropdown.Divider />
             <Dropdown.Item href="/Items">Items Detail</Dropdown.Item>
             <Dropdown.Divider />

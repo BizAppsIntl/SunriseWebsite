@@ -16,9 +16,11 @@ import About from './Pages/About'
 import ManageItems from './Admin/Pages/Items/Manage';
 import ManageCust from './Admin/Pages/TraderCust/Manage';
 import ManageSplr from './Admin/Pages/TraderSplr/Manage';
+import ManageSales from './Admin/Pages/Entry/Sales/Manage';
 
 import { MobApp1 } from './Pages/MobApp1';
 import CodeTestPage from './Pages/CodeTestPage';
+import MyTestReactSelect from './Components/MyTestReactSelect';
 
 
 function App() {
@@ -192,9 +194,11 @@ function App() {
           <Route path='Distributors' element={<ManageCust />} />
           <Route path='Vendors' element={<ManageSplr />} />
 
+          <Route path='Sales' element={<ManageSales />} />
 
           <Route path='Test1' element={<MobApp1 />} />
           <Route path='CodeTestPage' element={<CodeTestPage />} />
+          <Route path='TestReactSelect' element={<MyTestReactSelect />} />
 
           {/* <Route path='Services' element={<About />} /> */}
 

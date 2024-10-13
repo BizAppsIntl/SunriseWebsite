@@ -6,6 +6,7 @@ export default function SampleCard  ({ width = '100%'  }) {
   return (
     <>
             {/* <div className="card w-full sm:w-1/2 lg:w-1/4 p-4"> */}
+
       <div className="card "  style={{ width: width }}>
         {/* Card Header */}
         <div className="card-header p-1">
