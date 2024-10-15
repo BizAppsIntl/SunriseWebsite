@@ -116,20 +116,25 @@ const RecDetailDisp = ({ Rec, HandleCloseWindow }) => {
                 <th> <span className='text-lg ' >Pack Size  </span></th>
                 {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
                 {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
-                <td> <span className='' > {Rec.Unit} </span> </td>
+                <td> <span className='' > {Rec.PackSize} </span> </td>
               </tr>
 
               <tr>
                 <th> <span className='text-lg ' >Packing Type  </span></th>
                 {/* <td> <span className='fs- ' > [ {OrderSheet.TId} ]   - {OrderSheet.RefTrader.Title}</span> </td> */}
                 {/* {OrderSheet.RefTrader.Title && <td> <span className='fs- ' > [ {OrderSheet.RefTrader.Code} ]   - {OrderSheet.RefTrader.Title}</span> </td>} */}
-                <td> <span className='' > {Rec.Unit} </span> </td>
+                <td> <span className='' > {Rec.PackType} </span> </td>
               </tr>
 
               <tr>
                 <th> <span className='text-lg  ' >Purchase Price:  </span></th>
                 {/* {OrderSheet.AccC[0].Title && <td> <span className='fs- ' > {OrderSheet.AccC[0].Title}   </span> </td>} */}
                 <td> <span className='' > {Rec.PPrice}   </span> </td>
+              </tr>
+
+              <tr>
+                <th> <span className='text-lg  ' >Margin %:  </span></th>
+                <td> <span className='' > {Rec.Margin}   </span> </td>
               </tr>
 
               <tr>

@@ -38,11 +38,11 @@ export default function TabbedBillVoucherDetail(props) {
   return (
     <>
       {/* {AlertRec(OrderSheetItems,'*****OrderSheetItems*****')} */}
-
+      <div className="pe-2 w-full border border-gray-300 rounded-lg shadow-lg overflow-hidden ">
       <div className='text-lg font-bold text-blue-600 leading-none ' >Invoice Detail</div>
 
       {OrderSheetItems.map((E, I) =>
-        <div className='card shadow flex flex-col  items-center mb-2 w-full' style={{ fontSize: '12px' }} key={I}>
+        <div className='card shadow flex flex-col  items-center m-1 w-full' style={{ fontSize: '12px' }} key={I}>
           {/* {AlertRec(E.RefItem, '*****  E.RefItem  *****')} */}
 
           <table ><tbody><tr>
@@ -147,7 +147,7 @@ export default function TabbedBillVoucherDetail(props) {
             <td width="11%" className=''>
               {/* ---[ Input VAmount ]--- */}
               {/* <div style={{ width: '75px' }}> */}
-              <div className='text-center ' htmlFor="VAmtDoc" style={{ fontSize: '12px' }}  >@</div>
+              <div className='text-center ' htmlFor="Price" style={{ fontSize: '12px' }}  >@</div>
               <div className="w-full" >
                 {/* <input type="number" value={VAmt} className="form-control  text-end " name='VAmt' id="VAmt" placeholder="Father Name" readOnly={false}
                                     onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
@@ -176,24 +176,24 @@ export default function TabbedBillVoucherDetail(props) {
             <td width="13%" className=''>
               {/* ---[ Input VAmount ]--- */}
               {/* <div style={{ width: '75px' }}> */}
-              <div className='text-center ' htmlFor="VAmtDoc" style={{ fontSize: '12px' }}  >
-                Am<span className='hidden md:flex'>oun</span>t
-                </div>
+              <div className='text-center ' htmlFor="VAmtGross" style={{ fontSize: '12px' }}  >
+                Am<span className='hidden md:inline'>oun</span>t
+              </div>
               <div className="w-full text-end" >
                 {/* <input type="number" value={VAmt} className="form-control  text-end " name='VAmt' id="VAmt" placeholder="Father Name" readOnly={false}
                                     onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
 
-<NumberFormat name='VAmtDoc' thousandSeparator={true} thousandsGroupStyle="lakh"
-                  className="h-6 px-1 text-base font-bold text-Black border-none outline-none w-full"
+                <NumberFormat name='VAmtGross' thousandSeparator={true} thousandsGroupStyle="lakh"
+                  className="h-6 px-2 text-base font-bold text-Black border-none outline-none w-full"
+                  value={E.Qty * E.Price}
                   // style={{ fontSize: '16px' }}
                   // style={{border:'none' , outline: 'none'                  }}                  
- 
+
                   // label={"1 FTE"}
                   // customInput={TextField}
                   // isNumericString={true}   //for value output is number value
                   decimalScale={2}
-                  value={E.Qty * E.Price }
-                  displayType={'text'} 
+                  displayType={'text'}
                 />
 
               </div>
@@ -206,24 +206,26 @@ export default function TabbedBillVoucherDetail(props) {
               {/* ---[ Input VAmount ]--- */}
               {/* <div style={{ width: '75px' }}> */}
 
-              <div className=' flex  items-center justify-center text-sx'  >Margin <span><FaArrowTurnDown/> </span></div>
-              <div className="w-full " >
+              {/* <div className=' flex  items-center justify-center text-sx'  >Margin <span><FaArrowTurnDown/> </span></div> */}
+              <div className=' flex  items-center justify-center text-sx'  >Margin<span className='hidden md:inline'>{` (${E.Margin}%)`}</span></div>
+              <div className="w-full text-center" >
                 {/* <input type="number" value={VAmt} className="form-control  text-end " name='VAmt' id="VAmt" placeholder="Father Name" readOnly={false}
                                     onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
 
-                <NumberFormat value={0} name='Price' id="Price" thousandSeparator={true} thousandsGroupStyle="lakh"
+                <NumberFormat name='Margin' id="Margin" thousandSeparator={true} thousandsGroupStyle="lakh"
                   className="h-6 px-0 text-base text-center font-bold text-green-600 border-none outline-none w-full"
+                  value={(E.Qty * E.Price) * (E.Margin / 100)}
                   // style={{ fontSize: '16px' }}
                   // style={{border:'none' , outline: 'none'                  }}
 
+                  // prefix={'Rs. '}
+                  //suffix={` (${E.Margin}%)`}
                   // label={"1 FTE"}
                   // customInput={TextField}
                   // isNumericString={true}   //for value output is number value
-                  // decimalScale={2}
+                  decimalScale={2}
+                  displayType={'text'}
 
-                  onValueChange={(values) => {
-                    HandleInputsVoucherDetailNumberFormat(E, { name: 'Price', value: values.value })
-                  }}
                 />
 
               </div>
@@ -235,22 +237,22 @@ export default function TabbedBillVoucherDetail(props) {
             <td width="15%" className=''>
               {/* ---[ Input VAmount ]--- */}
               {/* <div style={{ width: '75px' }}> */}
-              <div className='text-center ' htmlFor="VAmtDoc" >Net Am<span className='hidden md:flex'>oun</span>t</div>
+              <div className='text-center ' htmlFor="VAmt" >Net Am<span className='hidden md:inline'>oun</span>t</div>
               <div className="w-full text-end" >
                 {/* <input type="number" value={VAmt} className="form-control  text-end " name='VAmt' id="VAmt" placeholder="Father Name" readOnly={false}
                                     onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
 
-                <NumberFormat name='VAmtDoc' thousandSeparator={true} thousandsGroupStyle="lakh"
+                <NumberFormat name='VAmt' thousandSeparator={true} thousandsGroupStyle="lakh"
                   className="h-6 px-1 text-base font-bold text-Black border-none outline-none w-full"
+                  value={(E.Qty * E.Price) - ((E.Qty * E.Price) * (E.Margin / 100))}
                   // style={{ fontSize: '16px' }}
                   // style={{border:'none' , outline: 'none'                  }}                  
- 
+
                   // label={"1 FTE"}
                   // customInput={TextField}
                   // isNumericString={true}   //for value output is number value
                   decimalScale={2}
-                  value={E.Qty * E.Price}
-                  displayType={'text'} 
+                  displayType={'text'}
                 />
 
               </div>
@@ -261,6 +263,7 @@ export default function TabbedBillVoucherDetail(props) {
         </div>
       )}
 
-    </>
+</div>
+</>
   )
 }

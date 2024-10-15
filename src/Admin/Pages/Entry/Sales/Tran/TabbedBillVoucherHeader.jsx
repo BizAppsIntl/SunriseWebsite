@@ -536,7 +536,7 @@ export default function TabbedBillVoucherHeader(props) {
 
                         {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
                         <div className=' font-bold text-blue-600' >Total Amount</div>
-                        <NumberFormat value={VoucherCart.VAmt} name='VAmt' id="VAmt" thousandSeparator={true} thousandsGroupStyle="lakh"
+                        <NumberFormat value={VoucherCart.VAmtGross} name='VAmtGross' id="VAmtGross" thousandSeparator={true} thousandsGroupStyle="lakh"
 
                             //// label={"1 FTE"}
                             //// customInput={TextField}
@@ -576,7 +576,7 @@ export default function TabbedBillVoucherHeader(props) {
                     <div className="card px-2 ">
                         {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
                         <div className=' font-bold text-red-600' >Inv. Amount</div>
-                        <NumberFormat value={VoucherCart.VAmtPaid} name='VAmtPaid' id="VAmtPaid" thousandSeparator={true} thousandsGroupStyle="lakh"
+                        <NumberFormat value={VoucherCart.VAmt} name='VAmt' id="VAmt" thousandSeparator={true} thousandsGroupStyle="lakh"
 
                             //// label={"1 FTE"}
                             //// customInput={TextField}

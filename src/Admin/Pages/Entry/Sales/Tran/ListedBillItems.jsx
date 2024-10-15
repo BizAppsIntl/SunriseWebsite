@@ -546,8 +546,16 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //         return accum;
         //     }, { vamt: 0, vqty: 0 })
 
-        const vamt = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+        // const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
+        // const vamt = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+
         const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
+
+        const vamtgross = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) *(E.Margin/100), 0)
+        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) *(E.Margin/100))), 0)
+
+
         // alert('del:' +vqty +' '+ typeof(vqty))
 
         // const vAmtRef = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.RefProd.ShareRef)), 0)
@@ -558,7 +566,17 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         // alert('add:' +vqty +' '+ typeof(vqty))
 
         // AlertRec(UpdatedItemsList,'<--UpdatedItemsList ===  VAmt: '+vamt +' , VAmtRef: '+ vAmtRef+ ' , VAmtDoc: '+vAmtDoc+ ' , VQtyTxt: '+vqty)
-        setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtMargin: vamt * (10 / 100), VAmtPaid: vamt - (vamt * (10 / 100)), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
+        // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtMargin: vamt * (10 / 100), VAmtPaid: vamt - (vamt * (10 / 100)), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
+
+        setVoucherCart({ 
+            ...VoucherCart, 
+            VItems: UpdatedItemsList, 
+            VQtyTxt: vqty, 
+            VAmt: vamt, 
+            VAmtPaid: vamt,
+            VAmtGross: vamtgross, 
+            VAmtMargin: vamtmargin, 
+        })
 
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VQtyTxt: vqty }))
     }
@@ -612,7 +630,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //chkID is (PId when called from Voucher Detail Section/ItemsCart)
 
         // AlertRec(itm2Add,'ORIGINAL Full Crnt Item')
-        //  AlertRec(itm2Add, 'Full Rec4Addition:' + 'chkID: '+ chkID + '    qty: ' + qty)
+        //  AlertRec(itm2Add, 'Full Rec4Addition:' + 'chkID: '+ chkID + '  qty: ' + qty)
 
         // ==== in Purchase do not check prev qty
         // if ((qty === undefined) || (+qty > crntItem.CrntBal)) return
@@ -629,30 +647,55 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             // in Purchase do not check prev qty
             //if ((+qty + +exist.Qty) > crntItem.CrntBal) return
 
-            UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === chkID) ? { ...exist, Qty: +exist.Qty + qty } : E)
+            UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === chkID) 
+            ? { ...exist, Qty: +exist.Qty + qty } 
+            : E)
         }
         else {
             // UpdatedItemsList = [...VoucherCart.VItems, { ...crntItem, Qty: crntItem.QtyDef }]
             // UpdatedItemsList = [...VoucherCart.VItems, { ...crntItem, Qty: qty }]
-            UpdatedItemsList = [...VoucherCart.VItems, { RefItem: itm2Add, PId: itm2Add.Id, Qty: qty, Unit: itm2Add.Unit, Price: itm2Add.Price, Title: itm2Add.Title }]
+            UpdatedItemsList = [
+                ...VoucherCart.VItems, 
+                { RefItem: itm2Add, PId: itm2Add.Id, Qty: qty, Unit: itm2Add.Unit, Price: itm2Add.Price, Title: itm2Add.Title, Margin: itm2Add.Margin, PackSize: itm2Add.PackSize, PackType: itm2Add.PackType }
+            ]
         }
 
-        // const vamt = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.Price)), 0)
-        // const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
-        const { vamt, vqty } = UpdatedItemsList.reduce(
+        //// const vamt = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.Price)), 0)
+        //// const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
+        // const { vamt, vqty } = UpdatedItemsList.reduce(
+        //     (accum, crntElementOfArray) => {
+        //         const { Qty, Price } = crntElementOfArray;
+        //         accum.vamt += (Qty * Price)
+        //         accum.vqty += Qty;
+
+        //         // accum.vmargin += (Qty * Price) *(10/100)
+
+        //         return accum;
+        //     }, { vamt: 0, vqty: 0 })
+
+        const { vamt, vqty, vamtgross, vamtmargin} = UpdatedItemsList.reduce(
             (accum, crntElementOfArray) => {
-                const { Qty, Price } = crntElementOfArray;
-                accum.vamt += (Qty * Price)
+                const { Qty, Price, Margin } = crntElementOfArray;
+                
+                accum.vamtgross += (Qty * Price)
+                accum.vamtmargin += (Qty * Price) *(Margin/100)
+                accum.vamt += (Qty * Price) - ((Qty * Price) *(Margin/100))
                 accum.vqty += Qty;
 
                 // accum.vmargin += (Qty * Price) *(10/100)
 
                 return accum;
-            }, { vamt: 0, vqty: 0 })
+            }, { vamt: 0, vqty: 0, vamtgross:0, vamtmargin:0 })
 
-
-
-        setVoucherCart({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VQtyTxt: vqty, VAmtMargin: vamt * (10 / 100), VAmtPaid: vamt - (vamt * (10 / 100)) })
+        setVoucherCart({ 
+            ...VoucherCart, 
+            VItems: UpdatedItemsList, 
+            VQtyTxt: vqty, 
+            VAmt: vamt, 
+            VAmtPaid: vamt,
+            VAmtGross: vamtgross, 
+            VAmtMargin: vamtmargin, 
+        })
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: -9999, Desc: "Description is here", VNo: UpdatedItemsList.length }))
         // setProducts(p=>p=Products.map(E=>(E.Id===crntItem.Id) ? { ...E, crntBal: E.crntBal - qty } : E))
     }
@@ -725,6 +768,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                 // case 'DocRefId': setVoucherCart(() => ({ ...VoucherCart, DocRefId: Number(_value) })); break;
                 // case 'DocDutyId': setVoucherCart(() => ({ ...VoucherCart, DocDutyId: Number(_value) })); break;
                 case 'Desc': setVoucherCart(() => ({ ...VoucherCart, Desc: _value })); break;
+                case 'Rem': setVoucherCart(() => ({ ...VoucherCart, Rem: _value })); break;
                 case 'VType': setVoucherCart(() => ({ ...VoucherCart, VType: _value })); break;
 
                 default:
@@ -739,6 +783,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
 
     const HandleInputsVoucherDetailNumberFormat = (crntItem, obj) => {
+
         const itmExisted = VoucherCart.VItems.find((E) => E.PId === crntItem.PId)
         let UpdatedItemsList = []
 
@@ -768,7 +813,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //         :  itmExisted.Qty * crntItem.ShareDoc
         //     :   itmExisted.Qty * crntItem.ShareDoc
 
-        if (obj.name === 'Price') {
+        if (obj.name === 'XPriceX') {
             UpdatedItemsList = VoucherCart.VItems.map((E) =>
                 (E.PId === crntItem.PId)
                     ? {
@@ -787,9 +832,9 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             )
         }
         else
-            //obj.name = AmtDoc or AmtRef
+        {            //obj.name = AmtDoc or AmtRef
             UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === crntItem.PId) ? { ...itmExisted, [obj.name]: obj.value } : E)
-
+        }
 
         // const { vamt, vqty } = UpdatedItemsList.reduce(
         //     (accum, crntValue) => {
@@ -800,9 +845,16 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //         return accum;
         //     }, { vamt: 0, vqty: 0 })
 
-        const vamt = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+        // const vamt = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+        // const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
+        // // alert('InputDetail: qty:' +vqty +' '+ typeof(vqty)+'\nInputDetail: amt:' +vamt +' '+ typeof(vamt))
+
         const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
-        // alert('InputDetail: qty:' +vqty +' '+ typeof(vqty)+'\nInputDetail: amt:' +vamt +' '+ typeof(vamt))
+
+        const vamtgross = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
+        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) *(E.Margin/100), 0)
+        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) *(E.Margin/100))), 0)
+
 
         // const vAmtRef = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.RefProd.ShareRef)), 0)
         // const vAmtDoc = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.RefProd.ShareDoc)), 0)
@@ -818,7 +870,17 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //     `)
 
         //setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VQtyTxt: vqty }))
-        setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtPaid: vamt - (vamt * (10 / 100)), VAmtMargin: vamt * (10 / 100), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
+        // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtPaid: vamt - (vamt * (10 / 100)), VAmtMargin: vamt * (10 / 100), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
+        setVoucherCart({ 
+            ...VoucherCart, 
+            VItems: UpdatedItemsList, 
+            VQtyTxt: vqty, 
+            VAmt: vamt, 
+            VAmtPaid: vamt,
+            VAmtGross: vamtgross, 
+            VAmtMargin: vamtmargin, 
+        })
+
     }
 
     // Handle Voucher-Detail VItem Qty Price etc

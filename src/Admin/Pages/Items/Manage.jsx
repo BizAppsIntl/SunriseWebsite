@@ -172,6 +172,10 @@ const RecDefault = {
   PicURL4Edit: '',
 
   Unit: 'Pack',
+  PackSize:'Pack',
+  PackType:'',
+
+  Margin:10,
   Price: '',
   PPrice: '',
 

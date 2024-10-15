@@ -100,8 +100,9 @@ export default function EntryFormItems(props) {
   const PrgID = '1311'
   const VCat = '1311'
 
+  
   //const { Code, RecStatus, Cat, Title, TitleU, TCode, Priority, Pic, PicURL, Unit, QtyDef, QtyInc, QtyStep, Price, Desc, Rem,  CrntBal, QtyMin, QtyMax } = OrderSheet
-  const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
+  const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, PackSize, PackType, Margin, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
 
   // const [VoucherCart, setVoucherCart] = useState(CrntRec ? CrntRec : RecDefault4M)
   // { VItems: [], VDte: new Date().toDateString(), VNo: 'xxx', VCat: '31', VDesc: '', TCode: 'SAB', VAmt: -9, VQty: -9 })
@@ -194,7 +195,7 @@ export default function EntryFormItems(props) {
   const CallDotAPI2SaveAddNew = async () => {
     // AlertRec(OrderSheet, 'Data Ready to Send')
     // const { Code, RecStatus, CatItemCode, Title, TitleU, TCode, Priority, Pic, PicURL, Unit, QtyDef, QtyInc, QtyStep, Price, Desc, Rem,  CrntBal, QtyMin, QtyMax } = OrderSheet
-    const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
+    const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, PackSize, PackType, Margin, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
 
     // if (!(Code)) {
     //   alert('CODE is invalid. \nPlz Check CODE entered.'); return
@@ -241,6 +242,11 @@ export default function EntryFormItems(props) {
       "PicURL": (Pic ? Title.replace(/ /g, '').substr(0, 10) + DateTimeStamp() + '.png' : ''),
 
       "Unit": Unit.substr(0, 10),
+      "PackSize":PackSize.substr(0, 10),
+      "PackType":PackType.substr(0, 10),
+    
+      "Margin": Number(Margin),
+
       "QtyDef": Number(QtyDef),
       "QtyInc": Number(QtyInc),
       "QtyStep": Number(QtyStep),
@@ -345,7 +351,7 @@ export default function EntryFormItems(props) {
     // AlertRec(VoucherCart, 'Data Ready to Send')
     // const { Code, RecStatus, Cat, Title, TitleU, TCode, Priority, Pic, PicURL, Unit, QtyDef, QtyInc, QtyStep, Price, Desc, Rem, , CrntBal, QtyMin, QtyMax } = OrderSheet
     //const { Id, Code, Title, TitleU, Desc, Rem, CatItemCode, TId, Pic, PicURL, Unit, Price, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax,  CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
-    const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
+    const { Id, Code, Title, Contracted, CatItemCode, Desc, Rem, Pic, PicURL, PicURL4Edit, Unit, PackSize, PackType, Margin, Price, PPrice, QtyDef, QtyInc, QtyStep, QtyMin, QtyMax, CrntBal, RecType, RecStatus, Priority, EntryBy, EntryDte } = OrderSheet
 
     // if (!(Code)) {
     //   alert('CODE is invalid. \nPlz Check CODE entered.'); return
@@ -387,6 +393,11 @@ export default function EntryFormItems(props) {
       "PicURL": (Pic ? Title.replace(/ /g, '').substr(0, 10) + DateTimeStamp() + '.png' : PicURL),
 
       "Unit": Unit.substr(0, 10),
+      "PackSize":PackSize.substr(0, 10),
+      "PackType":PackType.substr(0, 10),
+    
+      "Margin": Number(Margin),
+
       "QtyDef": Number(QtyDef),
       "QtyInc": Number(QtyInc),
       "QtyStep": Number(QtyStep),
@@ -1034,9 +1045,9 @@ export default function EntryFormItems(props) {
                       <GiWeight />
                     </span>
                     <div className="relative">
-                      <input type="text" id="Unit" name="Unit" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder="" value={Unit} maxLength={10} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
-                      <label for="Unit" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                      <input type="text" id="PackSize" name="PackSize" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder="" value={PackSize} maxLength={10} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
+                      <label for="PackSize" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                         Pack Size</label>
                     </div>
                   </div>
@@ -1047,9 +1058,9 @@ export default function EntryFormItems(props) {
                       <TbPackages />
                     </span>
                     <div className="relative">
-                      <input type="text" id="Unit" name="Unit" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder="" value={Unit} maxLength={10} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
-                      <label for="Unit" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                      <input type="text" id="PackType" name="PackType" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder="" value={PackType} maxLength={10} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
+                      <label for="PackType" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                         Packing Type</label>
                     </div>
                   </div>
@@ -1166,9 +1177,9 @@ export default function EntryFormItems(props) {
                   <GiPriceTag />
                 </span>
                 <div className="relative">
-                  <input type="text" id="Price" name="Price" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder="" value={Price} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
-                  <label for="Price" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                  <input type="text" id="Margin" name="Margin" className="text-end block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder="" value={Margin} onChange={(e) => HandleInputs(e)} onFocus={handleFocus} />
+                  <label for="Margin" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     <span className=' md:hidden'>Margin</span>
                     <span className=' hidden md:block'>Distributive Margin</span>
                   </label>
