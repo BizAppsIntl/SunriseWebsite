@@ -971,7 +971,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         // AlertRec(VoucherCart, 'Rcvd Data for Addition')
         // AlertRec(_Cats, 'Cats Data in Addition ['+VoucherCart.VType+']')
 
-        const { VID, VNo, VDte, VCat, VCat2, VType, TId, Desc, Rem, VQtyTxt, VAmt, VAmtMargin, VAmtPaid, RecStatus, Priority, VItems, } = VoucherCart
+        const { VID, VNo, VDte, VCat, VCat2, VType, TId, Desc, Rem, VQtyTxt, VAmt, VAmtGross, VAmtMargin, VAmtPaid, VAmtDoc, RecStatus, Priority, VItems, } = VoucherCart
         const { VCat: vcat, AccD, AccC, VCat2: vcat2, AccD2, AccC2, } = AccRec
         // AlertRec(AccRec, 'Data Ready to Send -  AccRec')
         // if (!AlertConfirm(VoucherCart, `new Date()====VDte:  newDte= ${new Date()} VDte=  ${VDte}   ===?  ${new Date()===VDte}  FreshTime: ${ VDte.setHours((new Date()).getHours(), (new Date()).getMinutes())}  ` )) return
@@ -1027,7 +1027,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //     return
         // }
 
-        if (VAmt < 0) {
+        if (VAmt <= 0) {
             toast.error('Voucher Amount is NEGATIVE/ZERO. \nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
             return
         }
@@ -1121,9 +1121,13 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
                 VQtyTxt: VItems.reduce((t, E) => Number(t) + Number(E.Qty), 0) + '/' + VItems.length,
                 VAmtRef: 0,
-                VAmtDoc: Number(VAmtMargin),
+                VAmtDoc: Number(VAmtDoc),
                 VAmtPaid: Number(VAmtPaid),
+
                 VAmt: Number(VAmt),
+                VAmtGross: Number(VAmtGross),
+                VAmtMargin: Number(VAmtMargin),
+    
 
                 VItems: [],
 
@@ -1231,9 +1235,17 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                     // EL: Number(E.EL),  //0 or 1
                     PId: Number(E.PId),
                     Unit: E.Unit,
+                    PackSize:E.PackSize,
+                    PackType:E.PackType,
+                    
                     Qty: Number(E.Qty),
                     Price: Number(E.Price),
+                    Margin:Number(E.Margin),
 
+                    AmtGross:Number(E.AmtGross),
+                    AmtMargin:Number(E.AmtMargin),
+                    Amt:Number(E.Amt),
+                    
                     AmtRef: 0,
                     AmtDoc: 0
                 }
@@ -1383,7 +1395,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
     // ------------- Update RECORD ----------------
     const CallDotAPI2SaveUpdate = async () => {
         // AlertRec(VoucherCart, 'UPDATING of Data: Ready to Send Rec')
-        const { VID, VNo, VDte, VCat, VCat2, VType, TId, Desc, Rem, VQtyTxt, VAmt, VAmtMargin, VAmtPaid, RecStatus, Priority, VItems, } = VoucherCart
+        const { VID, VNo, VDte, VCat, VCat2, VType, TId, Desc, Rem, VQtyTxt, VAmt, VAmtGross, VAmtMargin, VAmtPaid, VAmtDoc, RecStatus, Priority, VItems, } = VoucherCart
         const { VCat: vcat, AccD, AccC, VCat2: vcat2, AccD2, AccC2, } = AccRec
         //  AlertRec(AccRec, 'Data Ready to Send -  AccRec')
 
@@ -1408,7 +1420,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             return
         }
 
-        if (VAmt < 0) {
+        if (VAmt <= 0) {
             toast.error('Voucher Amount is ZERO. \nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
             return
         }
@@ -1490,9 +1502,13 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
                 VQtyTxt: VItems.reduce((t, E) => Number(t) + Number(E.Qty), 0) + '/' + VItems.length,
                 VAmtRef: 0,
-                VAmtDoc: Number(VAmtMargin),
+                VAmtDoc: Number(VAmtDoc),
                 VAmtPaid: Number(VAmtPaid),
+
                 VAmt: Number(VAmt),
+                VAmtGross: Number(VAmtGross),
+                VAmtMargin: Number(VAmtMargin),
+    
 
                 VItems: [],
 
@@ -1602,9 +1618,17 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                     // EL: Number(E.EL),  //0 or 1
                     PId: Number(E.PId),
                     Unit: E.Unit,
+                    PackSize:E.PackSize,
+                    PackType:E.PackType,
+                    
                     Qty: Number(E.Qty),
                     Price: Number(E.Price),
+                    Margin:Number(E.Margin),
 
+                    AmtGross:Number(E.AmtGross),
+                    AmtMargin:Number(E.AmtMargin),
+                    Amt:Number(E.Amt),
+                    
                     AmtRef: 0,
                     AmtDoc: 0
                 }

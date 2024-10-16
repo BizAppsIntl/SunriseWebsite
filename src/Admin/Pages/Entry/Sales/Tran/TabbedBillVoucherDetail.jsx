@@ -49,7 +49,7 @@ export default function TabbedBillVoucherDetail(props) {
 
             <td width="3%" className='ps-1' style={{ lineHeight: '1' }}>
               {I + 1} <br />
-              <span className='btn p-0 m-0 fs-5 text-red-600' style={{ lineHeight: '1' }} onClick={() => OrderItemDel(E.PId, E.Qty)} ><MdDeleteSweep /></span>
+              <span className='btn p-0 m-0 text-lg text-red-600' style={{ lineHeight: '1' }} onClick={() => OrderItemDel(E.PId, E.Qty)} ><MdDeleteSweep /></span>
             </td>
 
             {/* <td width="11%" ><img src={`Uploads/Items/${E.PicURL}`} alt={E.URL} width='40px' height='40px' /></td> */}
