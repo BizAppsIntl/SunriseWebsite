@@ -173,10 +173,10 @@ const RecDefault = {
   PatId: '',       //PatientId -- one of CustomerOrSupplier/ConsumerOrVender/
   DocRefId: '',
   DocDutyId: '',
-  TId: '62',       //TraderId -- one of CustomerOrSupplier/ConsumerOrVender/
+  TId: '',       //TraderId -- one of CustomerOrSupplier/ConsumerOrVender/
 
   Desc: '',
-  Rem: 'Sales Transaction',
+  Rem: '',
 
   RefPatient: '',
   RefDocDuty: '',
@@ -227,7 +227,9 @@ export default function Manage() {
   Moment.locale('en');
 
   const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
-  const { _Procedures, _Patients, _DocsRef, _AccRecs } = CtxMainState
+  // const { _Procedures, _Patients, _DocsRef, _AccRecs, _CatItems } = CtxMainState
+  const { _Items, _AccRecs, _CatItems } = CtxMainState
+
   const [{ Loading, Error, DATA_RECS }, dispatch] = useReducer(reducerFn, { Loading: false, Error: '', DATA_RECS: [] })
 
 
@@ -272,11 +274,18 @@ export default function Manage() {
 
   // \/\/\/\/\/\/\/\/\/\/\[    UseEffect      ]/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
   useEffect(() => {
+    DataFetchAccRecs()
+
+    // console.log('\n===> useEffect: _CatItems',_CatItems)
+    // console.log('\n===> useEffect: _AccRecs',_AccRecs)
+  }, [_AccRecs.Loading])
+
+  useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
 
 
-    DataFetchAccRecs(signal)
+    // DataFetchAccRecs(signal)
     DataFetchTraders(signal)
     // DataFetchCategories(signal)
 
@@ -290,6 +299,8 @@ export default function Manage() {
     const signal = controller.signal;
     // document.title = "PizzaByChef"+process.env.REACT_APP_API_URL
     // document.title = process.env.REACT_APP_API_URL
+
+    // DataFetchAccRecs(signal)
 
     DataFetchAllTrans(signal)
 
@@ -310,8 +321,6 @@ export default function Manage() {
   }, [Need2Refresh])
 
   // \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
-
 
   // =-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-==-.-=
   // =-.-==-.-==-.-==-.-=[  Fns: DATABASE/ API Handling ] =-.-==-.-==-.-==-.-==
@@ -377,7 +386,7 @@ export default function Manage() {
         }
       )
 
-      // AlertRec(res.data, 'Data Fetched ...')
+      // AlertRec(res.data, 'AXIOS Data Fetched ...TrxSales/GetTrx/'+)
 
       //setTransAll( data)
       //if ( res.length > 0) setLastEntryDutyDoc({ Id:  data[data.length - 1].TranM.DocDutyId, RefDocDuty: data[data.length - 1].TranM.RefDocDuty })
@@ -452,8 +461,8 @@ export default function Manage() {
     // const res = await fetch('/api/AccRecs', { signal });
     // const data = await res.json();
 
-    let AccD = ''
-    let AccC = ''
+    let AccD = []
+    let AccC = []
 
 
     //         ╔══»(11111)	//ASSETS-Cash/(1121)Banks etc ...
@@ -474,16 +483,19 @@ export default function Manage() {
     // .then(data => {
 
     // setAccRecs(data)
-    // AlertRec(_AccRecs, '_AccRecs')      
+    // AlertRec(_AccRecs, '_AccRecs Rcvd from Ctx')      
     const AccDx = _AccRecs.Data.filter(E => E.Code === '11111')   //ASSETS-Inventory Purchase 
     const AccCx = _AccRecs.Data.filter(E => E.Code === '41211')   //REVENUE-Sales -Inventory Items
 
     const AccDx2 = _AccRecs.Data.filter(E => E.Code === '51111')  //AmtCOGS//COGS -- SalesOfInventoryItems
     const AccCx2 = _AccRecs.Data.filter(E => E.Code === '12111')  //Less: InventoryItems Purchased
+
+
+
     // AlertRec(AccCx, 'AccCx')   
     if (AccDx.length <= 0 || AccCx.length <= 0 || AccDx2.length <= 0 || AccCx2.length <= 0) {
-      AlertRec(_AccRecs, `AccD/C is invalid. \nPlz CHK Database.\n  AccD: ${AccDx.length} \n AccC: ${AccCx.length} \n AccD2: ${AccDx2.length} \n AccC2: ${AccCx2.length}`)
-      return
+      // AlertRec(_AccRecs, `Fetching AccD/C is not Successful. \nPlz CHK Database.\n  AccD: ${AccDx.length} \n AccC: ${AccCx.length} \n AccD2: ${AccDx2.length} \n AccC2: ${AccCx2.length}`)
+      // return
     }
 
     setAccRec({
@@ -621,9 +633,13 @@ export default function Manage() {
       VQtyTxt: E.TranM.VQtyTxt ? E.TranM.VQtyTxt.trim() : '',
       VAmtDoc: E.TranM.VAmtDoc,
       VAmtRef: E.TranM.VAmtRef,
+
       VAmt: E.TranM.VAmt,
       VAmtPaid: E.TranM.VAmtPaid,
       VAmtBal: E.TranM.VAmt - E.TranM.VAmtPaid,
+
+      VAmtGross: E.TranM.VAmtGross,
+      VAmtMargin: E.TranM.VAmtMargin,
 
       PatId: E.TranM.PatId,       //Trader -- one of CustomerOrSupplier/ConsumerOrVender/
       DocDutyId: E.TranM.DocDutyId,       //Trader -- one of CustomerOrSupplier/ConsumerOrVender/
@@ -772,7 +788,7 @@ export default function Manage() {
   // [Printing ]\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
   const PRINT_REF = createRef();
-  const PRINT_INVOICE = createRef();
+  const PRINT_INVOICEx = createRef();
   // const chartRef = createRef();
 
 
@@ -841,7 +857,7 @@ export default function Manage() {
 
   // TRIGGER normal Printing 
   const HandlePrint = () => {
-    // alert('Printing must be started')
+    alert('Printing must be started')
     HandlePrintNormal()
     // HandleElectronPrint()
     // HandleElectronPreviewPrint()
@@ -849,7 +865,7 @@ export default function Manage() {
 
   const HandlePrintNormal = useReactToPrint({
     // content: () => PRINT_REF.current,
-    content: () => PRINT_INVOICE.current,
+    content: () => PRINT_INVOICEx.current,
 
     //documentTitle: "List component",
     // print: handlePreview,
@@ -884,6 +900,18 @@ export default function Manage() {
   // *******************************************************************************************************************
   // let SelectedItems = []
   return (<>
+    {/* <div>
+      <p>_AccRecs Loading: {_AccRecs.Loading ? 'TRUE' : 'FALSE'}</p>
+      <p>_AccRecs Data Length: {_AccRecs.Data?.length}</p>
+      <br />
+      <p>AccRecs Detail AccD: {AccRec.AccD?.length}</p>
+      <p>AccRecs Detail AccC: {AccRec.AccC?.length}</p>
+      <p>AccRecs Detail AccD2: {AccRec.AccD2?.length}</p>
+      <p>AccRecs Detail AccC2: {AccRec.AccC2?.length}</p>
+
+      <pre>AccRec: {JSON.stringify({ RecordsReceived: AccRec }, null, 2)}</pre>
+    </div> */}
+
     {/* {console.log('Inv. CtxMainState._DocsRef: ', CtxMainState._DocsRef)} */}
     {/* {console.log('Inv. CtxMainState._Patients: ', CtxMainState._Patients)} */}
     {/* Total Doctors are: {CtxMainState._DocsRef.length} <br /> */}
@@ -1026,7 +1054,7 @@ export default function Manage() {
                     {/* {AlertRec(Rec, 'This Rec is Ready to Send for DISPLAY Rec')} */}
                     {/* <RecDetailDisp  Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} /> */}
 
-                    <PrintableInvoice ref={PRINT_INVOICE} Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} />
+                    <PrintableInvoice ref={PRINT_INVOICEx} Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} />
                   </>
                 }
 

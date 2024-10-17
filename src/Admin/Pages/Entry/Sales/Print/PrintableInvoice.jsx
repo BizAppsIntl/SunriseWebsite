@@ -159,8 +159,12 @@ export const PrintableInvoice = forwardRef((props, ref) => {
               {/* ------------- Invoice Detail*/}
               <div className='flex flex-col '>
 
-                <div className='flex'>
+                {/* <div className='flex'>
                   <div style={{ width: '100px', fontWeight: 'bolder' }}>Printed At: </div>{Moment(new Date()).format('DD MMM YY ddd, hh:mm a')}
+                </div> */}
+
+                <div className='flex '>
+                  <div style={{ width: '100px', fontWeight: 'bolder' }}>Invoice No: </div>{Rec.VNo}{Rec.VTypeTitle?.substr(0, 1)}
                 </div>
 
                 <div className='flex'>
@@ -168,20 +172,17 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   <div style={{ width: '100px', fontWeight: 'bolder' }}>Invoice Date: </div>{Moment(Rec.VDte).format('DD MMM YY ddd')}
                 </div>
 
-                <div className='flex '>
-                  <div style={{ width: '100px', fontWeight: 'bolder' }}>Invoice No: </div>{Rec.VNo}{Rec.VTypeTitle?.substr(0, 1)}
-                </div>
 
                 {/* <div className='flex '>
                   <div style={{ width: '100px', fontWeight: 'bolder' }}>Description:</div>{Rec.Desc}
                 </div> */}
               </div>
 
-              {/* ------------- Referral Doctor Profile */}
+              {/* ------------- Purchase Oorder Detail */}
               <div className="card px-2 mt-2 py-1  shadow-sm">
                 <div className=" flex flex-row items-center" >
-                  <div>
-                    <img alt="..." width='42px' height='42px'
+                  <div className="w-[36px] h-[36px]">
+                  <img alt="..." className="w-full h-full"
                       src={'/Images/PO.jpeg'}
                     />
                   </div>
@@ -190,7 +191,32 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                     {/* <div className='w-75' > */}
                     <div className='w-full' >
                       <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Purchase Order Detail </div>
-                      <div style={{ fontSize: '11px' }}>PO#:  12345, Dated: 25 September 2024 </div>
+                      <div style={{ fontSize: '11px' }}>{Rec.Desc}Desc </div>
+                      {/* <div style={{ fontSize: '10px' }}>{Rec.RefDocRef.Address.trim() ? Rec.RefDocRef.Address : '... ... ...'}  </div> */}
+                    </div>
+                    {/* <div className='w-25' >
+                      <div style={{ fontSize: '11px' }}>Trx Code: <br /> {Rec.VAmtRef} </div>
+                    </div> */}
+
+                  </div>
+
+                </div>
+              </div>
+
+              {/* ------------- Shipping Detail */}
+              <div className="card px-2 mt-2 py-1  shadow-sm">
+                <div className=" flex flex-row items-center" >
+                <div className="w-[36px] h-[36px] ">
+                    <img alt="..." className="h-full w-full"
+                      src={'/Images/Cargo.png'}
+                    />
+                  </div>
+
+                  <div className='flex ps-3 pb-1  w-full' style={{ lineHeight: '1' }}>
+                    {/* <div className='w-75' > */}
+                    <div className='w-full' >
+                      <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Cargo/Shipping Detail </div>
+                      <div style={{ fontSize: '11px' }}>{Rec.Rem}Rem</div>
                       {/* <div style={{ fontSize: '10px' }}>{Rec.RefDocRef.Address.trim() ? Rec.RefDocRef.Address : '... ... ...'}  </div> */}
                     </div>
                     {/* <div className='w-25' >
@@ -244,7 +270,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
           <div className="w-full  mt-3">
             {/* <div className='card-body shadow flex flex-col justify-around  items-start  w-full' style={{ background: '#ebecf0' }}> */}
 
-            <div className="flex px-2 w-full font-bolder " style={{ textDecoration: 'underline ', fontSize: '12px', background: '#ebecf0' }}>
+            <div className="flex px-2 w-full font-bold " style={{ textDecoration: 'underline ', fontSize: '14px', background: '#ebecf0' }}>
               <div className=" borderX border-primary" style={{ width: '3%' }}>S#</div>
               <div className=" borderX border-primary" style={{ width: '7%' }}>Pack</div>
               <div className=" borderX border-primary" style={{ width: '35%' }}>Products</div>
@@ -262,20 +288,23 @@ export const PrintableInvoice = forwardRef((props, ref) => {
             {Rec.VItems.map((ITM, I) => {
               // let Product = Products.find((P) => P.Code === ITM.Code)
               return (
-                <div key={I} className="shadow flex px-2 mt-2 items-center" style={{ width: "100%", fontSize: '11px' }} >
+                <div key={I} className="shadow flex px-2 mt-2 items-center" style={{ width: "100%", fontSize: '12px' }} >
                   <div className="" style={{ width: '3%' }}> {I + 1} </div>
                   <div className="" style={{ width: '7%' }}> <img src={process.env.REACT_APP_API_URL + `Items/GetFile/${ITM.RefItem?.PicURL}`} alt={''} width='40px' height='40px' /> </div>
 
-                  <div className="" style={{ width: '35%' }}> {ITM.RefItem?.Code} <br /> <strong style={{ fontSize: '12px' }}>{ITM.RefItem?.Title}</strong> </div>
+                  {/* <div className="" style={{ width: '35%' }}> {ITM.RefItem?.Code} <br /> <strong style={{ fontSize: '13px' }}>{ITM.RefItem?.Title}</strong> </div> */}
+                  <div className="" style={{ width: '35%', lineHeight:'1' }}> {ITM.RefItem?.Code} <br /> <span style={{ fontSize: '15px' }}>{ITM.RefItem?.Title}</span> </div>
 
-                  <div className="text-center borderX border-danger" style={{ width: '8%' }}>{ITM.Unit} </div>
-                  <div className="text-center borderX border-danger" style={{ width: '7%' }}>{ITM.Qty} </div>
-                  <div className="text-end borderX border-danger" style={{ width: '7%' }}><NumberFormat value={ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
-                  <div className="text-end borderX border-danger" style={{ width: '10%' }}><NumberFormat value={ITM.Qty * ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
-                  {/* <div className=" borderX border-danger" style={{ width: '10%' }}>{`(10%) ${ITM.Qty * ITM.Price * (10 / 100)}`} </div> */}
-                  <div className="text-end borderX border-danger" style={{ width: '12%' }}>(10%) <NumberFormat value={ITM.Qty * ITM.Price * (10 / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /></div>
+                  <div className="text-center " style={{ width: '8%' }}>{ITM.Unit} </div>
+                  <div className="text-center " style={{ width: '7%' }}>{ITM.Qty} </div>
+                  <div className="text-end " style={{ width: '7%' }}><NumberFormat value={ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
+                  <div className="text-end " style={{ width: '10%' }}><NumberFormat value={ITM.Qty * ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
 
+                  {/* <div className="text-end " style={{ width: '12%' }}>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div> */}
+                  {/* <div className="text-end b" style={{ width: '12%' }}>{ ITM.Margin>0 && <span>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /></span>} </div> */}
+                  <div className="text-end pr-2" style={{ width: '12%' }}>{ ITM.Margin>0 && <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} />} </div>
 
+                  
 
 
 
@@ -296,7 +325,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   <div className="text-end borderX border-danger" style={{ width: '11%' }}>
                     <NumberFormat
                       // value={ITM.Qty * ITM.Price}
-                      value={ITM.Qty * ITM.Price - (ITM.Qty * ITM.Price * (10 / 100))}
+                      value={(ITM.Qty * ITM.Price) - (ITM.Qty * ITM.Price * (ITM.Margin / 100))}
                       displayType={'text'}
                       thousandSeparator={true} thousandsGroupStyle="lakh"
                       // prefix={'Rs. '}
@@ -309,118 +338,96 @@ export const PrintableInvoice = forwardRef((props, ref) => {
             {/* </div>  */}
             {/* END- Detail card body */}
 
-            {/*================================================================*/}
-            {/* Tot Items/ Examinations Total and Payment Remarks*/}
-            {/*================================================================*/}
-            <div className='flex mt-3 justify-between'>
-              {/* <div style={{ width: '25%' }}> */}
-
-              <div className="card px-2 py-1  shadow-sm" style={{ lineHeight: '1' }}>
-                <div className="text-blue-600 font-bold mb-1" style={{ fontSize: '14px' }}>Shipping Detail </div>
-                <div ><strong>Consignment:</strong>
-                  <span className=' px-1 text-xl'>
-                    {GetTot4mArray(Rec.VItems, 'Qty')} / {Rec.VItems.length}
-                  </span>
-                </div>
-                <br />
-                {"...  ...  ...  ...  ...  ...  ...  ...  ...  ..."}
-              </div>
-
-
-              {/* <div style={{ width: '30%' }}> */}
-              <div>
-                {/* <span ><strong>Remarks:</strong></span> */}
-                {/* <span >  {Rec.Rem}  </span> */}
-              </div>
-
-              {/* <div className='text-end ' style={{ width: '40%' }}>
-              <span ><strong>Tot. Payable:</strong></span>
-              <span className=' text-xl font-bolder'>
-                <NumberFormat
-                  value={Rec.VAmt}
-                  displayType={'text'}
-                  thousandSeparator={true} thousandsGroupStyle="lakh" prefix={'   Rs. '}
-                  decimalScale={2} />
-              </span>
-            </div> */}
-
-
-              {/*--------------------------------*/}
-              {/* Invoice Payment Section        */}
-              {/*--------------------------------*/}
-              <div style={{}}>
-                <div className='card p-2 flex flex-row gap-2 shadow-sm'>
-
-                  {/* ---[ Input VAmount ]--- */}
-                  <div style={{ width: '150px' }}>  {/* <div className="input-group"> */}
-                    <div className="form-floating w-full" >
-                      {/* <input type="number" value={VAmt} className="form-control  text-end " name='VAmt' id="VAmt" placeholder="Father Name" readOnly={false}
-                    onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
-
-                      <NumberFormat
-                        value={Rec.VAmt} name='VAmt' id="VAmt"
-                        displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh"
-                        decimalScale={2}
-
-                        className=" form-control  text-end text-black "
-                        style={{ fontSize: '18px', paddingTop: '20px' }}
-                      />
-                      <label htmlFor="VAmt"  >Total Amount</label>
-                    </div>
-                  </div>
-
-                  {/* ---[ Input VAmount ]--- */}
-                  <div style={{ width: '150px' }} >  {/* <div className="input-group"> */}
-                    <div className="form-floating w-full" >
-                      {/* <input type="number" value={VAmtBal className="form-control  text-end " name='VAmtBal' id="VAmtBal" placeholder="Father Name" readOnly={false}
-                    onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
-
-                      <NumberFormat
-                        value={Rec.VAmtDoc} name='VAmtBal' id="VAmtBal"
-                        displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh"
-                        decimalScale={2}
-
-                        className=" form-control  text-end"
-                      // onValueChange={(values) => {
-                      //     HandleInputsNumberFormat({ name: 'VAmtBal', value: values.value })
-
-                      />
-                      <label htmlFor="VAmtBal"  >Margin</label>
-                    </div>
-                  </div>
-
-                  {/* ---[ Input VAmount ]--- */}
-                  <div style={{ width: '150px' }} >  {/* <div className="input-group"> */}
-                    <div className="form-floating w-full" >
-                      {/* <input type="number" value={VAmtPaid} className="form-control  text-end " name='VAmtPaid' id="VAmtPaid" placeholder="Father Name" readOnly={false}
-                    onChange={(e) => HandleInputs(e)} onFocus={handleFocus} /> */}
-
-                      <NumberFormat value={Rec.VAmtPaid} name='VAmtPaid' id="VAmtPaid" thousandSeparator={true} thousandsGroupStyle="lakh"
-                        // label={"1 FTE"}
-                        // customInput={TextField}
-                        // isNumericString={true}   //for value output is number value
-                        // decimalScale={2}
-
-                        // style={{border:'none' , outline: 'none'                  }}
-                        className=" form-control  text-end text-blue-600"
-                        style={{ fontWeight: 'bold', fontSize: '18px', paddingTop: '20px' }}
-                      //onChange={(e) =>{ HandleInputs(e); console.log('**************\nVAmtPaid : ',VAmtPaid)}}
-                      />
-
-                      <label htmlFor="VAmtPaid"  >Inv. Amount</label>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              {/*--------------------------------*/}
-              {/* END of Invoice Payment Section        */}
-              {/*--------------------------------*/}
-
-
-            </div>   {/* END txt-line of Tot Items/ Examinations */}
-
           </div>{/*[END Detail Section]  */}
+
+
+
+
+
+          {/*================================================================*/}
+          {/* Tot Items/ Examinations Total and Payment Remarks*/}
+          {/*================================================================*/}
+
+          <div className='m-0 mt-4 p-0 grid grid-cols-2 md:grid-cols-5 gap-2'>
+
+            {/* ---[ Display Items Count ]--- */}
+            {/* <div className="card px-2 " style={{ width: '250px' }} > */}
+            <div className="card px-2 mr-[100px]" >
+              {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
+              <div className=' font-bold text-info' >Consignment</div>
+              <div className=" text-center text-xl font-bold text-black " >{`${GetTot4mArray(Rec.VItems, 'Qty')} / ${Rec.VItems.length}`} </div>
+            </div>
+
+            {/* ---[ Empty Spaceer ]--- */}
+            {/* <div className="card px-2 " style={{ width: '250px' }} > */}
+            <div className="hidden md:w-[100px] md:inline " >
+            </div>
+
+            {/* ---[ Display Gross Amount ]--- */}
+            <div className="card px-2 ">
+              {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
+              <div className=' font-bold text-black' >Gross Total</div>
+              <NumberFormat value={Rec.VAmtGross} name='VAmtGross' id="VAmtGross" thousandSeparator={true} thousandsGroupStyle="lakh"
+
+                //// label={"1 FTE"}
+                //// customInput={TextField}
+                //// isNumericString={true}   //for value output is number value
+                decimalScale={2}
+                readOnly
+                //// style={{border:'none' , outline: 'none'                  }}
+                className="h-6 px-0 text-lg text-end font-bold text-black border-none outline-none w-full"
+
+              ////onChange={(e) =>{ HandleInputs(e); console.log('**************\nVAmt : ',VAmt)}}
+              // onValueChange={(values) => {
+              //     HandleInputsNumberFormat({ name: 'VAmt', value: values.value })
+              // }}
+              />
+            </div>
+
+            {/* ---[ Display Margin Amount ]--- */}
+            <div className="card px-2 ">
+              {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
+              <div className=' font-bold text-black' >Total Margin</div>
+              <NumberFormat value={Rec.VAmtMargin} name='VAmtMargin' id="VAmtMargin" thousandSeparator={true} thousandsGroupStyle="lakh"
+
+                //// label={"1 FTE"}
+                //// customInput={TextField}
+                //// isNumericString={true}   //for value output is number value
+                decimalScale={2}
+                readOnly
+                //// style={{border:'none' , outline: 'none'                  }}
+                className="h-6 px-0 text-lg text-end font-bold text-black border-none outline-none w-full"
+
+              ////onChange={(e) =>{ HandleInputs(e); console.log('**************\nVAmt : ',VAmtMargin)}}
+              // onValueChange={(values) => {
+              //     HandleInputsNumberFormat({ name: 'VAmtMargin', value: values.value })
+              // }}
+              />
+            </div>
+
+            {/* ---[ Display Invoice Amount ]--- */}
+            <div className="card px-2 ">
+              {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
+              <div className=' font-bold text-black' >Invoice Amount</div>
+              <NumberFormat value={Rec.VAmt} name='VAmt' id="VAmt" thousandSeparator={true} thousandsGroupStyle="lakh"
+
+                //// label={"1 FTE"}
+                //// customInput={TextField}
+                //// isNumericString={true}   //for value output is number value
+                decimalScale={2}
+                readOnly
+                //// style={{border:'none' , outline: 'none'                  }}
+                className="h-6 px-0 text-lg text-end font-bold text-black border-none outline-none  w-full"
+
+              ////onChange={(e) =>{ HandleInputs(e); console.log('**************\nVAmt : ',VAmtPaid)}}
+              // onValueChange={(values) => {
+              //     HandleInputsNumberFormat({ name: 'VAmtPaid', value: values.value })
+              // }}
+              />
+            </div>
+
+
+          </div>
 
 
           {/* <div className="h-100 flex  justify-center items-center  ">

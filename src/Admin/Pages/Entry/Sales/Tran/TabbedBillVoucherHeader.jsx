@@ -522,6 +522,8 @@ export default function TabbedBillVoucherHeader(props) {
 
                 {/* [End Input] ======================================================== */}
 
+                {/* Payment Section */}
+
                 <div className='m-0 p-0 grid grid-cols-2 md:grid-cols-4 gap-2'>
 
                     {/* ---[ Display Items Count ]--- */}

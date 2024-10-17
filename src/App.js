@@ -89,7 +89,9 @@ function App() {
         //     } 
         //  }
       )
-      // console.log('*****************result: ', result); alert(result.data)                    
+      console.log('\n\n\n*****************AccRec fetched result: ', result.data); 
+      // alert(result.data)                    
+      // AlertRec(result.data, 'Fetched AccRec data')
       CtxMainDispatch({ type: 'ACCRECS_FETCH_SUCCESS', payload: result.data })
     } catch (error) {
       CtxMainDispatch({ type: 'ACCRECS_FETCH_ERROR', payload: error })
@@ -166,7 +168,6 @@ function App() {
 
     FetchItems()
     // FetchItems4Tauri()
-
 
     FetchAccRecs()
     // FetchAccRecs4Tauri()

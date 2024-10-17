@@ -552,8 +552,8 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
 
         const vamtgross = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
-        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) *(E.Margin/100), 0)
-        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) *(E.Margin/100))), 0)
+        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) * (E.Margin / 100), 0)
+        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) * (E.Margin / 100))), 0)
 
 
         // alert('del:' +vqty +' '+ typeof(vqty))
@@ -568,14 +568,14 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         // AlertRec(UpdatedItemsList,'<--UpdatedItemsList ===  VAmt: '+vamt +' , VAmtRef: '+ vAmtRef+ ' , VAmtDoc: '+vAmtDoc+ ' , VQtyTxt: '+vqty)
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtMargin: vamt * (10 / 100), VAmtPaid: vamt - (vamt * (10 / 100)), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
 
-        setVoucherCart({ 
-            ...VoucherCart, 
-            VItems: UpdatedItemsList, 
-            VQtyTxt: vqty, 
-            VAmt: vamt, 
+        setVoucherCart({
+            ...VoucherCart,
+            VItems: UpdatedItemsList,
+            VQtyTxt: vqty,
+            VAmt: vamt,
             VAmtPaid: vamt,
-            VAmtGross: vamtgross, 
-            VAmtMargin: vamtmargin, 
+            VAmtGross: vamtgross,
+            VAmtMargin: vamtmargin,
         })
 
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VQtyTxt: vqty }))
@@ -647,15 +647,15 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             // in Purchase do not check prev qty
             //if ((+qty + +exist.Qty) > crntItem.CrntBal) return
 
-            UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === chkID) 
-            ? { ...exist, Qty: +exist.Qty + qty } 
-            : E)
+            UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === chkID)
+                ? { ...exist, Qty: +exist.Qty + qty }
+                : E)
         }
         else {
             // UpdatedItemsList = [...VoucherCart.VItems, { ...crntItem, Qty: crntItem.QtyDef }]
             // UpdatedItemsList = [...VoucherCart.VItems, { ...crntItem, Qty: qty }]
             UpdatedItemsList = [
-                ...VoucherCart.VItems, 
+                ...VoucherCart.VItems,
                 { RefItem: itm2Add, PId: itm2Add.Id, Qty: qty, Unit: itm2Add.Unit, Price: itm2Add.Price, Title: itm2Add.Title, Margin: itm2Add.Margin, PackSize: itm2Add.PackSize, PackType: itm2Add.PackType }
             ]
         }
@@ -673,28 +673,28 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         //         return accum;
         //     }, { vamt: 0, vqty: 0 })
 
-        const { vamt, vqty, vamtgross, vamtmargin} = UpdatedItemsList.reduce(
+        const { vamt, vqty, vamtgross, vamtmargin } = UpdatedItemsList.reduce(
             (accum, crntElementOfArray) => {
                 const { Qty, Price, Margin } = crntElementOfArray;
-                
+
                 accum.vamtgross += (Qty * Price)
-                accum.vamtmargin += (Qty * Price) *(Margin/100)
-                accum.vamt += (Qty * Price) - ((Qty * Price) *(Margin/100))
+                accum.vamtmargin += (Qty * Price) * (Margin / 100)
+                accum.vamt += (Qty * Price) - ((Qty * Price) * (Margin / 100))
                 accum.vqty += Qty;
 
                 // accum.vmargin += (Qty * Price) *(10/100)
 
                 return accum;
-            }, { vamt: 0, vqty: 0, vamtgross:0, vamtmargin:0 })
+            }, { vamt: 0, vqty: 0, vamtgross: 0, vamtmargin: 0 })
 
-        setVoucherCart({ 
-            ...VoucherCart, 
-            VItems: UpdatedItemsList, 
-            VQtyTxt: vqty, 
-            VAmt: vamt, 
+        setVoucherCart({
+            ...VoucherCart,
+            VItems: UpdatedItemsList,
+            VQtyTxt: vqty,
+            VAmt: vamt,
             VAmtPaid: vamt,
-            VAmtGross: vamtgross, 
-            VAmtMargin: vamtmargin, 
+            VAmtGross: vamtgross,
+            VAmtMargin: vamtmargin,
         })
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: -9999, Desc: "Description is here", VNo: UpdatedItemsList.length }))
         // setProducts(p=>p=Products.map(E=>(E.Id===crntItem.Id) ? { ...E, crntBal: E.crntBal - qty } : E))
@@ -831,8 +831,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                     : E
             )
         }
-        else
-        {            //obj.name = AmtDoc or AmtRef
+        else {            //obj.name = AmtDoc or AmtRef
             UpdatedItemsList = VoucherCart.VItems.map((E) => (E.PId === crntItem.PId) ? { ...itmExisted, [obj.name]: obj.value } : E)
         }
 
@@ -852,8 +851,8 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
         const vqty = UpdatedItemsList.reduce((t, E) => Number(t) + Number(E.Qty), 0)
 
         const vamtgross = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price), 0)
-        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) *(E.Margin/100), 0)
-        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) *(E.Margin/100))), 0)
+        const vamtmargin = UpdatedItemsList.reduce((t, E) => t + (E.Qty * E.Price) * (E.Margin / 100), 0)
+        const vamt = UpdatedItemsList.reduce((t, E) => t + ((E.Qty * E.Price) - ((E.Qty * E.Price) * (E.Margin / 100))), 0)
 
 
         // const vAmtRef = UpdatedItemsList.reduce((t, E) => t + (Number(E.Qty) * Number(E.RefProd.ShareRef)), 0)
@@ -871,14 +870,14 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
         //setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VQtyTxt: vqty }))
         // setVoucherCart(() => ({ ...VoucherCart, VItems: UpdatedItemsList, VAmt: vamt, VAmtPaid: vamt - (vamt * (10 / 100)), VAmtMargin: vamt * (10 / 100), VAmtRef: vAmtRef, VAmtDoc: vAmtDoc, VQtyTxt: vqty }))
-        setVoucherCart({ 
-            ...VoucherCart, 
-            VItems: UpdatedItemsList, 
-            VQtyTxt: vqty, 
-            VAmt: vamt, 
+        setVoucherCart({
+            ...VoucherCart,
+            VItems: UpdatedItemsList,
+            VQtyTxt: vqty,
+            VAmt: vamt,
             VAmtPaid: vamt,
-            VAmtGross: vamtgross, 
-            VAmtMargin: vamtmargin, 
+            VAmtGross: vamtgross,
+            VAmtMargin: vamtmargin,
         })
 
     }
@@ -1032,6 +1031,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             return
         }
 
+        // AlertRec(AccRec, 'Full AccRec')
         let AccDx = [], AccCx = [], AccDx2 = [], AccCx2 = []
         if (AccD.length <= 0 || AccC.length <= 0 || AccD2.length <= 0 || AccC2.length <= 0) {
             AlertRec(AccRec, `AccD/C is invalid. \nPlz check voucher entry.\n  AccD: ${AccD.length}  AccC: ${AccC.length} AccD2: ${AccD2.length} AccC2: ${AccC2.length}`)
@@ -1127,7 +1127,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                 VAmt: Number(VAmt),
                 VAmtGross: Number(VAmtGross),
                 VAmtMargin: Number(VAmtMargin),
-    
+
 
                 VItems: [],
 
@@ -1235,24 +1235,24 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                     // EL: Number(E.EL),  //0 or 1
                     PId: Number(E.PId),
                     Unit: E.Unit,
-                    PackSize:E.PackSize,
-                    PackType:E.PackType,
-                    
+                    PackSize: E.PackSize,
+                    PackType: E.PackType,
+
                     Qty: Number(E.Qty),
                     Price: Number(E.Price),
-                    Margin:Number(E.Margin),
+                    Margin: Number(E.Margin),
 
-                    AmtGross:Number(E.AmtGross),
-                    AmtMargin:Number(E.AmtMargin),
-                    Amt:Number(E.Amt),
-                    
+                    AmtGross: E.Qty * E.Price,
+                    AmtMargin: (E.Qty * E.Price) * (E.Margin / 100),
+                    Amt: (E.Qty * E.Price) - ((E.Qty * E.Price) * (E.Margin / 100)),
+
                     AmtRef: 0,
                     AmtDoc: 0
                 }
             )))
         }
 
-        //   if (!AlertConfirm(Data2SendInDatabase, 'Add New Record ?: ' + process.env.REACT_APP_API_URL)) return
+        // if (!AlertConfirm(Data2SendInDatabase, 'Add New Record ?: ' + process.env.REACT_APP_API_URL)) return
 
         //=====[   READY to send data in Database   ]========  
         //-------------------------------------------------------
@@ -1508,7 +1508,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                 VAmt: Number(VAmt),
                 VAmtGross: Number(VAmtGross),
                 VAmtMargin: Number(VAmtMargin),
-    
+
 
                 VItems: [],
 
@@ -1618,17 +1618,17 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
                     // EL: Number(E.EL),  //0 or 1
                     PId: Number(E.PId),
                     Unit: E.Unit,
-                    PackSize:E.PackSize,
-                    PackType:E.PackType,
-                    
+                    PackSize: E.PackSize,
+                    PackType: E.PackType,
+
                     Qty: Number(E.Qty),
                     Price: Number(E.Price),
-                    Margin:Number(E.Margin),
+                    Margin: Number(E.Margin),
 
-                    AmtGross:Number(E.AmtGross),
-                    AmtMargin:Number(E.AmtMargin),
-                    Amt:Number(E.Amt),
-                    
+                    AmtGross: E.Qty * E.Price,
+                    AmtMargin: (E.Qty * E.Price) * (E.Margin / 100),
+                    Amt: (E.Qty * E.Price) - ((E.Qty * E.Price) * (E.Margin / 100)),
+
                     AmtRef: 0,
                     AmtDoc: 0
                 }
@@ -1821,6 +1821,12 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
     // \/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
     return (<>
         {/* {AlertRec(VoucherCart, 'VoucherCart: Rcvd for Add/Edit')} */}
+        {/* <div>
+            <p>AccRecs Detail AccD: {AccRec.AccD?.length}</p>
+            <p>AccRecs Detail AccC: {AccRec.AccC?.length}</p>
+            <p>AccRecs Detail AccD2: {AccRec.AccD2?.length}</p>
+            <p>AccRecs Detail AccC2: {AccRec.AccC2?.length}</p>
+        </div> */}
 
         {/* ======== [ BILL-VOUCHER Both-(1&2) Parts] ======== */}
         {/* This div/card to group (Tabbed-Menu & Voucher+Sheet) works as background for both */}
@@ -1888,7 +1894,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
                 // This card to group (Buttons Row & VoucherHeader & OrderSheet) works as background for both
                 // <div className='card flex  m-0 p-0 ms-auto flex-col text-start' style={{ width: '650px', fontSize: '12px', background: '#e0e0e0', borderRadius: '5px' }}>
-                <div className='card flex  m-0 p-0 ms-auto flex-col text-start w-full' style={{fontSize: '12px', background: '#e0e0e0', borderRadius: '5px' }}>
+                <div className='card flex  m-0 p-0 ms-auto flex-col text-start w-full' style={{ fontSize: '12px', background: '#e0e0e0', borderRadius: '5px' }}>
 
                     {/* =================================================================================== */}
                     {/* =====[    Main Prg /CARD HEADDER start            ]===========================================  */}
@@ -1946,21 +1952,21 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
 
                         {/* <div className='flex gap-2 w-full '>
                             <div style={{ width: '100%' }}> */}
-                                {/* {AlertRec(VoucherCart.VItems, 'Ordered Items Sheet')} */}
+                        {/* {AlertRec(VoucherCart.VItems, 'Ordered Items Sheet')} */}
 
-                                {/* For Input of Detail Part of Voucher*/}
-                                <TabbedBillVoucherDetail
-                                    OrderSheetItems={VoucherCart.VItems}
-                                    OrderItemDel={OrderItemDel}
-                                    // OrderItemAdd={OrderItemAdd4mDetail}
-                                    OrderItemAdd={OrderItemAdd}
-                                    HandleInputsVoucherDetailNumberFormat={HandleInputsVoucherDetailNumberFormat}
-                                // HandleInputsVoucherDetail={HandleInputsVoucherDetail} 
-                                />
-                            {/* </div> */}
+                        {/* For Input of Detail Part of Voucher*/}
+                        <TabbedBillVoucherDetail
+                            OrderSheetItems={VoucherCart.VItems}
+                            OrderItemDel={OrderItemDel}
+                            // OrderItemAdd={OrderItemAdd4mDetail}
+                            OrderItemAdd={OrderItemAdd}
+                            HandleInputsVoucherDetailNumberFormat={HandleInputsVoucherDetailNumberFormat}
+                        // HandleInputsVoucherDetail={HandleInputsVoucherDetail} 
+                        />
+                        {/* </div> */}
 
-                            {/* {false && VoucherCart.VItems.length > 0 && */}
-                            {/* {false && VoucherCart.VItems.length > 0 &&
+                        {/* {false && VoucherCart.VItems.length > 0 && */}
+                        {/* {false && VoucherCart.VItems.length > 0 &&
                                 // <div style={{ width: '170px' }}>
                                      <TabbedBillVoucherPaymentSection
                                         VoucherCart={VoucherCart}

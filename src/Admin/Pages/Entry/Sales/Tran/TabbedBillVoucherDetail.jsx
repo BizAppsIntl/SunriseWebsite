@@ -34,6 +34,9 @@ export default function TabbedBillVoucherDetail(props) {
   const handleFocus = (event) => event.target.select();
 
 
+
+  // AlertRec(OrderSheetItems,'Received: *****OrderSheetItems*****')
+  
   // {/* ========= [         VOUCHER Transavtion Records/Rows PART       ============================== */}
   return (
     <>

@@ -1,9 +1,22 @@
 import React from 'react'
+import { useCtxMainContextHook } from '../CtxMain'
+import { AlertRec } from '../StdLib'
 
 export default function About() {
-  return (
+    const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
+    // const { _Procedures, _Patients, _DocsRef, _AccRecs, _CatItems } = CtxMainState
+    const { _Items, _AccRecs, _CatItems } = CtxMainState
+  
+
+    AlertRec(_AccRecs, 'ABOUT PAGE ******************** NEAT _AccRec in main prgb**********************')
+    return (
     <>
 
+<div>
+<p>_AccRecs Loading: {_AccRecs.Loading}</p>
+<p>_AccRecs Data Length: {_AccRecs.Data.length}</p>
+
+</div>
 
 <div className="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
     <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
