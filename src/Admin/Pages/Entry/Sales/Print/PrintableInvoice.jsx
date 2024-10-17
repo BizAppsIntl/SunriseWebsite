@@ -183,7 +183,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                 <div className=" flex flex-row items-center" >
                   <div className="w-[36px] h-[36px]">
                   <img alt="..." className="w-full h-full"
-                      src={'/Images/PO.jpeg'}
+                      src={'/Images/PO.png'}
                     />
                   </div>
 
@@ -191,7 +191,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                     {/* <div className='w-75' > */}
                     <div className='w-full' >
                       <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Purchase Order Detail </div>
-                      <div style={{ fontSize: '11px' }}>{Rec.Desc}Desc </div>
+                      <div style={{ fontSize: '11px' }}>{Rec.Rem}Rem </div>
                       {/* <div style={{ fontSize: '10px' }}>{Rec.RefDocRef.Address.trim() ? Rec.RefDocRef.Address : '... ... ...'}  </div> */}
                     </div>
                     {/* <div className='w-25' >
@@ -216,7 +216,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                     {/* <div className='w-75' > */}
                     <div className='w-full' >
                       <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Cargo/Shipping Detail </div>
-                      <div style={{ fontSize: '11px' }}>{Rec.Rem}Rem</div>
+                      <div style={{ fontSize: '11px' }}>{Rec.Desc}Desc</div>
                       {/* <div style={{ fontSize: '10px' }}>{Rec.RefDocRef.Address.trim() ? Rec.RefDocRef.Address : '... ... ...'}  </div> */}
                     </div>
                     {/* <div className='w-25' >
