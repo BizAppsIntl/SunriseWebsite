@@ -306,10 +306,10 @@ export default function Manage() {
       // console.log('*****************result: ', result); alert(result.data)                    
       // CtxMainDispatch({ type: 'DOCSREF_FETCH_SUCCESS', payload: result.data })
       // CtxMainDispatch({ type: 'DOCSDUTY_FETCH_SUCCESS', payload: result.data.filter(E => E.RefType === '1') })
-      
+
       // AlertRec(result.data, 'result.data')
 
-      setRecsAll( result.data)
+      setRecsAll(result.data)
 
     } catch (error) {
       // CtxMainDispatch({ type: 'DOCSREF_FETCH_SUCCESS', payload: error })
@@ -433,10 +433,10 @@ export default function Manage() {
 
         {/* ............. Display ICON & TITLE  ............. */}
         <div className="flex  gap-2  items-center w-full">
-        <img className="p-0 m-0" style={{ width: 28, height: 28, borderRadius: '50%' }} src={imgPortal} />
+          <img className="p-0 m-0" style={{ width: 28, height: 28  }} src={imgPortal} />
 
-<span className=' text-2xl mb-1 text-white'>Portal: </span>
-<span className=' text-2xl mb-1 text-slate-200'>Customers Profiles</span>
+          <span className=' text-2xl mb-1 text-white'>Portal: </span>
+          <span className=' text-2xl mb-1 text-slate-200'>Customers Profiles</span>
 
           {/* <span className='fs-4'> DispRecIndex {CrntIdx2DisplayRec} </span> */}
         </div>
@@ -465,24 +465,23 @@ export default function Manage() {
                   {/* <SlClose className='text-xl ms-auto text-danger '  /> */}
                 </div>
               </>
-
             }
 
             {/* Display BUTTON ADD-NEW & CLEAR */}
             {(!(BtnEditClicked || BtnAddnewClicked) && Rec.Id) &&
               <button type="button" class="px-2 md:px-4 py-1 md:py-1 mb-1 md:mx-2 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 "
-              onClick={() => { HandleBtnEdit(true) }}>
-              Update &nbsp;
-              <span className='hidden md:flex'> &nbsp; <FaUserEdit className='' style={{ width: '20px', height: '20px' }} /></span>
-            </button>
+                onClick={() => { HandleBtnEdit(true) }}>
+                Update &nbsp;
+                <span className='hidden md:flex'> &nbsp; <FaUserEdit className='' style={{ width: '20px', height: '20px' }} /></span>
+              </button>
             }
             {!(BtnEditClicked || BtnAddnewClicked) &&
               <button type="button" class="px-2 md:px-4 py-1 md:py-1  mx-2 mb-1 text-white text-xs text-center font-medium rounded-lg inline-flex items-center bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 shadow-lg shadow-purple-500/50 "
-              onClick={() => { HandleBtnAddnew(true) }}>
-              Add New &nbsp;
-              {/* <FaUserPlus className='mb-1' style={{ width: '20px', height: '20px' }} /> */}
-              <span className='hidden md:flex'> &nbsp; <FaUserPlus className='' style={{ width: '20px', height: '20px' }} /></span>
-            </button>
+                onClick={() => { HandleBtnAddnew(true) }}>
+                Add New &nbsp;
+                {/* <FaUserPlus className='mb-1' style={{ width: '20px', height: '20px' }} /> */}
+                <span className='hidden md:flex'> &nbsp; <FaUserPlus className='' style={{ width: '20px', height: '20px' }} /></span>
+              </button>
             }
             {/* {!(BtnEditClicked || BtnAddnewClicked) && (Rec.Id > 0) &&
               <button type="button" className="btn btn-sm btn-danger"
@@ -510,16 +509,16 @@ export default function Manage() {
 
 
         {/* <div className="card px-2 pt-2 shadow-lg" style={{ width: (BtnAddnewClicked || Rec.Id) ? '30%' : '50%' }}> */}
-        <div className={ 
+        <div className={
           (BtnAddnewClicked || Rec.Id > 0)
             ? 'w-full md:w-[49%] p-0'
             : 'w-full p-0 md:p-4 md:w-[50%] md:mx-auto'
-          }>
-            {Loading ? <div className='text-center w-full'><BoxLoading className='w-full' txt={'Processing ...'} /></div>
+        }>
+          {Loading ? <div className='text-center w-full'><BoxLoading className='w-full' txt={'Processing ...'} /></div>
             : DATA_RECS.length <= 0 ? <BoxMessage variant='danger' >Seems, There is No Data...</BoxMessage>
-            : <>
+              : <>
                 <RecsCardView RecsAll={DATA_RECS} HandleListItemClicked={HandleListItemClicked} SizeFlag={(BtnAddnewClicked || Rec.Id) ? 'S' : 'F'} />
-            </>
+              </>
           }
 
 
@@ -532,53 +531,53 @@ export default function Manage() {
           // <div style={{ width: '70%' }}>
           <div className="card p-2 items-start w-full md:w-[50%] relative" >
 
-{(!BtnAddnewClicked) && (!Rec.Id) &&
+            {(!BtnAddnewClicked) && (!Rec.Id) &&
               <button className="w-full " style={{ color: 'black', background: '#f0c040', border: '1px solid #404040' }}>
                 No Item Selected for Detail
               </button>
             }
 
-              {!(BtnEditClicked || BtnAddnewClicked) && (Rec.Id) &&
-                <>
-                  <RecDetailDisp Rec={Rec} HandleCloseWindow={HandleCloseDispDetail} />
-                </>
-              }
+            {!(BtnEditClicked || BtnAddnewClicked) && (Rec.Id) &&
+              <>
+                <RecDetailDisp Rec={Rec} HandleCloseWindow={HandleCloseDispDetail} />
+              </>
+            }
 
-              {/* Only if ADD-NEW/Update is Clicked */}
-              {((BtnAddnewClicked || BtnEditClicked)) &&
+            {/* Only if ADD-NEW/Update is Clicked */}
+            {((BtnAddnewClicked || BtnEditClicked)) &&
 
-// {/* EXIT GATE BUTTON ============*/}
-// {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
-// <div className='md:hidden cursor-pointer absolute top-[40px] right-[0px] ' style={{zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
-<div className='md:hidden cursor-pointer absolute right-[0px] ' style={{top:`${BtnAddnewClicked ? "40px" : "60px"}`, zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
-  <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-red-600' />
-</div>
-// {/* End- EXIT GATE BUTTON ============*/}
-}
+              // {/* EXIT GATE BUTTON ============*/}
+              // {/* <div style={{ position: 'absolute', top: '-5px', right: '0px', zIndex: '999' }} onClick={() => HandleBtnCancel(true)}> */}
+              // <div className='md:hidden cursor-pointer absolute top-[40px] right-[0px] ' style={{zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+              <div className='md:hidden cursor-pointer absolute right-[0px] ' style={{ top: `${BtnAddnewClicked ? "40px" : "60px"}`, zIndex: '1' }} onClick={() => HandleBtnCancel(true)}>
+                <strong className='text-red-600'> EXIT</strong><br /><ImEnter className='text-3xl  text-red-600' />
+              </div>
+              // {/* End- EXIT GATE BUTTON ============*/}
+            }
 
-{((BtnAddnewClicked || BtnEditClicked)) &&
-                <>
-                  {/* {AlertRec(RecDefault,'Final for Addition of RecDefault')} */}
-                  {/* {AlertRec(Doctors)} */}
-                  {/* {AlertRec(Rec, 'Record to send for Update/Addition')}  */}
+            {((BtnAddnewClicked || BtnEditClicked)) &&
+              <>
+                {/* {AlertRec(RecDefault,'Final for Addition of RecDefault')} */}
+                {/* {AlertRec(Doctors)} */}
+                {/* {AlertRec(Rec, 'Record to send for Update/Addition')}  */}
 
-                  < EntryFormCust
-                    // CrntRec={BtnAddnewClicked ? SetupDBArray ? Rec : RecDefault : Rec}
-                    CrntRec={BtnAddnewClicked ? RecDefault : Rec}
+                < EntryFormCust
+                  // CrntRec={BtnAddnewClicked ? SetupDBArray ? Rec : RecDefault : Rec}
+                  CrntRec={BtnAddnewClicked ? RecDefault : Rec}
 
-                    // VoucherMode={BtnAddnewClicked ? 'Add' : BtnEditClicked ? 'Edit' :  BtnDeleteClicked ? 'Del':''}
-                    VoucherMode={BtnAddnewClicked ? 'Add' : BtnEditClicked ? 'Edit' : ''}
-                    HandleBtnVoucherMode={HandleBtnVoucherMode}
+                  // VoucherMode={BtnAddnewClicked ? 'Add' : BtnEditClicked ? 'Edit' :  BtnDeleteClicked ? 'Del':''}
+                  VoucherMode={BtnAddnewClicked ? 'Add' : BtnEditClicked ? 'Edit' : ''}
+                  HandleBtnVoucherMode={HandleBtnVoucherMode}
 
-                  // HandleInputs={HandleInputs}
-                  // setNeed2Refresh={setNeed2Refresh}
-                  // Need2Refresh={Need2Refresh}
-                  />
+                // HandleInputs={HandleInputs}
+                // setNeed2Refresh={setNeed2Refresh}
+                // Need2Refresh={Need2Refresh}
+                />
 
-                </>
+              </>
 
-              }
-            </div>
+            }
+          </div>
         }
 
       </div>{/* /.Main-card-body */}

@@ -17,7 +17,12 @@
 
 // //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
+// const cardsArray = Array(10).fill({ title: 'Card' });
 
+// const cardsArray = Array.from({ length: 10 }, (_, index) => ({
+//   id: index + 1,
+//   title: `Card ${index + 1}`,
+// }));
 
 //Array(n + 1).join("*")
 //Array(11).join("*")   gets line of 10 *s
@@ -207,15 +212,15 @@ export function SetDateTimeISOFormat(date, time = '') {
 }
 
 // ==============================================================
-export function  StrLenB4Zero(str){
-// ('12340') >> 4, '12300' >> 3
-  
+export function StrLenB4Zero(str) {
+  // ('12340') >> 4, '12300' >> 3
+
   //let a='12300'.split('')
-  let a=str.split('')
-  let l=a.length
+  let a = str.split('')
+  let l = a.length
   //console.log(a, l)
-  let r=l
-  for (let i=l-1; i>=0; i--) {
+  let r = l
+  for (let i = l - 1; i >= 0; i--) {
     //console.log(i, a[i], r)
 
     //      [Number of Character]
@@ -224,9 +229,9 @@ export function  StrLenB4Zero(str){
     //setRtValue(r)
 
     //if(a[i]!=='0') {setRtValue(i+1); return(i+1);}
-    if(a[i]!=='0') return(i+1)
+    if (a[i] !== '0') return (i + 1)
   }
-  return(0)
+  return (0)
 }
 
 
@@ -608,3 +613,52 @@ export function BEEP(freq = 660, duration = 90, vol = 50) {
   oscillator.stop(context.currentTime + duration * .001);
   oscillator.onended = () => context.close();
 }
+
+
+
+// ------------------------------------------------------------------------------------
+export function AmountInWords(num) {
+  // Rec.VAmt % 1 ===0 
+  let [n, d] = (num + '').split('.')
+  return (NumberInWords(n) + 'Rupees ' + (d ? `with ${NumberInWords(d.length < 2 ? d + '0' : d)} Paisas` : ''))
+}
+
+export function NumberInWords(num) {
+  var a = ['', 'One ', 'Two ', 'Three ', 'Four ', 'Five ', 'Six ', 'Seven ', 'Eight ', 'Nine ', 'Ten ', 'Eleven ', 'Twelve ', 'Thirteen ', 'Fourteen ', 'Fifteen ', 'Sixteen ', 'Seventeen ', 'Eighteen ', 'Nineteen '];
+  var b = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+
+  if ((num = num.toString()).length > 9) return 'overflow';
+  let n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+  if (!n) return; var str = '';
+  str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+  str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+  str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+  str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+  // str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'only ' : '';
+  str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + '' : '';
+
+  return str;
+}
+
+export function ConvertToTitleCase(str, WithExceptionOfTheAnd = true) {
+  const exceptions = ['of', 'the', 'and'];
+
+  if (!str) { return "" }
+
+  // with exceptions
+  if (WithExceptionOfTheAnd)
+    return str.toLowerCase().split(' ').map((word, i) => {
+      return exceptions.includes(word) && i != 0 ? word : word.charAt(0).toUpperCase().concat(word.substr(1));
+    }).join(' ');
+
+  // without exceptions
+  else
+    return str.toLowerCase().split(' ').map(function (word) {
+      return word.charAt(0).toUpperCase().concat(word.substr(1));
+    }).join(' ');
+
+  // console.log(convertToTitleCase('lord OF the rings'));   
+  // console.log(convertToTitleCase('people AND people'));   
+  // console.log(convertToTitleCase('someTHING ABOUT THE article'));
+}
+

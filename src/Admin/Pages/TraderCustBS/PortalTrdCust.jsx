@@ -30,7 +30,7 @@ export default function PortalTrdCust() {
           <div className='card-header px-2 py-0  d-flex justify-content-between align-items-center' style={{ height: '35px', backgroundColor: 'cadetblue' }}>
 
             <div className="d-flex gap-2 align-items-center ">
-              {/* <img className="p-0 m-0" style={{ width: 28, height: 28, borderRadius: '50%' }} src={imgPortal} /> */}
+              {/* <img className="p-0 m-0" style={{ width: 28, height: 28  }} src={imgPortal} /> */}
               <img className="p-0 m-0" style={{ width: 28, height: 28  }} src={imgPortal} />
               <div className='fs-3 fw-bold' style={{ letterSpacing: '2px' }}> Distributor/Customer Portal</div>
               {/* <span className='p-0' style={{ fontSize: '26px', fontWeight: 'bold' }}>

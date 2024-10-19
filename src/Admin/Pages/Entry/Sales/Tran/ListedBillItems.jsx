@@ -1044,7 +1044,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             //  AccCx is here:> _AccRecs.Data.filter(E => E.Code === '41011')   // 4101 REVENUE-Sales/Diagnostics/ShareConsultancy
             //---------------------------------------------------------------------
             // AccCx = AccC.find(E => { return (E.Code === '41011') ? { ...E, VAmt: VAmt, No: 'Nooooooo' } : E })
-            AccDx = AccD.map(E => (E.Code === '11111') ? { ...E, VAmt: VAmt } : E)
+            AccDx = AccD.map(E => (E.Code === '11211') ? { ...E, VAmt: VAmt } : E)
             AccCx = AccC.map(E => (E.Code === '41211') ? { ...E, VAmt: VAmt } : E)   //REVENUE-Sales -Inventory Items
             // AlertRec(AccCx, 'AccCx Standard')
             //-----------------------------------------------------------------------------
@@ -1436,7 +1436,7 @@ const TabbedBillItems = ({ CrntRec, AccRec, VoucherMode, HandleBtnVoucherMode, T
             //  AccCx is here:> _AccRecs.Data.filter(E => E.Code === '41011')   // 4101 REVENUE-Sales/Diagnostics/ShareConsultancy
             //---------------------------------------------------------------------
             // AccCx = AccC.find(E => { return (E.Code === '41011') ? { ...E, VAmt: VAmt, No: 'Nooooooo' } : E })
-            AccDx = AccD.map(E => (E.Code === '11111') ? { ...E, VAmt: VAmt } : E)
+            AccDx = AccD.map(E => (E.Code === '11211') ? { ...E, VAmt: VAmt } : E)
             AccCx = AccC.map(E => (E.Code === '41211') ? { ...E, VAmt: VAmt } : E)
             // AlertRec(AccCx, 'AccCx Standard')
             //-----------------------------------------------------------------------------

@@ -57,7 +57,7 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
 
     return (<>
         <div className='card'>
-            SizeFlagFS:{SizeFlagFS}
+            {/* SizeFlagFS:{SizeFlagFS} */}
             {/* <div className="flex flex-wrap justify-evenly " style={{overflow:'hidden'}}> */}
             <div className="card-header py-0 " style={{ background: '#e0e0e0' }}>
 

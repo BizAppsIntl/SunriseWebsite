@@ -277,10 +277,10 @@ export const PrintableInvoice = forwardRef((props, ref) => {
               <div className=" borderX border-primary" style={{ width: '8%' }}>PackSize</div>
               <div className="text-center borderX border-primary" style={{ width: '7%' }}>Qty</div>
               <div className="text-center borderX border-primary" style={{ width: '7%' }}>T/P</div>
-              <div className="text-center borderX border-primary" style={{ width: '10%' }}>Amount</div>
-              <div className="text-center borderX border-primary" style={{ width: '12%' }}>Margin</div>
+              <div className="text-center borderX border-primary" style={{ width: '12%' }}>Amount</div>
+              <div className="text-center borderX border-primary" style={{ width: '10%' }}>Margin</div>
               {/* <div style={{ width: '20%' }}>Charges</div> */}
-              <div className="text-center borderX border-primary" style={{ width: '11%' }}>Invoice Amt</div>
+              <div className="text-center borderX border-primary" style={{ width: '13%' }}>Invoice Amt</div>
             </div>
 
             {/* <div className='shadow flex flex-col justify-around  items-start  w-full' style={{ background: '#ebecf0', fontSize:'11px' }}> */}
@@ -298,11 +298,11 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   <div className="text-center " style={{ width: '8%' }}>{ITM.Unit} </div>
                   <div className="text-center " style={{ width: '7%' }}>{ITM.Qty} </div>
                   <div className="text-end " style={{ width: '7%' }}><NumberFormat value={ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
-                  <div className="text-end " style={{ width: '10%' }}><NumberFormat value={ITM.Qty * ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
+                  <div className="text-end " style={{ width: '12%' }}><NumberFormat value={ITM.Qty * ITM.Price} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div>
 
                   {/* <div className="text-end " style={{ width: '12%' }}>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div> */}
                   {/* <div className="text-end b" style={{ width: '12%' }}>{ ITM.Margin>0 && <span>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /></span>} </div> */}
-                  <div className="text-end pr-2" style={{ width: '12%' }}>{ ITM.Margin>0 && <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} />} </div>
+                  <div className="text-end pr-2" style={{ width: '10%' }}>{ ITM.Margin>0 && <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} />} </div>
 
                   
 
@@ -322,7 +322,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                             decimalScale={2} />
                   
                   </div> */}
-                  <div className="text-end borderX border-danger" style={{ width: '11%' }}>
+                  <div className="text-end borderX border-danger" style={{ width: '13%' }}>
                     <NumberFormat
                       // value={ITM.Qty * ITM.Price}
                       value={(ITM.Qty * ITM.Price) - (ITM.Qty * ITM.Price * (ITM.Margin / 100))}
@@ -348,7 +348,8 @@ export const PrintableInvoice = forwardRef((props, ref) => {
           {/* Tot Items/ Examinations Total and Payment Remarks*/}
           {/*================================================================*/}
 
-          <div className='m-0 mt-4 p-0 grid grid-cols-2 md:grid-cols-5 gap-2'>
+          {/* <div className='m-0 mt-4 p-0 grid grid-cols-2 md:grid-cols-5 gap-2'> */}
+          <div className='m-0 mt-4 p-0 grid grid-cols-5 gap-2'>
 
             {/* ---[ Display Items Count ]--- */}
             {/* <div className="card px-2 " style={{ width: '250px' }} > */}
@@ -360,7 +361,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
 
             {/* ---[ Empty Spaceer ]--- */}
             {/* <div className="card px-2 " style={{ width: '250px' }} > */}
-            <div className="hidden md:w-[100px] md:inline " >
+            <div className="w-[100px] md:inline " >
             </div>
 
             {/* ---[ Display Gross Amount ]--- */}
@@ -406,9 +407,9 @@ export const PrintableInvoice = forwardRef((props, ref) => {
             </div>
 
             {/* ---[ Display Invoice Amount ]--- */}
-            <div className="card px-2 ">
+            <div className="card px-0">
               {/* <div className=' font-bold text-blue-600' style={{ marginTop: '-10px' }}>Total Amount</div> */}
-              <div className=' font-bold text-black' >Invoice Amount</div>
+              <div className=' font-bold text-black pl-2' >Invoice Amount</div>
               <NumberFormat value={Rec.VAmt} name='VAmt' id="VAmt" thousandSeparator={true} thousandsGroupStyle="lakh"
 
                 //// label={"1 FTE"}
@@ -417,7 +418,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                 decimalScale={2}
                 readOnly
                 //// style={{border:'none' , outline: 'none'                  }}
-                className="h-6 px-0 text-lg text-end font-bold text-black border-none outline-none  w-full"
+                className="h-6 pr-2 text-lg text-end font-bold text-black border-none outline-none  w-full"
 
               ////onChange={(e) =>{ HandleInputs(e); console.log('**************\nVAmt : ',VAmtPaid)}}
               // onValueChange={(values) => {

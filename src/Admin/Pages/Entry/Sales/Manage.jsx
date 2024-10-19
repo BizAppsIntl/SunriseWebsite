@@ -465,18 +465,23 @@ export default function Manage() {
     let AccC = []
 
 
-    //         ╔══»(11111)	//ASSETS-Cash/(1121)Banks etc ...
-    //       D ╠══»()	Sales Discount Acc 			...	
-    //       D ╠═» 
-    // 3147	Sales Itemse  (Combo Voucher ---> Sales + Receipt)
-    //       C*╠══»(41211)	REVENUE-Sales/Diagnostics/ShareConsultancy
-    //         ╚═» //()	Sales Tax invoiced in Sales	f...
+//       ╔══»(11211)	//Accounts Receivable (11111/11121)Cash-Banks etc ...
+//     D ╠══»	
+//     D ╠═» 
+// 3145 Sales Invoice  (single Voucher ---> Sales only)
+//     C*╠══»(41211)	REVENUE-Sales of Items  	..../Items/Patients
+//       ╚═» 
 
-    //        *╔══»(51111)	//AmtCOGS//COGS -- SalesOfInventoryItems   ...	ItemsDetail
-    //       D ╠═» //()	Sales Tax Paid in Purchase	...
-    // 3133	COGS --Services Availed------- Sales/Services Rendered
-    //       C ╠══» ()	Acc/Payable Consultant		... Doctor Consultant
-    //         ╚═»	(12111)	//InventoryItems Purchased		... Doctor Referral
+//      *╔══»(51111)	//COGS for Items Sold-- in Inventory    ...	ItemsDetail
+//     D ╠═»  
+// 3132 COGS --CoGS------- Sales of Inventory 
+//     C ╠══» (12111)	Inventory of Items Account		... Customer Distributor
+//       ╚═»  
+
+// Theoretical/Original/Factual
+// (D)Acc/Rcvble    --R500  (D)COGS/Cost --300   
+// (C)Sales&Services--R500  (D)Inventory --Rs300  
+
 
     // fetch(process.env.REACT_APP_API_URL + `AccRec`, { method: 'GET' })
     // .then(res => res.json())
@@ -484,7 +489,7 @@ export default function Manage() {
 
     // setAccRecs(data)
     // AlertRec(_AccRecs, '_AccRecs Rcvd from Ctx')      
-    const AccDx = _AccRecs.Data.filter(E => E.Code === '11111')   //ASSETS-Inventory Purchase 
+    const AccDx = _AccRecs.Data.filter(E => E.Code === '11211')   //Accounts Receivable
     const AccCx = _AccRecs.Data.filter(E => E.Code === '41211')   //REVENUE-Sales -Inventory Items
 
     const AccDx2 = _AccRecs.Data.filter(E => E.Code === '51111')  //AmtCOGS//COGS -- SalesOfInventoryItems
@@ -787,8 +792,12 @@ export default function Manage() {
 
   // [Printing ]\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
 
+  // const contentRef = useRef<HTMLDivElement>(null);
+  // const contentRef = createRef();
+  // const reactToPrintFn = useReactToPrint({ contentRef });
+
   const PRINT_REF = createRef();
-  const PRINT_INVOICEx = createRef();
+  const PRINT_INVOICE = createRef();
   // const chartRef = createRef();
 
 
@@ -857,15 +866,30 @@ export default function Manage() {
 
   // TRIGGER normal Printing 
   const HandlePrint = () => {
-    alert('Printing must be started')
+    // alert('Printing must be started')
+
+    // "react-to-print": "^3.0.1" requires "contentRef"
+    // "react-to-print": "^2.14.12" does not require contentRef, any ref may be passed
     HandlePrintNormal()
+
     // HandleElectronPrint()
     // HandleElectronPreviewPrint()
   }
 
+  const abc = createRef();
+  const xPRINT_INVOICEx = createRef();
+  const contentRef = createRef();
+  const reactToPrintFn = useReactToPrint({ abc });
+  const reactToPrintFnX = useReactToPrint({ contentRef });
+
+
+  const HandlePrintXX = useReactToPrint({ PRINT_INVOICE });
+  const HandlePrintX = useReactToPrint({ contentRef });
+
+  //Works for  "react-to-print": "^2.14.12",
   const HandlePrintNormal = useReactToPrint({
     // content: () => PRINT_REF.current,
-    content: () => PRINT_INVOICEx.current,
+    content: () => PRINT_INVOICE.current,
 
     //documentTitle: "List component",
     // print: handlePreview,
@@ -873,33 +897,18 @@ export default function Manage() {
 
 
   // [END Printing ]\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // ==============================================================
 
   // //SAVE changes is clicked
   // const HandleBtnSave = () => { setBtnEditClicked(false); setBtnAddnewClicked(false); setInputReadOnly(true); setRec(RecDefault) }
   // // ==============================================================
 
-
-
   // *******************************************************************************************************************
   //                                  M A N A G E/ Return
   // *******************************************************************************************************************
   // let SelectedItems = []
   return (<>
+
     {/* <div>
       <p>_AccRecs Loading: {_AccRecs.Loading ? 'TRUE' : 'FALSE'}</p>
       <p>_AccRecs Data Length: {_AccRecs.Data?.length}</p>
@@ -932,7 +941,7 @@ export default function Manage() {
         {/* ............. Display ICON & TITLE  ............. */}
         <div className="flex  gap-2  items-center w-full">
           {/* <span className="p-0 mb-2 text-xl text-danger" ><TbManualGearbox /></span> */}
-          <img className="p-0 m-0" style={{ width: 28, height: 28, borderRadius: '50%' }} src={imgPortal} />
+          <img className="p-0 m-0" style={{ width: 28, height: 28  }} src={imgPortal} />
 
           <span className=' text-2xl mb-1 text-white'>Portal: </span>
           <span className=' text-2xl mb-1 text-slate-200'>Sales Invoices</span>
@@ -1019,7 +1028,7 @@ export default function Manage() {
                 : DATA_RECS.length <= 0 ? <BoxMessage variant='danger' >Seems, There is No Data...</BoxMessage>
                   : <>
                     {/* <RecsComboViews RecAll={DATA_RECS} HandleListItemClicked={HandleListItemClicked} SizeFlagFS={(BtnAddnewClicked || BtnEditClicked || Rec.VID) ? 'S' : 'F'} /> */}
-                    {(!(BtnEditClicked || BtnAddnewClicked)) ? "True" : "false"} {Rec.VID}
+                    {(!(BtnEditClicked || BtnAddnewClicked)) ? "True" : "false"} 
                     <RecsComboViewsSearch
                       RecAll={DATA_RECS}
                       HandleListItemClicked={HandleListItemClicked}
@@ -1054,7 +1063,8 @@ export default function Manage() {
                     {/* {AlertRec(Rec, 'This Rec is Ready to Send for DISPLAY Rec')} */}
                     {/* <RecDetailDisp  Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} /> */}
 
-                    <PrintableInvoice ref={PRINT_INVOICEx} Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} />
+                    <PrintableInvoice ref={PRINT_INVOICE} Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} />
+                    {/* <PrintableInvoice ref={contentRef} Rec={Rec} HandleCloseWindow={HandleCloseWindow} HandlePrint={HandlePrint} /> */}
                   </>
                 }
 

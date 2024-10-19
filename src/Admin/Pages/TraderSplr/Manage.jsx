@@ -435,7 +435,7 @@ export default function Manage() {
 
         {/* ............. Display ICON & TITLE  ............. */}
         <div className="flex  gap-2  items-center w-full">
-          <img className="p-0 m-0" style={{ width: 28, height: 28, borderRadius: '50%' }} src={imgPortal} />
+          <img className="p-0 m-0" style={{ width: 28, height: 28  }} src={imgPortal} />
 
           <span className=' text-2xl mb-1 text-white'>Portal: </span>
           <span className=' text-2xl mb-1 text-slate-200'>Vendors Profiles</span>

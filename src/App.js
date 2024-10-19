@@ -14,6 +14,7 @@ import LayoutLogin from './LayoutLogin'
 import Home from './Pages/Home'
 import About from './Pages/About'
 import ManageItems from './Admin/Pages/Items/Manage';
+import ManageReceiptCust from './Admin/Pages/Entry/ReceiptCust/Manage';
 import ManageCust from './Admin/Pages/TraderCust/Manage';
 import ManageSplr from './Admin/Pages/TraderSplr/Manage';
 import ManageSales from './Admin/Pages/Entry/Sales/Manage';
@@ -21,6 +22,7 @@ import ManageSales from './Admin/Pages/Entry/Sales/Manage';
 import { MobApp1 } from './Pages/MobApp1';
 import CodeTestPage from './Pages/CodeTestPage';
 import MyTestReactSelect from './Components/MyTestReactSelect';
+import Dashboard from './Admin/Pages/Dashboard/Dashboard';
 
 
 function App() {
@@ -187,6 +189,7 @@ function App() {
       <Routes>
         <Route element={<LayoutLogin />}>
           <Route exact path='/' element={<Home />} />
+          <Route path='Dashboard' element={<Dashboard />} />
           <Route path='About' element={<About />} />
           <Route path='Contact' element={<Home />} />
           {/* <Route path='Services' element={<Services />} /> */}
@@ -196,6 +199,7 @@ function App() {
           <Route path='Vendors' element={<ManageSplr />} />
 
           <Route path='Sales' element={<ManageSales />} />
+          <Route path='Receipts' element={<ManageReceiptCust />} />
 
           <Route path='Test1' element={<MobApp1 />} />
           <Route path='CodeTestPage' element={<CodeTestPage />} />
