@@ -840,7 +840,8 @@ return (
       {/* =====[    Main Prg /CARD HEADDER start            ]===========================================  */}
       {/* =================================================================================== */}
       <div className='card-header flex gap-1 px-2  m-0 items-center ' style={{ background: '#bebebe' }}>
-          <span className='text-xl'><strong>Sales Receipt Voucher Detail</strong></span>
+          <span className='hidden md:inline text-xl'><strong>Sales Receipt Voucher Detail</strong></span>
+          <span className='text-base md:hidden'>Sales Receipt</span>
 
 
           <button type="button" class="ms-auto py-0 px-2 flex justify-center items-center text-white text-center text-base font-semibold  bg-amber-500 hover:bg-amber-700 focus:ring-amber-500 focus:ring-offset-amber-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"

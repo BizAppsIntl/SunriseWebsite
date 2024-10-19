@@ -91,7 +91,7 @@ function App() {
         //     } 
         //  }
       )
-      console.log('\n\n\n*****************AccRec fetched result: ', result.data); 
+      // console.log('\n\n\n*****************AccRec fetched result: ', result.data); 
       // alert(result.data)                    
       // AlertRec(result.data, 'Fetched AccRec data')
       CtxMainDispatch({ type: 'ACCRECS_FETCH_SUCCESS', payload: result.data })
