@@ -67,38 +67,49 @@ export default function RecsComboViews({ RecAll, HandleListItemClicked, HandleLi
             } */}
         </div>
 
-        <div className="card-body p-0" style={{maxHeight: '75vh', overflowY: 'auto' }}>
-            {DispType === 0         //0-list, 1-Grid, 2-group
+        {/* <div className="card-body p-0" style={{maxHeight: '75vh', overflowY: 'auto' }}> */}
+        <div className="card-body p-0 max-h-[80vh]" style={{ overflowY: 'auto' }}>
+        {DispType === 0         //0-list, 1-Grid, 2-group
                 ? <div className=" flex flex-col" >
                     {RecAll?.map((E, I) => {
                         // return <button className='flex mb-2 ' key={E.id} onClick={() =>{DispRecInAlert(E,'Selected'); HandleListItemClicked(E)}}>
                         return (
-                            <button className='flex px-1 py-0 '
+                            <button className='flex px-1 py-0 text-start'
                                 style={{ fontSize: '10px' }} key={I}
                                 onClick={() => { setSelectedRec(E.Id); HandleListItemClicked(E) }}
                                 onDoubleClick={() => { setSelectedRec(E.Id); HandleListItemClickedDbl(E) }} >
 
                                 {(SizeFlagFS === 'F') &&
                                     <>
-                                        <span style={{ width: '10%' }}>{E.Id} </span>
-                                        <span style={{ width: '30%' }}>{E.Title}</span>
+                                        <span style={{ width: '5%' }}>{E.Id} </span>
+                                        <span style={{ width: '10%' }}><img src={process.env.REACT_APP_API_URL + `Items/GetFile/${E.PicURL}`} style={{ width: "20px", height: '20px', color: '#e040fb' }} alt="..." /> </span>
+                                        <span style={{ width: '25%' }}>{E.Title}</span>
                                         {/* <span style={{ width: '20%' }}>{E.TitleU}</span> */}
-                                        <span style={{ width: '20%' }}>{E.Desc}</span>
+                                        <span style={{ width: '15%' }}>{E.Desc}</span>
                                         {/* <span style={{ width: '20%' }}>{E.CatItemTitle}</span> */}
+                                        <span style={{ width: '10%' }}>{E.PackSize}</span>
+                                        <span style={{ width: '10%' }}>{E.PackType}</span>
+
+                                        <span style={{ width: '10%' }} className=' '>{E.Margin}%</span>
+                                        <span style={{ width: '15%' }} className=' text-end'>@{E.Price}</span>
 
                                         {/* <span style={{ width: '20%' }}>{Rec.Id ? (Cats.find((P) => P.Code.trim() === E.CatCode.trim())).Title.substr(0,10) : (Cats.find((P) => P.Code.trim() === E.CatCode.trim())).Title }</span> */}
-                                        <span style={{ width: '20%' }} className=' text-end'>{E.Unit} @ Rs. {E.Price}</span>
+                                        {/* <span style={{ width: '20%' }} className=' text-end'>{E.Unit} @ Rs.{E.Price}</span> */}
                                         {/* <span style={{ width: '10%' }} className=' text-end'>{E.Unit}</span> */}
                                         {/* <span style={{ width: '15%', textAlign: 'end' }}>{E.ContactPh1}</span> */}
                                     </>}
 
                                 {(SizeFlagFS !== 'F') &&
                                     <>
-                                        <span style={{ width: '15%' }}>{E.Id}</span>
+                                        <span style={{ width: '5%' }}>{E.Id}</span>
+                                        <span style={{ width: '10%' }}><img src={process.env.REACT_APP_API_URL + `Items/GetFile/${E.PicURL}`} style={{ width: "20px", height: '20px', color: '#e040fb' }} alt="..." /> </span>
                                         <span style={{ width: '35%' }}>{E.Title}  </span>
                                         {/* <span style={{ width: '20%' }}>{E.TitleU}</span> */}
                                         {/* <span style={{ width: '30%' }}>{E.CatItemTitle}</span> */}
-                                        <span style={{ width: '20%' }} className=' text-end'>@ {E.Price}</span>
+                                        <span style={{ width: '15%' }}>{E.PackSize}</span>
+                                        <span style={{ width: '15%' }}>{E.PackType}</span>
+                                        <span style={{ width: '5%' }} className=''>{E.Margin}%</span>
+                                        <span style={{ width: '15%' }} className=' text-end'>@ {E.Price}</span>
                                     </>}
 
                             </button>

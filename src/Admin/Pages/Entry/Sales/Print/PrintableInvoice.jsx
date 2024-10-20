@@ -108,7 +108,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
           <div className='flex w-full  justify-between '>
 
             {/* ------------- Distributor DATA*/}
-            <div className="card px-2 shadow-sm " style={{ width: '45%' }} >
+            <div className="card px-2 shadow-sm  w-fit"  >
 
               <div className='text-xl font-bolder text-blue-600 ' >
                 {/* <img alt="Gender" width='36px' height='36px'
@@ -119,7 +119,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                       ? ImgFemale : ImgMale
                   }
                 /> */}
-                <span className="text-xl font-bolder text-blue-600 " >Distributor Profile </span>
+                {/* <span className="text-xl font-bolder text-blue-600 " >Distributor Profile </span> */}
               </div>
 
               <div className="flex gap-2">
@@ -130,7 +130,10 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   : <span className='flex justify-center' > <MyAvatar Text={Rec?.RefTrader?.Title[0]} Size={50} /> </span>
                 }
 
+<div>
+<div className="text-xl font-bolder text-blue-600 " >Distributor Profile </div>
                 <div className='text-lg' style={{ fontWeight: 'bold' }}> {Rec.RefTrader?.Title}  </div>
+</div>
               </div>
               <div>
                 <div className='flex ' >
@@ -154,7 +157,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
 
 
             {/* ------------- Invoice Particulars*/}
-            <div className='flex flex-col ' style={{ fontSize: '14px', width: '43%' }}>
+            <div className='flex flex-col  w-fit' style={{ fontSize: '14px' }}>
 
               {/* ------------- Invoice Detail*/}
               <div className='flex flex-col '>
@@ -178,7 +181,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                 </div> */}
               </div>
 
-              {/* ------------- Purchase Oorder Detail */}
+              {/* ------------- Sales Oorder Detail */}
               <div className="card px-2 mt-2 py-1  shadow-sm">
                 <div className=" flex flex-row items-center" >
                   <div className="w-[36px] h-[36px]">
@@ -190,7 +193,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   <div className='flex ps-3 pb-1  w-full' style={{ lineHeight: '1' }}>
                     {/* <div className='w-75' > */}
                     <div className='w-full' >
-                      <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Purchase Order Detail </div>
+                      <div className="text-green-600 font-bold mb-1" style={{ fontSize: '14px' }}>Sales Order Detail </div>
                       <div style={{ fontSize: '11px' }}>{Rec.Rem}Rem </div>
                       {/* <div style={{ fontSize: '10px' }}>{Rec.RefDocRef.Address.trim() ? Rec.RefDocRef.Address : '... ... ...'}  </div> */}
                     </div>

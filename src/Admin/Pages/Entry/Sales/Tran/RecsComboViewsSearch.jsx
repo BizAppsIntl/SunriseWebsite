@@ -9,10 +9,11 @@ import ReactDatePicker from 'react-datepicker'
 import { RiSearchEyeLine } from 'react-icons/ri'
 import { MdFindReplace } from 'react-icons/md'
 import { FaLayerGroup } from 'react-icons/fa'
+import { AlertRec } from '../../../../../StdLib'
 // import { Alert } from 'react-bootstrap'
 
 export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, SizeFlagFS, FetchData, SearchInput, setSearchInput }) {
-    const [DispType, setDispType] = useState(true)
+    const [DispType, setDispType] = useState('L')   //'L', 'C'
     const [SelectedRec, setSelectedRec] = useState('')
 
     const [Txt2Search, setTxt2Search] = useState('')
@@ -55,6 +56,7 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
         }
     }
 
+    // AlertRec(RecAll, 'RecAll from RecComboSearch')
     return (<>
         <div className='card'>
             {/* SizeFlagFS:{SizeFlagFS} */}
@@ -96,25 +98,24 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                     <tr>
                                         <th className='text-end'>To</th>
                                         <td>
-                                            <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteFrom'
-                                                // style={{height:'20px'}}
+                                            <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='Dteto'
                                                 // name="VDte" value={VoucherCart.VDte === ''
                                                 //     // ? `${ (new Date()).getDate() } /${(new Date()).getMonth()+1}/${ (new Date()).getFullYear() } `
                                                 //     ? `${ (new Date()).getDate() } ${ (new Date()).toDateString().substr(4, 1) } ${ (new Date()).getFullYear() } `
                                                 //     : VoucherCart.VDte} dateFormat='d MMM yy' id="VDte"
 
                                                 // selected={new Date((VoucherCart.VDte) ? VoucherCart.VDte : Date())}
-                                                name="DteFrom" value={SearchInput.DteFrom === ''
-                                                    ? Moment(SearchInput.DteFrom).format('DD MMM YY, ddd')
-                                                    : Moment(SearchInput.DteFrom).format('DD MMM YY, ddd')}
+                                                name="DteTo" value={SearchInput.DteTo === ''
+                                                    ? Moment(SearchInput.DteTo).format('DD MMM YY, ddd')
+                                                    : Moment(SearchInput.DteTo).format('DD MMM YY, ddd')}
                                                 // : VoucherCart.VDte} dateFormat='d MMM yy'
                                                 // ? `${(new Date()).getDate()} /${(new Date()).getMonth() + 1}/${(new Date()).getFullYear()} `
 
                                                 dateFormat='d MMM yy'
-                                                selected={new Date((SearchInput.DteFrom) ? SearchInput.DteFrom : Date())}
+                                                selected={new Date((SearchInput.DteTo) ? SearchInput.DteTo : Date())}
                                                 readOnly={false}
                                                 allowClear={true}
-                                                onChange={(dte) => setSearchInput(() => ({ ...SearchInput, DteFrom: dte }))}
+                                                onChange={(dte) => setSearchInput(() => ({ ...SearchInput, DteTo: dte }))}
                                             />
                                         </td>
                                     </tr>
@@ -128,8 +129,8 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                         </div>
 
                         <div >
-                            <div className='mb-2' onClick={() => setDispType(0)}><TfiViewList /></div>
-                            <div className='' onClick={() => setDispType(1)}><HiOutlineViewGridAdd /></div>
+                            <div className='mb-2' onClick={() => setDispType('L')}><TfiViewList /></div>
+                            <div className='' onClick={() => setDispType('C')}><HiOutlineViewGridAdd /></div>
                         </div>
                     </div>
                     :
@@ -170,7 +171,7 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
 
                                 <div className='flex'>
                                     <label >To:</label>
-                                    <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteFrom'
+                                    <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='Dteto'
                                         // name="VDte" value={VoucherCart.VDte === ''
                                         //     // ? `${ (new Date()).getDate() } /${(new Date()).getMonth()+1}/${ (new Date()).getFullYear() } `
                                         //     ? `${ (new Date()).getDate() } ${ (new Date()).toDateString().substr(4, 1) } ${ (new Date()).getFullYear() } `
@@ -192,8 +193,6 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                 </div>
 
                                 {/* ............. Display BUTTON SEARCH text and Icon  ............. */}
-
-
                                 <RiSearchEyeLine className='text-amber-700' style={{ width: '26px', height: '22px' }} onClick={() => { FetchData() }} />
 
                             </div>
@@ -229,8 +228,8 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                             </div>
                             {/* .............................................................................. */}
 
-                            <div className='ms-auto  ' onClick={() => setDispType(0)}><TfiViewList /></div>
-                            <div className='ms-2' onClick={() => setDispType(1)}><HiOutlineViewGridAdd /></div>
+                            <div className='ms-auto  ' onClick={() => setDispType('L')}><TfiViewList /></div>
+                            <div className='ms-2' onClick={() => setDispType('C')}><HiOutlineViewGridAdd /></div>
                             {/* <div className=' ' onClick={() => setDispType(2)}><FaLayerGroup /></div> */}
 
                             {/* {PrintButton &&
@@ -243,13 +242,13 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
 
                 }
 
-
             </div>
 
 
 
-            <div className="card-body p-0" style={{ height: '80vh', overflowY: 'auto' }}>
-                {DispType
+            {/* <div className="card-body p-0 " style={{ maxHeight: '80vh', overflowY: 'auto' }}> */}
+            <div className="card-body p-0 max-h-[80vh]" style={{ overflowY: 'auto' }}>
+                {DispType === 'L'
                     ? <div className="flex flex-col m-0" role="group" aria-label="First group">
                         {FilteredRecs.length <= 0 ?
                             // <BoxMessage variant='danger' className='text-black' >Seems, There is No Data...</BoxMessage>
@@ -268,19 +267,24 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                                     <span style={{ width: '20%' }}>{Moment(E.TranM.VDte).format('DD MMM YY ddd')}</span>
                                                     {/* <span style={{ width: '30%' }}>[{E.TranM.RefTrader.Code}]-{E.TranM.RefTrader.Title}</span> */}
 
-                                                    {/* <span style={{ width: '7%' }}>{E.TranM.VTypeTitle}</span> */}
-                                                    <span style={{ width: '15%' }} >{E.TranM.Desc}</span>
-                                                    <span style={{ width: '5%' }}>{E.TranM.VQtyTxt}</span>
+                                                    {/* <img src={process.env.REACT_APP_API_URL + `Suppliers/GetFile/${E.TranM.RefTrader.PicURL}`} style={{ width: "100%", height: '50px', color: '#e040fb' }} alt="..." /> */}
+                                                    <span style={{ width: '5%' }}><img src={process.env.REACT_APP_API_URL + `Traders/GetFile/${E.TranM.RefTrader.PicURL}`} style={{ width: "20px", height: '20px', color: '#e040fb' }} alt="..." /> </span>
 
-                                                    <span style={{ width: '16%' }}>{E.TranM.RefTrader.Title}</span>
+                                                    {/* <span style={{ width: '7%' }}>{E.TranM.VTypeTitle}</span> */}
+                                                    <span style={{ width: '21%' }}>{E.TranM.RefTrader.Title}</span>
+                                                    <span style={{ width: '15%' }} >{E.TranM.Desc}</span>
+                                                    <span style={{ width: '15%' }} >{E.TranM.Rem}</span>
+
 
                                                     {/* <span style={{ width: '17%' }}>{E.TranM.RefDocDuty.Title}</span>
-                                        <span style={{ width: '17%' }}>{E.TranM.RefDocRef.Title}</span> */}
+                                                        <span style={{ width: '17%' }}>{E.TranM.RefDocRef.Title}</span> */}
+
+                                                    <span style={{ width: '5%' }}>{E.TranM.VQtyTxt}</span>
 
                                                     {/* <span style={{ width: '15%' }} className=' text-end'>Rs. {E.TranM.VAmt}</span> */}
                                                     {/* <span style={{ width: '15%', textAlign: 'end' }}>{E.ContactPh1}</span> */}
-                                                    <span style={{ width: '10%' }} className=' text-end'>
-                                                        <NumberFormat value={E.TranM.VAmt} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={'R. '} />
+                                                    <span style={{ width: '15%' }} className=' text-end'>
+                                                        <NumberFormat value={E.TranM.VAmt} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} />
                                                     </span>
 
                                                 </>}
@@ -288,13 +292,14 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                             {(SizeFlagFS !== 'F') &&
                                                 <>
                                                     <span style={{ width: '12%', fontWeight: 'bold' }}>{E.TranM.VNo} </span>
-                                                    <span style={{ width: '20%' }}>{Moment(E.TranM.VDte).format('DD MMM')}</span>
+                                                    <span style={{ width: '20%' }}>{Moment(E.TranM.VDte).format('DD MMM YY')}</span>
                                                     {/* <span style={{ width: '43%' }}>[{E.TranM.RefTrader.Code}]-{E.TranM.RefTrader.Title}</span> */}
 
                                                     {/* <span style={{ width: '20%' }}>{Rec.Id ? (Cats.find((P) => P.Code.trim() === E.CatCode.trim())).Title.substr(0,10) : (Cats.find((P) => P.Code.trim() === E.CatCode.trim())).Title }</span> */}
                                                     {/* <span style={{ width: '25%' }}>{E.TranM.Desc}</span> */}
-                                                    <span style={{ width: '10%' }}>{E.TranM.VQtyTxt}</span>
+                                                    <span style={{ width: '8%' }}><img src={process.env.REACT_APP_API_URL + `Traders/GetFile/${E.TranM.RefTrader.PicURL}`} style={{ width: "20px", height: '20px', color: '#e040fb' }} alt="..." /> </span>
                                                     <span style={{ width: '40%' }}>{E.TranM.RefTrader.Title}</span>
+                                                    <span style={{ width: '10%' }}>{E.TranM.VQtyTxt}</span>
                                                     <span style={{ width: '18%' }} className=' text-end'>
                                                         <NumberFormat value={E.TranM.VAmt} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" />
                                                     </span>

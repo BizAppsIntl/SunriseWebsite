@@ -1028,7 +1028,7 @@ export default function Manage() {
                 : DATA_RECS.length <= 0 ? <BoxMessage variant='danger' >Seems, There is No Data...</BoxMessage>
                   : <>
                     {/* <RecsComboViews RecAll={DATA_RECS} HandleListItemClicked={HandleListItemClicked} SizeFlagFS={(BtnAddnewClicked || BtnEditClicked || Rec.VID) ? 'S' : 'F'} /> */}
-                    {(!(BtnEditClicked || BtnAddnewClicked)) ? "True" : "false"} 
+                    {/* {(!(BtnEditClicked || BtnAddnewClicked)) ? "Add/Edit clicked True" : "Add/Edit clicked false"}  */}
                     <RecsComboViewsSearch
                       RecAll={DATA_RECS}
                       HandleListItemClicked={HandleListItemClicked}

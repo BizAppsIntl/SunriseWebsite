@@ -98,7 +98,7 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                     <tr>
                                         <th className='text-end'>To</th>
                                         <td>
-                                            <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteFrom'
+                                            <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteTo'
                                                 // style={{height:'20px'}}
                                                 // name="VDte" value={VoucherCart.VDte === ''
                                                 //     // ? `${ (new Date()).getDate() } /${(new Date()).getMonth()+1}/${ (new Date()).getFullYear() } `
@@ -106,17 +106,17 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
                                                 //     : VoucherCart.VDte} dateFormat='d MMM yy' id="VDte"
 
                                                 // selected={new Date((VoucherCart.VDte) ? VoucherCart.VDte : Date())}
-                                                name="DteFrom" value={SearchInput.DteFrom === ''
-                                                    ? Moment(SearchInput.DteFrom).format('DD MMM YY, ddd')
-                                                    : Moment(SearchInput.DteFrom).format('DD MMM YY, ddd')}
+                                                name="DteTo" value={SearchInput.DteTo === ''
+                                                    ? Moment(SearchInput.DteTo).format('DD MMM YY, ddd')
+                                                    : Moment(SearchInput.DteTo).format('DD MMM YY, ddd')}
                                                 // : VoucherCart.VDte} dateFormat='d MMM yy'
                                                 // ? `${(new Date()).getDate()} /${(new Date()).getMonth() + 1}/${(new Date()).getFullYear()} `
-
+        
                                                 dateFormat='d MMM yy'
-                                                selected={new Date((SearchInput.DteFrom) ? SearchInput.DteFrom : Date())}
+                                                selected={new Date((SearchInput.DteTo) ? SearchInput.DteTo : Date())}
                                                 readOnly={false}
                                                 allowClear={true}
-                                                onChange={(dte) => setSearchInput(() => ({ ...SearchInput, DteFrom: dte }))}
+                                                onChange={(dte) => setSearchInput(() => ({ ...SearchInput, DteTo: dte }))}
                                             />
                                         </td>
                                     </tr>
@@ -172,7 +172,7 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
 
                                 <div className='flex'>
                                     <label >To:</label>
-                                    <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteFrom'
+                                    <ReactDatePicker className='text-blue-500 w-[100px] p-0 mx-1 text-sm z-10 ' id='DteTo'
                                         // name="VDte" value={VoucherCart.VDte === ''
                                         //     // ? `${ (new Date()).getDate() } /${(new Date()).getMonth()+1}/${ (new Date()).getFullYear() } `
                                         //     ? `${ (new Date()).getDate() } ${ (new Date()).toDateString().substr(4, 1) } ${ (new Date()).getFullYear() } `

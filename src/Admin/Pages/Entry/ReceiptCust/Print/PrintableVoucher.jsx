@@ -89,9 +89,9 @@ export const PrintableVoucher = forwardRef((props, ref) => {
               <div className="flex gap-2"><ImLocation className='text-red-600' /> Chungi No. 1, Suraj Miani Rd. Multan</div>
               <div className="flex gap-2"><BsTelephoneInbound />061-4517507, 4517507</div>
               <div className="flex gap-2"><FaWhatsapp className='text-green-600' />03344373507</div>
-              <div className="flex gap-2"><FaInstagram style={{ color: '#fcc201' }} />WAVELAZ01 </div>
-              <div className="flex gap-2"><AiOutlineFacebook className='text-blue-600' />www.facebook.com/Wavelaz </div>
-              <div className="flex gap-2"><FaGlobe />www.wavelaz.com </div>
+              <div className="flex gap-2"><FaInstagram style={{ color: '#fcc201' }} />SUNRISE </div>
+              <div className="flex gap-2"><AiOutlineFacebook className='text-blue-600' />www.facebook.com/Sunrise </div>
+              <div className="flex gap-2"><FaGlobe />www.sunrisedairy.com </div>
             </div>
 
           </div>
