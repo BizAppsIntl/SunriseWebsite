@@ -250,9 +250,11 @@ export default function RecsComboViewsSearch({ RecAll, HandleListItemClicked, Si
 
 
 
-            <div className="card-body p-0" style={{ height: '80vh', overflowY: 'auto' }}>
+            {/* <div className="card-body p-0" style={{ height: '80vh', overflowY: 'auto' }}> */}
+            <div className="card-body p-0 max-h-[80vh]" style={{ overflowY: 'auto' }}>
+
                 {DispType
-                    ? <div className="flex flex-col m-0" role="group" aria-label="First group">
+                    ? <div className="flex flex-col m-0 px-0 md:px-2" >
                         {FilteredRecs.length <= 0 ?
                             // <BoxMessage variant='danger' className='text-black' >Seems, There is No Data...</BoxMessage>
                             // <Alert variant='info' className='text-black'> Check Period and Click  <RiSearchEyeLine className='mb-1 text-black' style={{ width: '26px', height: '26px' }} /> again    </Alert>
