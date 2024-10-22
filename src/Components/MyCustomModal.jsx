@@ -33,6 +33,10 @@ export default function MyCustomModal({ isOpen, onClose, ShowCloseButton, childr
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
     >
       {/* <div className="bg-white  rounded-lg overflow-hidden shadow-lg max-w-lg w-full p-0 relative "> */}
+
+      {/* with maxWidth */}
+      {/* <div className={`bg-white rounded-lg overflow-hidden shadow-lg w-full p-0 relative md:${maxWidth}`}> */}
+
       <div className="bg-white  rounded-lg overflow-hidden shadow-lg p-0 relative ">
         {/* Close Button */}
         {ShowCloseButton && <button
@@ -43,7 +47,7 @@ export default function MyCustomModal({ isOpen, onClose, ShowCloseButton, childr
           <CgCloseO />
         </button>
         }
-        
+
         {/* Modal Content */}
         <div>{children}</div>
       </div>

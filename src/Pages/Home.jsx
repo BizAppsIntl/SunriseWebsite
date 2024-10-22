@@ -2,6 +2,7 @@ import React from 'react'
 import BizAppLogo from '../Assets/SiteImages/BizApps.jpg'
 import { useCtxMainContextHook } from '../CtxMain'
 
+
 export default function Home() {
   //import { useCtxMainContextHook } from '../../CtxMain'
   const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
@@ -13,6 +14,11 @@ export default function Home() {
         <img style={{ width: '100%', height: '150px' }} src={'/Images/SRD-LetterTop.jpg'} alt={''} />
       </div>
 
+
+
+      {/* {BgColors.LightBackgroundColors50.map((E, I) =>
+          <div className={`w-96 p-4 m-2 rounded ${E} shadow-md`}> {E}</div>
+        )} */}
 
 
       <div className='mt-[calc(100vh-345px)] flex gap-2  justify-center items-center' >
@@ -29,17 +35,17 @@ export default function Home() {
         </div>
 
         {(
-        _AccRecs.Loading ||
-        _Items.Loading ||
-        _CatItems.Loading
-      )
-        ? <div className=' '>
+          _AccRecs.Loading ||
+          _Items.Loading ||
+          _CatItems.Loading
+        )
+          ? <div className=' '>
             {
               (_AccRecs.Loading ? '☆ ' : '★ ') +
               (_CatItems.Loading ? '☆ ' : '★ ') +
               (_Items.Loading ? '☆ ' : '★ ')
             }
-        </div> : ''}
+          </div> : ''}
 
 
       </div>

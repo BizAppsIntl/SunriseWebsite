@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import Nav4mFlowbite from './Components/Nav_Login/Nav4mFlowbite'
 import Footer from './Components/Footer.jsx'
+import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
 
 // const Layout = ({ children }) => {
   export default function LayoutLogin() {
@@ -14,7 +15,8 @@ import Footer from './Components/Footer.jsx'
       
       <div className="flex flex-col min-h-screen">
         {/* Navbar at the top */}
-        <Nav4mFlowbite />
+        {/* <Nav4mFlowbite /> */}
+        <TopNavMega className='mt-5'/>
 
         {/* Main Content in the middle */}
         <main className="flex-grow ">

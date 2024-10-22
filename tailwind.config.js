@@ -1,8 +1,11 @@
 
 /** @type {import('tailwindcss').Config} */
 const flowbite = require("flowbite-react/tailwind");
+const colors = require('tailwindcss/colors')
 
 module.exports = {
+mode: 'jit',
+purge: ["./src/**/*.{js,jsx,ts,tsx}"],
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     flowbite.content(),
@@ -19,5 +22,10 @@ module.exports = {
   plugins: [
     // ...
     flowbite.plugin(),
+    // require('@tailwindcss/typography'),
+  ],
+  safelist: [
+    { pattern: /^bg-/ },  // Safelist all classes that start with 'bg-'
+    { pattern: /^from-/ },  // Safelist all classes that start with 'bg-'
   ],
 }

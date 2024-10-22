@@ -38,6 +38,10 @@ export default function Nav4mFlowbite() {
         </div>
       </Navbar.Brand>
 
+
+
+
+{/* LOGGED-IN USER ====================================== */}
       {/* for MD appears at end */}
       <div className="flex gap-1 align-middle md:order-2">
 
@@ -64,7 +68,7 @@ export default function Nav4mFlowbite() {
               inline
               label={
                 // <Avatar alt="User settings" className="h-9" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
-                <span><img className="w-[40px] h-[40px] rounded-full" src="/Users/User2015-11-19.jpg" alt="Rounded avatar" /></span>
+                <span><img className="w-[40px] h-[40px] rounded-full" src="/Images/Users/User2015-11-19.jpg" alt="Rounded avatar" /></span>
               }
             >
               <Dropdown.Header>
@@ -84,6 +88,7 @@ export default function Nav4mFlowbite() {
 
         <Navbar.Toggle />
       </div>
+{/* END ------ LOGGED-IN USER ====================================== */}
 
 
 
