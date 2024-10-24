@@ -70,7 +70,7 @@ export default function SigninCard() {
     //   .catch((error) => { dispatch({ type: ERROR_FINDING_USER }) })
 
 
-    console.log('FETCHING: Login seeking. \n')
+    // console.log('FETCHING: Login seeking. \n')
 
     try {
       const response = await axios.post(process.env.REACT_APP_API_URL + 'SignIn'
@@ -253,7 +253,8 @@ HandleCloseWindow()
           {/* <Button onClick={() => 'setOpenModal(false)'}>Sign In</Button> */}
 
           <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-green-500 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
-            onClick={()=>{handleLogin(true);HandleCloseWindow()}}>
+            // onClick={()=>{handleLogin(true);HandleCloseWindow()}}>
+            onClick={()=>{handleLogin(true)}}>
               Sign In- {(_SysUser.Loading? 'Loading True':'Loading False')}
  { _SysUser.Loading && 
 
