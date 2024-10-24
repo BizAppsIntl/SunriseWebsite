@@ -333,17 +333,16 @@ export default function TopNavMega() {
               {/* <Dropdown.Item href={`/Signin`}> */}
 
               {/* <Link to="/Signout"                > */}
-                <Dropdown.Item onClick={HandleSignOut }>User Sign Out</Dropdown.Item>
-                
+              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut }>User Sign Out</Dropdown.Item>}                
               {/* </Link> */}
 
-              <Dropdown.Divider />
+              {_SysUser.Data?.ID && <Dropdown.Divider />}
 
               <Link
                 to="/Signin"
                 state={{ Trigger: true }} // Pass Trigger in state
               >
-                <Dropdown.Item >Change User Loginx</Dropdown.Item>
+                <Dropdown.Item >Change User Login</Dropdown.Item>
               </Link>
 
               {/* <Dropdown.Item href={`/Dashboard`}>Item-href Dashboard</Dropdown.Item>
