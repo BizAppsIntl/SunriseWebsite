@@ -80,8 +80,9 @@ export default function SigninCard() {
 
           headers: {
             "access-control-allow-origin": "*",
+            "Access-Control-Allow-Credentials": true,
             'Content-Type': 'application/json'
-          }
+            }
         }
       )
       // Save the token in localStorage
@@ -289,3 +290,34 @@ HandleCloseWindow()
 
 
 
+
+
+
+// const handleLogin = async (flag=false) => {
+//   localStorage.setItem('_TOKEN', '');
+//   localStorage.setItem('_USER', '');
+
+//   try {
+//     const response = await axios.post(process.env.REACT_APP_API_URL + 'SignIn'
+//       , OrderSheet
+//       , {
+//         headers: {
+//           "access-control-allow-origin": "*",
+//           "Access-Control-Allow-Credentials": true,
+//           'Content-Type': 'application/json'
+//         }
+//       }
+//     )
+//     localStorage.setItem('_TOKEN', response.data.Token);
+//     localStorage.setItem('_USER', JSON.stringify(response.data.User));  //incase for Object Data
+//     toast.success('XXXSuccessfully Logged In:  [' + response.data.User.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
+
+//   } catch (err) {
+//     localStorage.setItem('_TOKEN', '')
+//     localStorage.setItem('_USER', '')
+//     console.log('ERROR: Login failed. Please check your credentials. \n', err)
+
+//     toast.error('LOGIN FAILED. \nPlz Check Credentials.', { theme: 'colored', autoClose: ToastWaitTime, })
+//   }
+
+// };
