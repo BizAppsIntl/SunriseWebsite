@@ -158,7 +158,7 @@ export default function TopNavMega() {
   const onClose = () => (setIsOpen(false));
 
   useEffect(() => {
-    toast.success('Successfully Logged In:  [' + _SysUser.Data.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-center" })
+    toast.success('Successfully Logged In:  [' + _SysUser.Data?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-center" })
   }, [])
 
   useEffect(() => {
@@ -198,7 +198,7 @@ export default function TopNavMega() {
   };
 
   const HandleSignOut =()=>{
-    const id=_SysUser.Data.ID
+    const id=_SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
     CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
@@ -282,11 +282,11 @@ export default function TopNavMega() {
               <div className='my-auto leading-none hidden md:block'>
                 <span className='block font-bold ' >
                   {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Title : 'Mufakhar'} */}
-                  {_SysUser.Data ? _SysUser.Data.ID : 'Mufakhar'}
+                  {_SysUser.Data ? _SysUser.Data?.ID : 'Mufakhar'}
                 </span>
                 <span className='text-xs text-slate-600'>
                   {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Desc : 'The Developer'} */}
-                  {_SysUser.Data ? _SysUser.Data.Desc : 'The Developer'}
+                  {_SysUser.Data ? _SysUser.Data?.Desc : 'The Developer'}
                 </span>
               </div>
             }
@@ -314,8 +314,8 @@ export default function TopNavMega() {
                 // src="/Images/Users/User2015-11-19.jpg" 
                 src={
                   _SysUser.Data
-                    ? _SysUser.Data.PicURL?.trim()
-                      ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data.PicURL}`
+                    ? _SysUser.Data?.PicURL?.trim()
+                      ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data?.PicURL}`
                       : '/Images/Users/Users.png'
                     : '/Images/Users/Mufakhar.jpg'
                 }                
@@ -326,7 +326,7 @@ export default function TopNavMega() {
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">www.BizApps.pk</span>
                 {/* <span className="block text-sm">User Profile</span> */}
-                <span className="block text-sm">userID: {_SysUser.Data.ID}</span>
+                <span className="block text-sm">userID: {_SysUser.Data?.ID}</span>
               </Dropdown.Header>
               {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
 

@@ -91,18 +91,18 @@ export default function SigninCard() {
       // Save the token in localStorage
       localStorage.setItem('_TOKEN', response.data.Token);
       //localStorage.setItem('_USER', response.data.User); //only for String Data
-      localStorage.setItem('_USER', JSON.stringify(response.data.User));  //incase for Object Data
+      localStorage.setItem('_USER', JSON.stringify(response.data?.User));  //incase for Object Data
       // // Retrieve the object from the storage
       // // const data = localStorage.getItem("userData");
       // console.log("\nAfter AxiosFetch (dataRSVD): ", response.data.User)
 
       // CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: JSON.parse(localStorage.getItem('_USER')) })  
       CtxMainDispatch({
-        type: 'SYSUSER_FETCH_SUCCESS', payload: response.data.User
+        type: 'SYSUSER_FETCH_SUCCESS', payload: response.data?.User
       })
 
       // console.log('SUCCESS: Login credentials. \n', response.data.User)
-      toast.success('XXXSuccessfully Logged In:  [' + response.data.User.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
+      toast.success('XXXSuccessfully Logged In:  [' + response.data?.User?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
       // alert('Login Successful')
       //    // Redirect to home page after login
       //    navigate('/home');
@@ -121,7 +121,7 @@ export default function SigninCard() {
   };
   
 const HandleSignout =()=>{
-  const id=_SysUser.Data.ID
+  const id=_SysUser.Data?.ID
   localStorage.setItem('_TOKEN', '');
   localStorage.setItem('_USER', '');
   CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
@@ -321,3 +321,5 @@ HandleCloseWindow()
 //   }
 
 // };
+
+
