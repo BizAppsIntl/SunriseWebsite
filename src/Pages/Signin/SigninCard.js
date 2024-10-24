@@ -142,7 +142,7 @@ HandleCloseWindow()
 
     // {/* START *************     STANDARD MODAL ********************************/}
     // {/* <Modal dismissible show={OpenModal} size="xl" popup onClose={() => setOpenModal(false)} > */}
-    <div className="flex flex-col px-0 py-0 relative" style={{ width: '450px' }} >
+    <div className="flex flex-col px-0 py-0 relative w-full md:w-[450px]" >
       <div style={{ position: 'absolute', top: '-10px', right: '0px', zIndex: '99' }}>
         {/* <ImEnter className='text-2xl  text-red-600 ' onClick={() => HandleCloseWindow(true)} /> */}
         <CgCloseO className='text-2xl  text-red-600 ' onClick={() => HandleCloseWindow(true)} />
