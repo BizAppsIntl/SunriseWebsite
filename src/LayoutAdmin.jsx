@@ -7,8 +7,8 @@ export default function LayoutAdmin() {
     <>
       {/* <div ><Sidenav /></div> */}
 
-      <div className="w-full px-0 flex flex-col ">
-        <div className="px-0 md:xl:px-2 ">
+      <div className="w-full px-0 flex flex-col min-h-screen ">
+        <div className="px-0 md:px-2 ">
           <NavAdmin />
         </div>
 

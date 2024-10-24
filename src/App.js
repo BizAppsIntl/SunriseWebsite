@@ -23,6 +23,7 @@ import { MobApp1 } from './Pages/MobApp1';
 import CodeTestPage from './Pages/CodeTestPage';
 import MyTestReactSelect from './Components/MyTestReactSelect';
 import Dashboard from './Admin/Pages/Dashboard/Dashboard';
+import Signin from './Pages/Signin/Signin';
 
 
 function App() {
@@ -204,6 +205,9 @@ function App() {
           <Route path='Test1' element={<MobApp1 />} />
           <Route path='CodeTestPage' element={<CodeTestPage />} />
           <Route path='TestReactSelect' element={<MyTestReactSelect />} />
+
+          <Route path='Signin' element={<Signin/>} />
+
 
           {/* <Route path='Services' element={<About />} /> */}
 

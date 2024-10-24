@@ -13,10 +13,11 @@ import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
       {/* <div className="w-full px-0 flex flex-col "> */}
       {/* <div className="w-full md:min-h-screen  "> */}
       
-      <div className="flex flex-col min-h-screen">
+      <div id='Footer' className="flex flex-col min-h-screen">
         {/* Navbar at the top */}
         {/* <Nav4mFlowbite /> */}
-        <TopNavMega className='mt-5'/>
+        <div id='TopNavMega1'><TopNavMega/></div>
+        
 
         {/* Main Content in the middle */}
         <main className="flex-grow ">
@@ -25,7 +26,9 @@ import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
         </main>
 
         {/* Footer at the bottom */}
-         <Footer />
+         
+        <div id='Footer1'><Footer/></div>
+
          {/* <div>This is footer line</div> */}
     </div >
     </>

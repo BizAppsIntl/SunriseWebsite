@@ -130,10 +130,10 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   : <span className='flex justify-center' > <MyAvatar Text={Rec?.RefTrader?.Title[0]} Size={50} /> </span>
                 }
 
-<div>
-<div className="text-xl font-bolder text-blue-600 " >Distributor Profile </div>
-                <div className='text-lg' style={{ fontWeight: 'bold' }}> {Rec.RefTrader?.Title}  </div>
-</div>
+                <div>
+                  <div className="text-xl font-bolder text-blue-600 " >Distributor Profile </div>
+                  <div className='text-lg' style={{ fontWeight: 'bold' }}> {Rec.RefTrader?.Title}  </div>
+                </div>
               </div>
               <div>
                 <div className='flex ' >
@@ -185,7 +185,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
               <div className="card px-2 mt-2 py-1  shadow-sm">
                 <div className=" flex flex-row items-center" >
                   <div className="w-[36px] h-[36px]">
-                  <img alt="..." className="w-full h-full"
+                    <img alt="..." className="w-full h-full"
                       src={'/Images/PO.png'}
                     />
                   </div>
@@ -209,7 +209,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
               {/* ------------- Shipping Detail */}
               <div className="card px-2 mt-2 py-1  shadow-sm">
                 <div className=" flex flex-row items-center" >
-                <div className="w-[36px] h-[36px] ">
+                  <div className="w-[36px] h-[36px] ">
                     <img alt="..." className="h-full w-full"
                       src={'/Images/Cargo.png'}
                     />
@@ -296,7 +296,7 @@ export const PrintableInvoice = forwardRef((props, ref) => {
                   <div className="" style={{ width: '7%' }}> <img src={process.env.REACT_APP_API_URL + `Items/GetFile/${ITM.RefItem?.PicURL}`} alt={''} width='40px' height='40px' /> </div>
 
                   {/* <div className="" style={{ width: '35%' }}> {ITM.RefItem?.Code} <br /> <strong style={{ fontSize: '13px' }}>{ITM.RefItem?.Title}</strong> </div> */}
-                  <div className="" style={{ width: '35%', lineHeight:'1' }}> {ITM.RefItem?.Code} <br /> <span style={{ fontSize: '15px' }}>{ITM.RefItem?.Title}</span> </div>
+                  <div className="" style={{ width: '35%', lineHeight: '1' }}> {ITM.RefItem?.Code} <br /> <span style={{ fontSize: '15px' }}>{ITM.RefItem?.Title}</span> </div>
 
                   <div className="text-center " style={{ width: '8%' }}>{ITM.Unit} </div>
                   <div className="text-center " style={{ width: '7%' }}>{ITM.Qty} </div>
@@ -305,9 +305,9 @@ export const PrintableInvoice = forwardRef((props, ref) => {
 
                   {/* <div className="text-end " style={{ width: '12%' }}>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /> </div> */}
                   {/* <div className="text-end b" style={{ width: '12%' }}>{ ITM.Margin>0 && <span>{`(${ITM.Margin}%)`} <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} /></span>} </div> */}
-                  <div className="text-end pr-2" style={{ width: '10%' }}>{ ITM.Margin>0 && <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} />} </div>
+                  <div className="text-end pr-2" style={{ width: '10%' }}>{ITM.Margin > 0 && <NumberFormat value={ITM.Qty * ITM.Price * (ITM.Margin / 100)} displayType={'text'} thousandSeparator={true} thousandsGroupStyle="lakh" prefix={''} decimalScale={2} />} </div>
 
-                  
+
 
 
 
