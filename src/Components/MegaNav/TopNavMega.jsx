@@ -157,9 +157,9 @@ export default function TopNavMega() {
 
   const onClose = () => (setIsOpen(false));
 
-  useEffect(() => {
-    toast.success('Successfully Logged In:  [' + _SysUser.Data?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-center" })
-  }, [])
+  // useEffect(() => {
+  //   toast.success('Successfully Logged In:  [' + _SysUser.Data?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-center" })
+  // }, [])
 
   useEffect(() => {
     function handleResize() {
@@ -206,7 +206,6 @@ export default function TopNavMega() {
   // alert('sign out: '+id)
   } 
 
-  let clr = 0
   return (
     <div id='FullPageArea' name='EmptAreaName' onClick={(e) => HandleOutsideClick(e)}>
       <nav className="py-0 px-2 md:px-4 w-full flex items-center  text-black border-b shadow-md" id='NAV' name='NavName'>
@@ -286,7 +285,7 @@ export default function TopNavMega() {
                 </span>
                 <span className='text-xs text-slate-600'>
                   {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Desc : 'The Developer'} */}
-                  {_SysUser.Data ? _SysUser.Data?.Desc : 'The Developer'}
+                  {_SysUser.Data ? _SysUser.Data?.Title : 'The Developer'}
                 </span>
               </div>
             }
@@ -333,23 +332,29 @@ export default function TopNavMega() {
               {/* <Dropdown.Item href={`/Signin`}> */}
 
               {/* <Link to="/Signout"                > */}
-              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut }>User Sign Out</Dropdown.Item>}                
+              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut }>Sign Out</Dropdown.Item>}                
               {/* </Link> */}
 
               {_SysUser.Data?.ID && <Dropdown.Divider />}
 
-              <Link
-                to="/Signin"
-                state={{ Trigger: true }} // Pass Trigger in state
-              >
-                <Dropdown.Item >Change User Login</Dropdown.Item>
+{/* Pass Trigger in state */}
+              <Link to="/Signin" state={{ Trigger: true }} >
+                <Dropdown.Item >User Login</Dropdown.Item>
+              </Link>
+
+              <Link to="/SignUp" state={{ Trigger: 'Edit' }} >
+                <Dropdown.Item >Edit Profile</Dropdown.Item>
+              </Link>
+
+              <Link to="/SignUp" state={{ Trigger: 'SignUp' }} >
+                <Dropdown.Item >User Sign Up</Dropdown.Item>
               </Link>
 
               {/* <Dropdown.Item href={`/Dashboard`}>Item-href Dashboard</Dropdown.Item>
                 <Dropdown.Item><Link to="/Dashboard" > Item-Link Dashboard</Link> </Dropdown.Item>
-                <Link to="/Dashboard" > <Dropdown.Item>Link-Item Dashboard</Dropdown.Item></Link> */}
+F                <Link to="/Dashboard" > <Dropdown.Item>Link-Item Dashboard</Dropdown.Item></Link> */}
 
-              <Dropdown.Item>Change Password</Dropdown.Item>
+              {/* <Dropdown.Item>Change Password</Dropdown.Item> */}
             </Dropdown>
           </div>
         </div>

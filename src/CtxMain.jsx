@@ -77,8 +77,8 @@ const CtxMainReducer = (state, action) => {
         case 'CATITEMS_FETCH_ERROR': return ({ ...state, _CatItems:{...state._CatItems, Loading: false, Error: action.payload }}); break;
 
         case 'SYSUSER_FETCH_LOADING': return ({ ...state, _SysUser:{...state._SysUser, Loading: true} }); break;
-        case 'SYSUSER_FETCH_SUCCESS': return ({ ...state, _SysUser:{...state._SysUser, Loading: false, Data: action.payload }}); break;
-        case 'SYSUSER_FETCH_ERROR': return ({ ...state, _SysUser:{...state._SysUser, Loading: false, Error: action.payload }}); break;
+        case 'SYSUSER_FETCH_SUCCESS': return ({ ...state, _SysUser:{...state._SysUser, Loading: false, Data: action.payload, Error:'' }}); break;
+        case 'SYSUSER_FETCH_ERROR': return ({ ...state, _SysUser:{...state._SysUser, Loading: false, Error: action.payload, Data:'' }}); break;
 
         // case 'DOCTORS_RELOAD': {
         //     const itmNew = action.payload

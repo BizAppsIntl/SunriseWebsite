@@ -74,7 +74,7 @@ export default function PayableDoc({Rec}) {
 
             <div className="flex justify-between items-center leading-none ">
               <div className="md:text-xs text-base"><small>Updated:</small></div>
-              <small><div className="md:text-xs text-base">{Rec?.EntryDte ? TimeLapsed(Rec?.EntryDte, new Date(), 'dhm') : '...'} Ago </div> </small>
+              <div className="md:text-xs text-base truncate">{Rec?.EntryDte ? TimeLapsed(Rec?.EntryDte, new Date(), 'dhm') : '...'} <small>Ago </small></div> 
             </div>
 
             {/* moment().startOf('hour').fromNow();       // 29 minutes ago */}
