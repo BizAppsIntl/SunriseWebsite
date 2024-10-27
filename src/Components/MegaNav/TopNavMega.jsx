@@ -214,7 +214,7 @@ export default function TopNavMega() {
         <Link to='/' onClick={() => setIsOpen(false)}>
           <div className="flex gap-1 md:gap-3 items-center ">
             <img src="/Images/SunriseLogo.jpg" className="h-8 md:h-[38px]" alt="Logo" />
-            <div className="self-center whitespace-nowrap text-3xl leading-none font-poppins tracking-wide ">
+            <div className="self-center whitespace-nowrap text-2xl md:text-3xl leading-none font-poppins tracking-wide ">
               Sunrise Dairy <span className=" font-thin hidden md:inline" >Pvt Ltd</span>
             </div>
             {/* <div className="flex flex-col text-left justify-center">
