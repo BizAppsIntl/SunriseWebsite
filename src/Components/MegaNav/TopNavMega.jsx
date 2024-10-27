@@ -17,7 +17,7 @@ import { Dropdown } from "flowbite-react";
 
 import FindCrntMedia from '../../FindCrntMedia'
 
-import logo from '../../SiteImages/BizApps.jpg'
+// import logo from '../../SiteImages/BizApps.jpg'
 // import WaterMark from '@/public/SiteImages/Default/UC-7.jpg'
 
 import { FaFolderTree } from "react-icons/fa6";
@@ -197,14 +197,14 @@ export default function TopNavMega() {
     }
   };
 
-  const HandleSignOut =()=>{
-    const id=_SysUser.Data?.ID
+  const HandleSignout = () => {
+    const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID===undefined)?'':_SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
     CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
-    toast.info('Successfully Logged Out:  [' + id + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
-  // alert('sign out: '+id)
-  } 
+    toast.info('Logging Out: ' +  `${id ? '[' + id + ']': ''}`, { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
+  }
+
 
   return (
     <div id='FullPageArea' name='EmptAreaName' onClick={(e) => HandleOutsideClick(e)}>
@@ -272,7 +272,9 @@ export default function TopNavMega() {
         {/* <div className="flex gap-1 align-middle md:order-2"> */}
         {/* <div className="flex gap-1 " onClick={() => setIsOpen(false)}> */}
 
-        <div className='md:ps-3 md:pe-2 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'>
+        <div className='md:ps-3 md:pe-2 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'
+         onClick={() => setIsOpen(false)}
+        >
 
           <Dropdown
             arrowIcon={false}
@@ -325,7 +327,7 @@ export default function TopNavMega() {
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">www.BizApps.pk</span>
                 {/* <span className="block text-sm">User Profile</span> */}
-                <span className="block text-sm">userID: {_SysUser.Data?.ID}</span>
+                <span className="block text-sm">User: {_SysUser.Data?.ID}</span>
               </Dropdown.Header>
               {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
 
@@ -440,7 +442,7 @@ F                <Link to="/Dashboard" > <Dropdown.Item>Link-Item Dashboard</Dro
               title_icon={<BsNewspaper />}
 
               header={<div className='flex items-center gap-2' >
-                <span className="  "><img src={Img4Wallet} className=" size-7" alt="Logo" /></span> <span className=' text-black'>Wallet {CrntWindow.width} </span>
+                <span className="  "><img src={Img4Wallet} className=" size-7" alt="Logo" /></span> <span className=' text-black'>Wallet Links  </span>
                 {/* <span className="  "><BsNewspaper /></span> <span className=' text-black'>tran {`CrntWindow:${CrntWindow.width}, IsMobile?: ${IsMobile ?'TRUE': 'FALSE'} `}</span> */}
               </div>
               }

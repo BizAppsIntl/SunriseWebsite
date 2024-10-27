@@ -105,7 +105,7 @@ export default function SigninCard() {
       })
 
       // console.log('SUCCESS: Login credentials. \n', response.data.User)
-      toast.success('Loggin In:  [' + response.data?.User?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
+      toast.success('Logging In:  [' + response.data?.User?.ID + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
       // alert('Login Successful')
       //    // Redirect to home page after login
       //    navigate('/home');
@@ -128,11 +128,11 @@ export default function SigninCard() {
   };
 
   const HandleSignout = () => {
-    const id = _SysUser.Data?.ID
+    const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID===undefined)?'':_SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
     CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
-    toast.info('Logged Out:  [' + id + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
+    toast.info('Logging Out: ' +  `${id ? '[' + id + ']': ''}`, { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
     HandleCloseWindow()
   }
 
