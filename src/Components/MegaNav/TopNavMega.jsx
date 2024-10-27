@@ -198,11 +198,11 @@ export default function TopNavMega() {
   };
 
   const HandleSignOut = () => {
-    const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID===undefined)?'':_SysUser.Data?.ID
+    const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID === undefined) ? '' : _SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
     CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
-    toast.info('Logging Out: ' +  `${id ? '[' + id + ']': ''}`, { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
+    toast.info('Logging Out: ' + `${id ? '[' + id + ']' : ''}`, { theme: 'colored', autoClose: ToastWaitTime, position: "top-right" })
   }
 
 
@@ -261,7 +261,9 @@ export default function TopNavMega() {
         {/* <div className='flex gap-3 items-center '> */}
         {/* OPEN/CLOSE Mega Menu */}
         <button className="ms-auto me-1 md:me-4 font-bold   text-black" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <MdOutlineFolderOff className="w-[28px] h-[28px] text-red-700" /> : <FaFolderTree className="w-[28px] h-[28px] text-blue-700" />}
+          {(_SysUser.Data?.ID && _SysUser.Data?.ID !== undefined)
+            ? isOpen ? <MdOutlineFolderOff className="w-[28px] h-[28px] text-red-700" /> : <FaFolderTree className="w-[28px] h-[28px] text-blue-700" />
+            : ""}
         </button>
         {/* </div> */}
 
@@ -273,7 +275,7 @@ export default function TopNavMega() {
         {/* <div className="flex gap-1 " onClick={() => setIsOpen(false)}> */}
 
         <div className='md:ps-3 md:pe-2 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'
-         onClick={() => setIsOpen(false)}
+          onClick={() => setIsOpen(false)}
         >
 
           <Dropdown
@@ -311,15 +313,15 @@ export default function TopNavMega() {
               inline
               label={
                 // <Avatar alt="User settings" className="h-9" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />                  
-                <img className="w-[50px] h-[50px] rounded-full border-4 border-slate-300" alt="avatar" 
-                // src="/Images/Users/User2015-11-19.jpg" 
-                src={
-                  _SysUser.Data
-                    ? _SysUser.Data?.PicURL?.trim()
-                      ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data?.PicURL}`
-                      : '/Images/Users/Users.png'
-                    : '/Images/Users/Mufakhar.jpg'
-                }                
+                <img className="w-[50px] h-[50px] rounded-full border-4 border-slate-300" alt="avatar"
+                  // src="/Images/Users/User2015-11-19.jpg" 
+                  src={
+                    _SysUser.Data
+                      ? _SysUser.Data?.PicURL?.trim()
+                        ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data?.PicURL}`
+                        : '/Images/Users/Users.png'
+                      : '/Images/Users/Mufakhar.jpg'
+                  }
                 />
 
               }
@@ -327,19 +329,19 @@ export default function TopNavMega() {
               <Dropdown.Header>
                 <span className="block truncate text-sm font-medium">www.BizApps.pk</span>
                 {/* <span className="block text-sm">User Profile</span> */}
-                <span className="block text-sm">User: {_SysUser.Data?.ID}</span>
+                <span className="block text-sm">User! {_SysUser.Data?.ID}</span>
               </Dropdown.Header>
               {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
 
               {/* <Dropdown.Item href={`/Signin`}> */}
 
               {/* <Link to="/Signout"                > */}
-              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut }>Sign Out</Dropdown.Item>}                
+              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut}>Sign Out</Dropdown.Item>}
               {/* </Link> */}
 
               {_SysUser.Data?.ID && <Dropdown.Divider />}
 
-{/* Pass Trigger in state */}
+              {/* Pass Trigger in state */}
               <Link to="/Signin" state={{ Trigger: true }} >
                 <Dropdown.Item >User Login</Dropdown.Item>
               </Link>

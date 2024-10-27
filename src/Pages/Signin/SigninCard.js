@@ -202,7 +202,8 @@ export default function SigninCard() {
                 </span>
                 <div className="relative w-full">
                   <input type="text" id="ID" name="ID" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder="" maxLength={30}
+                    placeholder="" maxLength={30}  autoComplete="off" 
+
                     value={OrderSheet.ID} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
                   <label for="ID" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
                     User ID</label>
