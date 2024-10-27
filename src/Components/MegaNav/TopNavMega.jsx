@@ -197,7 +197,7 @@ export default function TopNavMega() {
     }
   };
 
-  const HandleSignout = () => {
+  const HandleSignOut = () => {
     const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID===undefined)?'':_SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');

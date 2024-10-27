@@ -127,7 +127,7 @@ export default function SigninCard() {
     // alert('Finished Login')
   };
 
-  const HandleSignout = () => {
+  const HandleSignOut = () => {
     const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID===undefined)?'':_SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
@@ -163,7 +163,7 @@ export default function SigninCard() {
         <div className="" style={{ fontSize: '30px', letterSpacing: '1px' }}>Welcome! </div>
 
         <div className="ms-auto mt-auto text-red-600" style={{ fontSize: '12px', cursor: 'pointer' }}
-          onClick={HandleSignout}
+          onClick={HandleSignOut}
         >
           Sign Out
         </div>
