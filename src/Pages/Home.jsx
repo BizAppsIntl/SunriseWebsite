@@ -68,7 +68,8 @@ export default function Home() {
     <main className="flex-grow flex flex-col justify-center" style={{ minHeight: contentHeight }}>
 
       <div className="w-full ">
-        <img style={{ width: '100%', height: '150px' }} src={'/Images/SRD-LetterTop.jpg'} alt={''} />
+        {/* <img style={{ width: '100%', height: '150px' }} src={'/Images/SRD-Top4HomePage.jpg'} alt={''} /> */}
+        <img className='w-full' src={'/Images/SRD-Top4HomePage.jpg'} alt={''} />
       </div>
 
       {/* {BgColors.LightBackgroundColors50.map((E, I) =>
