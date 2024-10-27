@@ -460,8 +460,9 @@ F                <Link to="/Dashboard" > <Dropdown.Item>Link-Item Dashboard</Dro
               >
                 {/* <div className={"my-0 flex gap-3 items-center border-b rounded-md bg-gradient-to-l " + `${'from-' + BgColors.BgColorNames[RandomNumberInRange(0, BgColors.BgColorNames.length - 1)] + '-200'} `}><BsNewspaper /> Sales Invoices </div> */}
                 <Link to={'/Dashboard'}><div className={"my-0 flex gap-3 items-center border-b rounded-md bg-gradient-to-l " + `${'from-' + BgColors.BgColorNames[RandomNumberInRange(0, BgColors.BgColorNames.length - 1)] + '-200'} `}>
-                  <BsSpeedometer2 />
+                  {/* <BsSpeedometer2 /> */}
                   {/* <img src={RptB} className=" size-4" alt="Logo" /> */}
+                  <img className="w-[60px] h-[30px] inline-flex" src="/assets/PanelImages/DashboardMeters.png" alt="" />
                   Business Dashboad </div></Link>
 
                 {/* Divider Line */}
