@@ -603,7 +603,7 @@ export default function SignUpCard() {
         <div><img src="/Images/SunriseLogo.jpg" alt="Logo" style={{ height: '48px' }} />      </div>
         <div className="" style={{ fontSize: '30px', letterSpacing: '1px' }}>Welcome! </div>
 
-        <div className="ms-auto mt-auto text-xl text-blue-600" style={{ cursor: 'pointer' }}>
+        <div className="ms-auto mt-auto text-base md:text-xl text-blue-600" style={{ cursor: 'pointer' }}>
           {TriggerPrg === 'SignUp' ? "Sign Up Profile" : "Edit Profile "}
         </div>
 
