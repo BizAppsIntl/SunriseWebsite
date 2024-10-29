@@ -261,7 +261,7 @@ export default function TopNavMega() {
           {(_SysUser.Data && _SysUser.Data.ID) &&
             <Link to="/Dashboard" onClick={() => setIsOpen(false)}>
               <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/Meter.png" alt="avatar" />
-              DashboardX
+              Dashboard
             </Link>
           }
         </div>
