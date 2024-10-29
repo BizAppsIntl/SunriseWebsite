@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import SigninCard from './SignInCard';
+import SignInCard from './SignInCard';
 
 export default function StandardInputPage() {
   const location = useLocation();
@@ -56,7 +56,7 @@ export default function StandardInputPage() {
       {/* <h1 className="text-4xl font-bold">Text in the Middle of the Screen</h1> */}
 
       <div className='border p-4 border-gray-300 shadow-lg rounded-md'>
-        <SigninCard />
+        <SignInCard />
       </div>
     </main>
   )

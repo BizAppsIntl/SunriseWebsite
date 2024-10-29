@@ -69,7 +69,7 @@ export default function Nav4mFlowbite() {
                 <span className="block truncate text-sm font-medium">Mufakhar@BizApps.pk</span>
               </Dropdown.Header>
               {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
-              <Dropdown.Item href={`/Security/Signin`}>
+              <Dropdown.Item href={`/SignIn`}>
                 Sign In
               </Dropdown.Item>
               <Dropdown.Item>Change Pass Code</Dropdown.Item>
