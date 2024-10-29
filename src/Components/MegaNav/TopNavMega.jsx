@@ -257,8 +257,8 @@ export default function TopNavMega() {
           </Link>
 
           {/* {(_SysUser.Data?.ID !== undefined && _SysUser.Data?.ID ) && */}
-          {/* {(!(!_SysUser || !_SysUser.ID)) && */}
-          {(!(!_SysUser.Data || !_SysUser.Data.ID)) &&
+          {/* {    (!(!_SysUser.Data || !_SysUser.Data.ID)) && */}
+          {(_SysUser.Data && _SysUser.Data.ID) &&
             <Link to="/Dashboard" onClick={() => setIsOpen(false)}>
               <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/Meter.png" alt="avatar" />
               Dashboard
@@ -272,7 +272,8 @@ export default function TopNavMega() {
 
           {/* <div className='flex gap-3 items-center '> */}
           {/* OPEN/CLOSE Mega Menu */}
-          {(!(!_SysUser.Data || !_SysUser.Data.ID)) &&
+          {/* {(!(!_SysUser.Data || !_SysUser.Data.ID)) && */}
+          {(_SysUser.Data && _SysUser.Data.ID) &&
             <button className="ms-auto me-1 md:me-4 font-bold   text-black" onClick={() => setIsOpen(!isOpen)}>
               {/* {(_SysUser.Data?.ID !== undefined && _SysUser.Data?.ID) */}
               {isOpen ? <MdOutlineFolderOff className="w-[28px] h-[28px] text-red-700" /> : <FaFolderTree className="w-[28px] h-[28px] text-blue-700" />}
