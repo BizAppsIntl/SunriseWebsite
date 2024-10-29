@@ -51,7 +51,7 @@ import EditA from '../../SiteImages/Default/EditA.png'
 import EditB from '../../SiteImages/Default/EditB.jpeg'
 
 
-import SignIn from '../../Pages/SignInX/SignInCard'
+//import SignIn from '../../Pages/SignIn/SignInCard'
 
 
 // Dashboard
