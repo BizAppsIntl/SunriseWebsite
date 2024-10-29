@@ -51,7 +51,7 @@ import EditA from '../../SiteImages/Default/EditA.png'
 import EditB from '../../SiteImages/Default/EditB.jpeg'
 
 
-import Signin from '../../Pages/Signin/SigninCard'
+import SignIn from '../../Pages/SignIn/SignInCard'
 
 
 // Dashboard
@@ -76,6 +76,7 @@ import Accordion from './Accordion';
 import { TfiWallet } from 'react-icons/tfi';
 import { BiCog } from 'react-icons/bi';
 import { useCtxMainContextHook } from '../../CtxMain';
+import { AlertRec } from '../../StdLib';
 // import GetWindowDimensions from '@/app/Lib/GetWindowDimensions';
 
 
@@ -142,6 +143,7 @@ const RandomNumberInRange = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+
 const ToastWaitTime = 5000
 
 // ************************ Start Program *******************************************
@@ -198,7 +200,8 @@ export default function TopNavMega() {
   };
 
   const HandleSignOut = () => {
-    const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID === undefined) ? '' : _SysUser.Data?.ID
+    // const id = (!_SysUser.Data?.ID || _SysUser.Data?.ID === undefined) ? '' : _SysUser.Data?.ID
+    const id = (!_SysUser.Data || !_SysUser.Data.ID) ? '' : _SysUser.Data?.ID
     localStorage.setItem('_TOKEN', '');
     localStorage.setItem('_USER', '');
     CtxMainDispatch({ type: 'SYSUSER_FETCH_SUCCESS', payload: '' });
@@ -208,7 +211,7 @@ export default function TopNavMega() {
 
   return (
     <div id='FullPageArea' name='EmptAreaName' onClick={(e) => HandleOutsideClick(e)}>
-      <nav className="py-0 px-2 md:px-4 w-full flex items-center  text-black border-b shadow-md" id='NAV' name='NavName'>
+      <nav className="py-0 px-2 md:px-4 w-full flex items-center justify-between text-black border-b shadow-md" id='NAV' name='NavName'>
 
         {/* <div > */}
         <Link to='/' onClick={() => setIsOpen(false)}>
@@ -246,126 +249,149 @@ export default function TopNavMega() {
 
 
 
-        <div className="hidden md:inline-flex text-sm  gap-2 md:gap-6 ms-auto me-4">
+        {/* <div className="hidden md:inline-flex text-sm  gap-2 md:gap-6 ms-auto me-4"> */}
+        <div className="hidden md:inline-flex text-sm  gap-2 md:gap-6 ">
           <Link to="/" onClick={() => setIsOpen(false)} className='hidden md:inline'>
-            <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/HomePage.png" alt="avatar" />Home</Link>
+            <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/HomePage.png" alt="avatar" />
+            Home
+          </Link>
 
-          <Link to="/Dashboard" onClick={() => setIsOpen(false)}>
-            <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/Meter.png" alt="avatar" />Dashboard</Link>
+          {/* {(_SysUser.Data?.ID !== undefined && _SysUser.Data?.ID ) && */}
+          {/* {(!(!_SysUser || !_SysUser.ID)) && */}
+          {(!(!_SysUser.Data || !_SysUser.Data.ID)) &&
+            <Link to="/Dashboard" onClick={() => setIsOpen(false)}>
+              <img className="w-[30px] h-[30px] inline-flex" src="/assets/PanelImages/Meter.png" alt="avatar" />
+              Dashboard
+            </Link>
+          }
         </div>
 
 
 
+        <div className='flex items-center'> {/* START MegaMenu Button  && LOGGED-IN USER ====================================== */}
 
+          {/* <div className='flex gap-3 items-center '> */}
+          {/* OPEN/CLOSE Mega Menu */}
+          {(!(!_SysUser.Data || !_SysUser.Data.ID)) &&
+            <button className="ms-auto me-1 md:me-4 font-bold   text-black" onClick={() => setIsOpen(!isOpen)}>
+              {/* {(_SysUser.Data?.ID !== undefined && _SysUser.Data?.ID) */}
+              {isOpen ? <MdOutlineFolderOff className="w-[28px] h-[28px] text-red-700" /> : <FaFolderTree className="w-[28px] h-[28px] text-blue-700" />}
+            </button>
+          }
+          {/* </div> */}
 
-        {/* <div className='flex gap-3 items-center '> */}
-        {/* OPEN/CLOSE Mega Menu */}
-        <button className="ms-auto me-1 md:me-4 font-bold   text-black" onClick={() => setIsOpen(!isOpen)}>
-          {(_SysUser.Data?.ID && _SysUser.Data?.ID !== undefined)
-            ? isOpen ? <MdOutlineFolderOff className="w-[28px] h-[28px] text-red-700" /> : <FaFolderTree className="w-[28px] h-[28px] text-blue-700" />
-            : ""}
-        </button>
-        {/* </div> */}
+          {/* LOGGED-IN USER ====================================== */}
 
-        {/* LOGGED-IN USER ====================================== */}
+          {/* *********************************************************************************************************** */}
+          {/* for MD appears at end */}
+          {/* <div className="flex gap-1 align-middle md:order-2"> */}
+          {/* <div className="flex gap-1 " onClick={() => setIsOpen(false)}> */}
 
-        {/* *********************************************************************************************************** */}
-        {/* for MD appears at end */}
-        {/* <div className="flex gap-1 align-middle md:order-2"> */}
-        {/* <div className="flex gap-1 " onClick={() => setIsOpen(false)}> */}
-
-        <div className='md:ps-3 md:pe-2 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'
-          onClick={() => setIsOpen(false)}
-        >
-
-          <Dropdown
-            arrowIcon={false}
-            inline
-            label={
-              <div className='my-auto leading-none hidden md:block'>
-                <span className='block font-bold ' >
-                  {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Title : 'Mufakhar'} */}
-                  {_SysUser.Data ? _SysUser.Data?.ID : 'Mufakhar'}
-                </span>
-                <span className='text-xs text-slate-600'>
-                  {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Desc : 'The Developer'} */}
-                  {_SysUser.Data ? _SysUser.Data?.Title : 'The Developer'}
-                </span>
-              </div>
-            }
+          <div className='md:ps-3 md:pe-2 z-50  flex justify-between gap-1 h-[35px]  overflow-visible  md:bg-slate-300 md:rounded-3xl'
+            onClick={() => setIsOpen(false)}
           >
-            {/* <Dropdown.Header className='px-2 py-0 '>
-              <Link to={{ pathname: "/Signin", state: { Trigger: 'true1234' } }}>User Login</Link>
-              <SigninCard />
-            </Dropdown.Header> */}
 
-            {/* // Pass Trigger in state */}
-            <Link to="/Signin" state={{ Trigger: true }}    >
-              <Dropdown.Item >User Login</Dropdown.Item>
-            </Link>
-
-          </Dropdown>
-
-          {/* ************ AVATAR for User ************** */}
-          <div className="my-auto  md:mt-[-2px]">
             <Dropdown
               arrowIcon={false}
               inline
               label={
-                // <Avatar alt="User settings" className="h-9" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />                  
-                <img className="w-[50px] h-[50px] rounded-full border-4 border-slate-300" alt="avatar"
-                  // src="/Images/Users/User2015-11-19.jpg" 
-                  src={
-                    _SysUser.Data
-                      ? _SysUser.Data?.PicURL?.trim()
-                        ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data?.PicURL}`
-                        : '/Images/Users/Users.png'
-                      : '/Images/Users/Mufakhar.jpg'
-                  }
-                />
-
+                <div className='my-auto leading-none hidden md:block'>
+                  <span className='block font-bold ' >
+                    {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Title : 'Mufakhar'} */}
+                    {_SysUser.Data ? _SysUser.Data?.ID : 'Mufakhar'}
+                  </span>
+                  <span className='text-xs text-slate-600'>
+                    {/* {localStorage.getItem('_USER') ? JSON.parse(localStorage.getItem('_USER')).Desc : 'The Developer'} */}
+                    {_SysUser.Data ? _SysUser.Data?.Title : 'The Developer'}
+                  </span>
+                </div>
               }
             >
-              <Dropdown.Header>
-                <span className="block truncate text-sm font-medium">www.BizApps.pk</span>
-                {/* <span className="block text-sm">User Profile</span> */}
-                <span className="block text-sm">User: {_SysUser.Data?.ID}</span>
-              </Dropdown.Header>
-              {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
 
-              {/* <Dropdown.Item href={`/Signin`}> */}
+              {/* <Dropdown.Header className='px-2 py-0 '>
+              <Link to={{ pathname: "/Signin", state: { Trigger: 'true1234' } }}>User Login</Link>
+              <SigninCard />
+            </Dropdown.Header> */}
 
-              {/* <Link to="/Signout"                > */}
-              {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut}>Sign Out</Dropdown.Item>}
-              {/* </Link> */}
-
-              {_SysUser.Data?.ID && <Dropdown.Divider />}
-
-              {/* Pass Trigger in state */}
-              <Link to="/Signin" state={{ Trigger: true }} >
+              {/* // Pass Trigger in state */}
+              <Link to="/SignIn" state={{ Trigger: 'View' }}    >
                 <Dropdown.Item >User Login</Dropdown.Item>
               </Link>
 
-              <Link to="/SignUp" state={{ Trigger: 'Edit' }} >
-                <Dropdown.Item >Edit Profile</Dropdown.Item>
-              </Link>
+            </Dropdown>
 
-              <Link to="/SignUp" state={{ Trigger: 'SignUp' }} >
-                <Dropdown.Item >User Sign Up</Dropdown.Item>
-              </Link>
+            {/* ************ AVATAR for User ************** */}
+            <div className="my-auto  md:mt-[-2px]">
+              <Dropdown
+                arrowIcon={false}
+                inline
+                label={
+                  // <Avatar alt="User settings" className="h-9" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />                  
+                  <img className="w-[50px] h-[50px] rounded-full border-4 border-slate-300" alt="avatar"
+                    // src="/Images/Users/User2015-11-19.jpg" 
+                    src={
+                      _SysUser.Data
+                        ? _SysUser.Data?.PicURL?.trim()
+                          ? process.env.REACT_APP_API_URL + `Users/GetFile/${_SysUser.Data?.PicURL}`
+                          : '/Images/Users/Users.png'
+                        : '/Images/Users/Mufakhar.jpg'
+                    }
+                  />
 
-              {/* <Dropdown.Item href={`/Dashboard`}>Item-href Dashboard</Dropdown.Item>
+                }
+              >
+                <Dropdown.Header>
+                  <div className=" truncate text-sm font-medium">www.BizApps.pk</div>
+                  {/* <div className="block text-sm">User Profile</div> */}
+                  <div className=" text-sm">User: {_SysUser.Data?.ID}</div>
+                </Dropdown.Header>
+
+                {/* <Dropdown.Item href="@/app/(routes)/Signin/Signin" >Dashboard</Dropdown.Item> */}
+                {/* <Dropdown.Item href={`/Signin`}> */}
+                <Dropdown.Divider className='text-red-400' />
+
+                {/* <Link to="/Signout"                > */}
+                {_SysUser.Data?.ID && <Dropdown.Item onClick={HandleSignOut}>Sign Out</Dropdown.Item>}
+                {/* </Link> */}
+
+                {_SysUser.Data?.ID && <Dropdown.Divider />}
+
+                {/* Pass Trigger in state */}
+                <Link to="/SignIn" state={{ Trigger: 'View' }} >
+                  <Dropdown.Item >User Login</Dropdown.Item>
+                </Link>
+
+                {(_SysUser.Data?.ID) &&
+                  <Link to="/SignUp" state={{ Trigger: 'View' }} >
+                    <Dropdown.Item >User Profile</Dropdown.Item>
+                  </Link>
+                }
+
+                {(_SysUser.Data?.ID) &&
+                  <Link to="/SignUp" state={{ Trigger: 'Edit' }} >
+                    <Dropdown.Item >Edit Profile</Dropdown.Item>
+                  </Link>
+                }
+
+                {(_SysUser.Data?.ID && _SysUser.Data?.ID?.trim() === "Mufakhar") &&
+                  <Link to="/SignUp" state={{ Trigger: 'SignUp' }} >
+                    <Dropdown.Item >User Sign Up</Dropdown.Item>
+                  </Link>
+                }
+
+                {/* <Dropdown.Item href={`/Dashboard`}>Item-href Dashboard</Dropdown.Item>
                 <Dropdown.Item><Link to="/Dashboard" > Item-Link Dashboard</Link> </Dropdown.Item>
 F                <Link to="/Dashboard" > <Dropdown.Item>Link-Item Dashboard</Dropdown.Item></Link> */}
 
-              {/* <Dropdown.Item>Change Password</Dropdown.Item> */}
-            </Dropdown>
+                {/* <Dropdown.Item>Change Password</Dropdown.Item> */}
+              </Dropdown>
+            </div>
           </div>
-        </div>
 
-        {/* </div> */}
-        {/* END ------ LOGGED-IN USER ====================================== */}
+          {/* </div> */}
+          {/* END ------ LOGGED-IN USER ====================================== */}
 
+        </div> {/* END MegaMenu Button  && LOGGED-IN USER ====================================== */}
 
       </nav>
 

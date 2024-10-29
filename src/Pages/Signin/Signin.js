@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import SigninCard from './SigninCard';
+import SigninCard from './SignInCard';
 
 export default function StandardInputPage() {
   const location = useLocation();

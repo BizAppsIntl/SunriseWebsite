@@ -16,7 +16,7 @@ import { CgCloseO } from 'react-icons/cg';
 
 const ToastWaitTime = 5000
 
-export default function SigninCard() {
+export default function SignInCard() {
   const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
   const { _SysUser } = CtxMainState
 
@@ -150,7 +150,15 @@ export default function SigninCard() {
     // {/* START *************     STANDARD MODAL ********************************/}
     // {/* <Modal dismissible show={OpenModal} size="xl" popup onClose={() => setOpenModal(false)} > */}
     <div className="flex flex-col px-0 py-0 relative w-full md:w-[450px]" >
-      <div style={{ position: 'absolute', top: '-10px', right: '0px', zIndex: '99' }}>
+
+      <div className='flex' style={{ position: 'absolute', top: '-10px', right: '0px', zIndex: '99' }}>
+
+      <button className="text-sm me-4 text-white bg-red-400 hover:bg-red-600 px-2 border border-red-400 rounded-lg" 
+          onClick={HandleSignOut}
+        >
+          Sign Out
+        </button>
+
         {/* <ImEnter className='text-2xl  text-red-600 ' onClick={() => HandleCloseWindow(true)} /> */}
         <CgCloseO className='text-2xl  text-red-600 ' onClick={() => HandleCloseWindow(true)} />
         {/* <SlClose className='text-2xl ms-auto text-red-600 '  /> */}
@@ -162,10 +170,10 @@ export default function SigninCard() {
         <div><img src="/Images/SunriseLogo.jpg" alt="Logo" style={{ height: '48px' }} />      </div>
         <div className="" style={{ fontSize: '30px', letterSpacing: '1px' }}>Welcome! </div>
 
-        <div className="ms-auto mt-auto text-red-600" style={{ fontSize: '12px', cursor: 'pointer' }}
-          onClick={HandleSignOut}
+        <div className="ms-auto mt-auto text-base md:text-xl text-blue-600" 
+          // onClick={HandleSignOut}
         >
-          Sign Out
+          User Log In
         </div>
 
       </div>

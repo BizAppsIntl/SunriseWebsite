@@ -10,12 +10,20 @@ import { Routes, Route, Outlet } from 'react-router-dom';
 
 import DashboardBackgroudImg from '../SiteImages/Default/DashboardBackgroudImg.jpg'
 import DashboardPanel from './Components/DashboardComponents/DashboardPanel';
+import { useCtxMainContextHook } from '../CtxMain';
+import { AlertRec } from '../StdLib';
 
 
 const XSignInFormX = () => (<span>SignInForm</span>);
 const XNewPasswordX = () => (<span>NewPassword </span>);
 
 const Dashbard = () => {
+  const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
+  const { _SysUser } = CtxMainState
+
+  // AlertRec(_SysUser.Data, 'AlertRec(_SysUser.Data) ') 
+  // if (_SysUser.Data?.ID === undefined || !_SysUser.Data?.ID) AlertRec(_SysUser.Data) 
+
   return (
     <div  style={{paddingTop:'100px'}}>
       {/* XSignInFormX */}

@@ -4,6 +4,7 @@ import logo from './logo.svg';
 // import { MyNavbar } from './Components/Navbar';
 import { Routes, Route } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
 
 import axios from 'axios';
 import { useCtxMainContextHook } from './CtxMain';
@@ -23,8 +24,22 @@ import { MobApp1 } from './Pages/MobApp1';
 import CodeTestPage from './Pages/CodeTestPage';
 import MyTestReactSelect from './Components/MyTestReactSelect';
 import Dashboard from './Admin/Pages/Dashboard/Dashboard';
-import Signin from './Pages/Signin/Signin';
+import SignIn from './Pages/SignIn/SignIn';
 import SignUp from './Pages/SignUp/SignUp';
+
+const ProtectedRoute = ({ children }) => {
+  const { CtxMainState } = useCtxMainContextHook()
+  const { _SysUser } = CtxMainState
+
+  // Check if _SysUser is valid
+  if (!_SysUser.Data?.ID) {
+    // If no user is logged in, redirect to login or show an error
+    return <Navigate to="/SignIn" replace />;
+  }
+
+  return children; // User is valid, render the component
+};
+
 
 
 function App() {
@@ -183,6 +198,8 @@ function App() {
 
   }, [])
 
+
+
   return (
     <div className="w-full ">
       {/* <FontsTesting /> */}
@@ -191,7 +208,9 @@ function App() {
       <Routes>
         <Route element={<LayoutLogin />}>
           <Route exact path='/' element={<Home />} />
-          <Route path='Dashboard' element={<Dashboard />} />
+          {/* <Route path='Dashboard' element={<Dashboard />} /> */}
+          <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
           <Route path='About' element={<About />} />
           <Route path='Contact' element={<Home />} />
           {/* <Route path='Services' element={<Services />} /> */}
@@ -207,7 +226,7 @@ function App() {
           <Route path='CodeTestPage' element={<CodeTestPage />} />
           <Route path='TestReactSelect' element={<MyTestReactSelect />} />
 
-          <Route path='Signin' element={<Signin/>} />
+          <Route path='SignIn' element={<SignIn/>} />
           <Route path='SignUp' element={<SignUp/>} />
 
 

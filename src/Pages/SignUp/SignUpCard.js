@@ -59,7 +59,7 @@ export default function SignUpCard() {
 
   // parameter state received from nave menu
   const location = useLocation();
-  const TriggerPrg = location.state?.Trigger || "SignUp"; // Get the Trigger value from the state
+  const TriggerPrg = location.state?.Trigger || "View"; //SignUp, Edit, View--- Get the Trigger value from the state
 
 
 
@@ -221,12 +221,12 @@ export default function SignUpCard() {
       RecType, RecStatus, Priority, EntryBy, EntryDte
     } = OrderSheet
 
-    if (ID.trim() === '') {
+    if (ID?.trim() === '') {
       toast.error('User ID/Email is EMPTY. \nThis is Mandatory Field.\nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
       return
     }
     // if (!(Title || TitleU)) {
-    if (Title.trim() === '') {
+    if (Title?.trim() === '') {
       toast.error('User Title is EMPTY. \nThis is Mandatory for Reference.\nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
       return
     }
@@ -352,14 +352,14 @@ export default function SignUpCard() {
             // alert('Photo Successfully Saved: ' + Data2SendMainRec.PicURL + '\n' + "Response: " + result)
             toast.success('Record Saved Successfully:* [' + Title + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
 
-          }, (error) => { 
-            alert('ERROR--- Photo Uploading is Failed: ' + Data2SendMainRec.PicURL); Data2SendMainRec.PicURL = '' 
+          }, (error) => {
+            alert('ERROR--- Photo Uploading is Failed: ' + Data2SendMainRec.PicURL); Data2SendMainRec.PicURL = ''
             dispatch({ type: 'FETCH_ERROR', payload: error })
           })
       }
       else {
         toast.success('Record Saved Successfully: [' + Title + ']', { theme: 'colored', autoClose: ToastWaitTime, position: "top-left" })
-        
+
       }
       //-------------------------------------------------------
 
@@ -433,7 +433,8 @@ export default function SignUpCard() {
   // ------------- Update RECORD ----------------
   // --------------------------------------------------------------------------------------------------------------------
   const CallDotAPI2SaveUpdate = async () => {
-    // AlertRec(VoucherCart, 'Data Ready to Send')
+    // AlertRec(OrderSheet, 'OrderSheet Data Rcvd for Update')
+
 
     const {
       ID, PW, PW2, Title, Desc, Rem, RoleId, TId,
@@ -444,12 +445,12 @@ export default function SignUpCard() {
     } = OrderSheet
 
 
-    if (ID.trim() === '') {
+    if (ID?.trim() === '') {
       toast.error('User ID/Email is EMPTY. \nThis is Mandatory Field.\nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
       return
     }
     // if (!(Title || TitleU)) {
-    if (Title.trim() === '') {
+    if (Title?.trim() === '') {
       toast.error('User Title is EMPTY. \nThis is Mandatory for Reference.\nEmpty Voucher is Not Acceptable.', { theme: 'colored', autoClose: ToastWaitTime, })
       return
     }
@@ -557,8 +558,8 @@ export default function SignUpCard() {
         HandleSignout()
         HandleBtnCancel(true)
       }
-        , (error) => { 
-          toast.error('ERROR--- Failed, Update Action Result: ' + error, { theme: 'colored', autoClose: ToastWaitTime, }) 
+        , (error) => {
+          toast.error('ERROR--- Failed, Update Action Result: ' + error, { theme: 'colored', autoClose: ToastWaitTime, })
           dispatch({ type: 'FETCH_ERROR', payload: error })
         }
       )
@@ -603,8 +604,8 @@ export default function SignUpCard() {
         <div><img src="/Images/SunriseLogo.jpg" alt="Logo" style={{ height: '48px' }} />      </div>
         <div className="" style={{ fontSize: '30px', letterSpacing: '1px' }}>Welcome! </div>
 
-        <div className="ms-auto mt-auto text-base md:text-xl text-blue-600" style={{ cursor: 'pointer' }}>
-          {TriggerPrg === 'SignUp' ? "Sign Up Profile" : "Edit Profile "}
+        <div className="ms-auto mt-auto text-base md:text-xl text-blue-600" >
+          {TriggerPrg === 'SignUp' ? "Sign Up Profile" : TriggerPrg === 'Edit' ? "Edit Profile":"User Profile"}
         </div>
 
       </div>
@@ -624,25 +625,28 @@ export default function SignUpCard() {
             <div className="card p-1  w-[40%]">
 
 
-              <div className=' flex justify-between items-center h-[20px] md:h-[30]'>
+              {TriggerPrg !== 'View' &&
+                <div className=' flex gap-2 justify-between items-center h-[20px] md:h-[30]'>
 
-                <label htmlFor='inputPhoto' id='SelectPhoto' className="px-1 py-0 text-sm bg-blue-500 text-white rounded" >
-                  Change Photo
-                </label>
+                  <label htmlFor='inputPhoto' id='SelectPhoto' className="p-2 text-sm leading-none text-white rounded bg-blue-500 hover:bg-blue-600 cursor-pointer" >
+                    Change Photo
+                  </label>
 
-                {/* {(selectedImage) && <label className=' m-0 p-0 fs-3 text-danger'
-onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
-                {(OrderSheet.PicURL || OrderSheet.Pic) && <label className=' m-0 p-0 text-xl text-red-600'
-                  // onClick={() => { setOrderSheet({ ...OrderSheet, PicURL: '' }); setImgURL(null) }}> <FiDelete />
-                  onClick={() => {
-                    (OrderSheet.Pic)
-                      ? setOrderSheet({ ...OrderSheet, Pic: '', PicURL: '' })
-                      : setOrderSheet({ ...OrderSheet, PicURL: '' })
-                  }}>
-                  {/* <FiDelete /> */}
-                  <FaTrashCan />
-                </label>}
-              </div>
+                  {/* {(selectedImage) && <label className=' m-0 p-0 fs-3 text-danger'
+                onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
+                  {(OrderSheet.PicURL || OrderSheet.Pic) && 
+                  <button className=' m-0 p-0 text-xl text-red-600 hover:text-red-800'
+                    // onClick={() => { setOrderSheet({ ...OrderSheet, PicURL: '' }); setImgURL(null) }}> <FiDelete />
+                    onClick={() => {
+                      (OrderSheet.Pic)
+                        ? setOrderSheet({ ...OrderSheet, Pic: '', PicURL: '' })
+                        : setOrderSheet({ ...OrderSheet, PicURL: '' })
+                    }}>
+                    {/* <FiDelete /> */}
+                    <FaTrashCan />
+                  </button>}
+                </div>
+              }
 
               {/* -----Photo Section------  */}
               <div className='flex  mt-3 flex-col justify-center items-center '>
@@ -711,6 +715,7 @@ onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
                 </span>
                 <div className="relative w-full">
                   <input type="text" id="Title" name="Title" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    disabled={TriggerPrg === 'View' ? true : false}
                     placeholder="" maxLength={30}
                     value={OrderSheet.Title} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
                   <label for="Title" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
@@ -719,35 +724,38 @@ onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
               </div>
 
               {/* ---[ Input PW ]--- */}
-              <div className='flex mt-4'>
-                <span className="inline-flex items-center px-2  text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md ">
-                  <FaKey style={{ width: '14px' }} />
-                </span>
-                <div className="relative w-full">
-                  <input type="password" id="PW" name="PW" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=""
-                    value={OrderSheet.PW} maxLength={30} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
+              {TriggerPrg !== 'View' &&
+                <div className='flex mt-4'>
+                  <span className="inline-flex items-center px-2  text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md ">
+                    <FaKey style={{ width: '14px' }} />
+                  </span>
+                  <div className="relative w-full">
+                    <input type="password" id="PW" name="PW" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=""
+                      value={OrderSheet.PW} maxLength={30} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
 
-                  <label for="PW" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                    Password</label>
+                    <label for="PW" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                      Password</label>
+                  </div>
                 </div>
-              </div>
+              }
 
               {/* ---[ Confirm Input PW ]--- */}
-              <div className='flex mt-2'>
-                <span className="inline-flex items-center px-2  text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md ">
-                  <FaKey style={{ width: '14px' }} />
-                </span>
-                <div className="relative w-full">
-                  <input type="password" id="PW2" name="PW2" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=""
-                    value={OrderSheet.PW2} maxLength={30} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
+              {TriggerPrg !== 'View' &&
+                <div className='flex mt-2'>
+                  <span className="inline-flex items-center px-2  text-lg text-gray-900 bg-gray-200 border rounded-e-0 border-gray-300 border-e-0 rounded-s-md ">
+                    <FaKey style={{ width: '14px' }} />
+                  </span>
+                  <div className="relative w-full">
+                    <input type="password" id="PW2" name="PW2" className="block rounded-t-lg px-2.5 pb-0 pt-4 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=""
+                      value={OrderSheet.PW2} maxLength={30} onChange={e => setOrderSheet({ ...OrderSheet, [e.target.name]: e.target.value })} />
 
-                  <label for="PW2" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
-                    Confirm Password {OrderSheet.PW2}</label>
+                    <label for="PW2" className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-75 top-3 z-10 origin-[0] start-2.5 peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto">
+                      Confirm Password </label>
+                  </div>
                 </div>
-              </div>
-
+              }
 
             </div>
           </div>
@@ -765,28 +773,39 @@ onClick={() => { setSelectedImage(null); setImgURL(null) }}> <FiDelete /> */}
         <div className="flex gap-4 ms-auto">
           {/* <Button onClick={() => 'setOpenModal(false)'}>Sign In</Button> */}
 
-          <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-green-500 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
-            // onClick={()=>{HandleLogin(true);HandleCloseWindow()}}>
-            onClick={() => { HandleSave() }}>
-            Save
-            {/* {(_SysUser.Loading? 'Loading True':'Loading False')} */}
-            {/* {_SysUser.Loading && */}
-            {Loading &&
+          {TriggerPrg !== 'View' &&
 
-              <div role="status" className="ms-2" >
-                <svg aria-hidden="true" className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-                </svg>
-                {/* // <span className='sr-only'> {txt}</span> */}
-              </div>
-            }
-          </button>
+            <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-green-500 hover:bg-green-700 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
+              // onClick={()=>{HandleLogin(true);HandleCloseWindow()}}>
+              onClick={() => { HandleSave() }}>
+              Save
+              {/* {(_SysUser.Loading? 'Loading True':'Loading False')} */}
+              {/* {_SysUser.Loading && */}
+              {Loading &&
 
-          <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-gray-400 hover:bg-gray-600 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
-            onClick={HandleCloseWindow}>
-            Cancel
-          </button>
+                <div role="status" className="ms-2" >
+                  <svg aria-hidden="true" className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                  </svg>
+                  {/* // <span className='sr-only'> {txt}</span> */}
+                </div>
+              }
+            </button>
+          }
+          {TriggerPrg !== 'View' &&
+            <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-gray-400 hover:bg-gray-600 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
+              onClick={HandleCloseWindow}>
+              Cancel
+            </button>
+          }
+
+          {TriggerPrg === 'View' &&
+            <button type="button" class="py-2 px-4 flex justify-center items-center text-white text-center text-base font-semibold  bg-blue-400 hover:bg-blue-600 focus:ring-green-500 focus:ring-offset-green-200 transition ease-in duration-200 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-full"
+              onClick={HandleCloseWindow}>
+              Close
+            </button>
+          }
 
         </div>
 
