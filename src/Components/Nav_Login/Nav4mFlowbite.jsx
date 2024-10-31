@@ -36,12 +36,13 @@ export default function Nav4mFlowbite() {
       {/* <Navbar.Brand href="/" className="flex" data-tooltip-target="tooltip-signin" data-tooltip-placement="left"  > */}
       <Navbar.Brand className="flex" data-tooltip-target="tooltip-signin" data-tooltip-placement="left"
         // onClick={()=>handleRedirect()} 
-        onDoubleClick={() => handleRedirect()}
       >
         <Link to="/">
           <div >
             <div className="flex gap-1 md:gap-3 items-center ">
-              <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" />
+              <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" 
+                      onDoubleClick={() => handleRedirect()}
+              />
               <div className="self-center whitespace-nowrap text-xl md:text-3xl leading-none font-poppins  tracking-wide ">
                 Sunrise Dairy <span className=" font-thin hidden md:inline" >Pvt Ltd</span>
                 </div>
