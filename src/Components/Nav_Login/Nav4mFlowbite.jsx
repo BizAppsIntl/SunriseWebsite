@@ -74,7 +74,7 @@ export default function Nav4mFlowbite() {
         {/* <Navbar.Link href="/Items">Items</Navbar.Link>
         <Navbar.Link href="/About">About Us</Navbar.Link>
         <Navbar.Link href="/Contact">Contact Us</Navbar.Link> */}
-        <Link to="/Items">Items</Link>
+        <Link to="/Items">Products</Link>
         <Link to="/About">About Us</Link>
         <Link to="/Contact">Contact Us</Link>
 

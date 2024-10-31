@@ -3,11 +3,27 @@ git init
 git add README.md
 git commit -m "first commit"
 git branch -M main
+
 git remote add origin git@github.com:BizAppsIntl/SunriseWebApp.git
 git push -u origin main
 
 ***********************************
+For new App, when using:   git remote add origin git@github.com:BizAppsIntl/SunriseWebsite.git 
+error: remote origin already exists.
+The error message "error: remote origin already exists" is because you 
+already have a remote named origin pointing to git@github.com:BizAppsIntl/SunriseWebApp.git. 
+If you want to change this to git@github.com:BizAppsIntl/SunriseWebsite.git, 
+you can update the existing origin remote instead of adding a new one.
 
+Update the existing origin remote URL:
+
+>> git remote set-url origin git@github.com:BizAppsIntl/SunriseWebsite.git
+Verify the change: After updating, you can check if it was successful by running:
+
+>> git remote -v
+This should now show origin pointing to git@github.com:BizAppsIntl/SunriseWebsite.git for both fetch and push.
+
+***********************************
 git remote -v
 
 git branch

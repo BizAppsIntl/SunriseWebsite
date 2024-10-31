@@ -12,7 +12,11 @@ export default function About() {
           <img className='w-full h-full' src={'/Images/SRD-Top4HomePage.jpg'} alt={''} />
         </div>
 
-        <p className='text-2xl text-center mt-52'>Everything About Us is there</p>
+        <p className='text-2xl text-center'>Everything About Us is there</p>
+
+        <div className='mx-auto w-full max-w-4xl h-[400px] rounded-xl shadow-xl overflow-hidden'>
+          <img className='w-full h-full object-fill' src={'/Images/UnderConstruction/website-uc.jpg'} alt={''} />
+        </div>
       </div>
     </>
   )
