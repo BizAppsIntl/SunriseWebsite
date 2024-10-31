@@ -17,21 +17,21 @@ export default function Contact() {
             <p className='text-4xl mt-10 font-poppins'>You Are Welcome!</p>
 
             <div className='mt-4'>
-              <p className='text-2xl font-roboto'>Head Office</p>
-              <p className='text-base font-poppins'># 12345</p>
-              <p className='text-base font-poppins'>Zeroth Floor, Mall o Mall Plaza,</p>
-              <p className='text-base font-poppins'>Multan City </p>
-              <p className='text-base font-poppins'>Multan </p>
-              <p className='text-base font-poppins'>Phone: +92 11 1122334455 </p>
+              <p className='text-2xl font-poppins'>Head Office</p>
+              <p className='text-base font-poppins px-4'># 12345</p>
+              <p className='text-base font-poppins px-4'>Zeroth Floor, Mall o Mall Plaza,</p>
+              <p className='text-base font-poppins px-4'>Multan City </p>
+              <p className='text-base font-poppins px-4'>Multan </p>
+              <p className='text-base font-poppins px-4'>Phone: +92 11 1122334455 </p>
             </div>
 
             <div className='mt-4'>
-              <p className='text-2xl font-roboto'>Factory</p>
-              <p className='text-base font-poppins'># 12345</p>
-              <p className='text-base font-poppins'>Zeroth Floor, Mall o Mall Plaza,</p>
-              <p className='text-base font-poppins'>Multan City </p>
-              <p className='text-base font-poppins'>Multan </p>
-              <p className='text-base font-poppins'>Phone: +92 11 1122334455 </p>
+              <p className='text-2xl font-poppins'>Factory</p>
+              <p className='text-base font-poppins px-4'># 12345</p>
+              <p className='text-base font-poppins px-4'>Zeroth Floor, Mall o Mall Plaza,</p>
+              <p className='text-base font-poppins px-4'>Multan City </p>
+              <p className='text-base font-poppins px-4'>Multan </p>
+              <p className='text-base font-poppins px-4'>Phone: +92 11 1122334455 </p>
             </div>
           </div>
           <div className='mx-auto  w-1/2 p-10 '>
