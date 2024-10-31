@@ -1,7 +1,8 @@
 import React from 'react'
 import { AlertRec } from '../StdLib'
+import AlternatingSections from '../Components/Sections/Sections'
 
-export default function About() {
+export default function Items() {
 
   // AlertRec(_AccRecs, 'ABOUT PAGE ******************** NEAT _AccRec in main prgb**********************')
   return (
@@ -12,7 +13,12 @@ export default function About() {
           <img className='w-full h-full' src={'/Images/SRD-Top4HomePage.jpg'} alt={''} />
         </div>
 
-        <p className='text-2xl text-center mt-52'>Everything About Us is there</p>
+
+
+
+        <AlternatingSections/>
+
+
       </div>
     </>
   )

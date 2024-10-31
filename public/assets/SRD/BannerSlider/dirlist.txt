@@ -1,0 +1,25 @@
+ Volume in drive F is SSD2
+ Volume Serial Number is C8D3-0866
+
+ Directory of F:\BizApps4Web\SRDWebsite\public\assets\BannerSlider
+
+30-Oct-24  10:12 PM    <DIR>          .
+30-Oct-24  10:12 PM    <DIR>          ..
+25-Sep-24  10:33 PM           304,644 CheeseCheddar.png
+25-Sep-24  10:39 PM           208,698 CheeseMozzarela.png
+26-Sep-24  06:11 PM            80,204 CheesePizza-Big.png
+28-Sep-24  12:53 AM            72,590 CheesePizza-Large.png
+26-Sep-24  05:53 PM            48,082 CheesePizza-Medium.png
+26-Sep-24  05:54 PM            31,243 CheesePizza-Small.png
+25-Sep-24  10:41 PM           208,741 CheesePizza.png
+25-Sep-24  10:29 PM           191,352 CheeseShredded.png
+25-Sep-24  09:47 PM            43,740 CheezSlice.jpg
+25-Sep-24  09:55 PM           310,366 DesiGhee.png
+30-Oct-24  10:12 PM                 0 dirlist.txt
+25-Sep-24  10:27 PM           219,868 FrenchFries.png
+25-Sep-24  07:12 PM           211,116 WhatsApp Image 2024-09-25 at 17.38.05_9661e34e.jpg
+25-Sep-24  09:51 PM            34,024 WhiteButter.jpg
+25-Sep-24  10:22 PM           193,711 WhiteButter.png
+25-Sep-24  09:58 PM           203,741 Yougurg.png
+              16 File(s)      2,362,120 bytes
+               2 Dir(s)   8,089,886,720 bytes free

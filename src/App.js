@@ -6,40 +6,13 @@ import { Routes, Route } from 'react-router-dom';
 import { NavLink, Outlet } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
 
-import axios from 'axios';
-import { useCtxMainContextHook } from './CtxMain';
 import { AlertRec, GetPositionInStr } from './StdLib';
 
-import FontsTesting from './FontsTesting'
 import LayoutLogin from './LayoutLogin'
 import Home from './Pages/Home'
 import About from './Pages/About'
-import ManageItems from './Admin/Pages/Items/Manage';
-import ManageReceiptCust from './Admin/Pages/Entry/ReceiptCust/Manage';
-import ManageCust from './Admin/Pages/TraderCust/Manage';
-import ManageSplr from './Admin/Pages/TraderSplr/Manage';
-import ManageSales from './Admin/Pages/Entry/Sales/Manage';
-
-import { MobApp1 } from './Pages/MobApp1';
-import CodeTestPage from './Pages/CodeTestPage';
-import MyTestReactSelect from './Components/MyTestReactSelect';
-import Dashboard from './Admin/Pages/Dashboard/Dashboard';
-import SignIn from './Pages/SignIn/SignIn';
-import SignUp from './Pages/SignUp/SignUp';
-
-const ProtectedRoute = ({ children }) => {
-  const { CtxMainState } = useCtxMainContextHook()
-  const { _SysUser } = CtxMainState
-
-  // Check if _SysUser is valid
-  if (!_SysUser.Data?.ID) {
-    // If no user is logged in, redirect to login or show an error
-    return <Navigate to="/SignIn" replace />;
-  }
-
-  return children; // User is valid, render the component
-};
-
+import Items from './Pages/Items';
+import Contact from './Pages/Contact';
 
 
 function App() {
@@ -65,139 +38,14 @@ function App() {
   //     + " @" + process.env.REACT_APP_API_URL.substr(process.env.REACT_APP_API_URL.indexOf('localhost:') + 10, 4)
 
 
-  document.title = "Sun Rise Dairies Pvt Ltd.  Management Information System By BizApps, Multan. Pakistan " + process.env.REACT_APP_API_VER + ' @' + (port === '8088' ? '88' : port)
+  // document.title = "Sun Rise Dairies Pvt Ltd.  Management Information System By BizApps, Multan. Pakistan " + process.env.REACT_APP_API_VER + ' @' + (port === '8088' ? '88' : port)
+  document.title = "Sun Rise Dairies Pvt Ltd. Pakistan "
 
-  const { CtxMainState, CtxMainDispatch } = useCtxMainContextHook()
 
 
 
   // start ==================[  Fn: GET ALL RECORDS  ]=====================
   
-  const FetchItems = async () => {
-    CtxMainDispatch({ type: 'ITEMS_FETCH_LOADING' })
-
-    try {
-      const result = await axios.get(process.env.REACT_APP_API_URL + `Items`
-        //   ,
-        //   {
-        //     headers: {
-        //       "access-control-allow-origin" : "*",
-        //        'Content-Type': 'application/json'
-        //     } 
-        //  }
-      )
-      // AlertRec(result.data, 'Items')
-      // console.log('*****************result: ', result); alert(result.data)                    
-      CtxMainDispatch({ type: 'ITEMS_FETCH_SUCCESS', payload: result.data })
-    } catch (error) {
-      CtxMainDispatch({ type: 'ITEMS_FETCH_ERROR', payload: error })
-    }
-  }
-  
-  
-  const FetchAccRecs = async () => {
-    CtxMainDispatch({ type: 'ACCRECS_FETCH_LOADING' })
-
-    try {
-      const result = await axios.get(process.env.REACT_APP_API_URL + `AccRec`
-        //   ,
-        //   {
-        //     headers: {
-        //       "access-control-allow-origin" : "*",
-        //        'Content-Type': 'application/json'
-        //     } 
-        //  }
-      )
-      // console.log('\n\n\n*****************AccRec fetched result: ', result.data); 
-      // alert(result.data)                    
-      // AlertRec(result.data, 'Fetched AccRec data')
-      CtxMainDispatch({ type: 'ACCRECS_FETCH_SUCCESS', payload: result.data })
-    } catch (error) {
-      CtxMainDispatch({ type: 'ACCRECS_FETCH_ERROR', payload: error })
-    }
-  }
-  
-
-  const FetchCatItems = async () => {
-    CtxMainDispatch({ type: 'CATITEMS_FETCH_LOADING' })
-
-    try {
-      const result = await axios.get(process.env.REACT_APP_API_URL + `CatItems`
-        //   ,
-        //   {
-        //     headers: {
-        //       "access-control-allow-origin" : "*",
-        //        'Content-Type': 'application/json'
-        //     } 
-        //  }
-      )
-      // console.log('*****************result: ', result); alert(result.data)                    
-      CtxMainDispatch({ type: 'CATITEMS_FETCH_SUCCESS', payload: result.data })
-    } catch (error) {
-      CtxMainDispatch({ type: 'CATITEMS_FETCH_ERROR', payload: error })
-    }
-  }
-
-  // END ==================[  Fn: GET CURRENT USER  ]=====================
-
-
-  function getItemsFromLocalStorage() {
-    try {
-      const items = localStorage.getItem('_USER');
-      return JSON.parse(items, null, -1);
-    } catch (err) {
-      return []
-    }
-  }
-
-
-  const GetSysUser = () => {
-    // console.log('\n\n\n\n=============================================')
-    // console.log('Getting Data from localStorage in App.js: ', localStorage.getItem('_USER'))
-    // console.log('JSON.Parse  Data from localStorage in App.js: ', JSON.parse(localStorage.getItem('_USER')))
-
-    var json = ''
-    // if (localStorage.getItem('_USER')) {
-    //   //    var json = '{ "name": "J\\":ohn Smith" }'
-    //   json = localStorage.getItem('_USER')
-    //   json.replace(/\\"/g, "\uFFFF");  // U+ FFFF
-    //   json = json.replace(/"([^"]+)":/g, '$1:').replace(/\uFFFF/g, '\\\"');
-    //   // '{ name: "J\":ohn Smith" }'
-    // }
-
-    json=getItemsFromLocalStorage()
-    // console.log('Converted JSON from fn in App.js: ', json)
-
-    //CtxMainDispatch({ type: 'SYSUSER_FETCH_LOADING' })
-    CtxMainDispatch({
-      type: 'SYSUSER_FETCH_SUCCESS',
-      // payload: localStorage.getItem('_USER') !== ''? JSON.parse(localStorage.getItem('_USER')) : '' 
-      // payload: localStorage.getItem('_USER') ? localStorage.getItem('_USER') : '' 
-
-      payload: json
-    })
-  }
-  // END ==================[  Fn: GET ALL RECORDS  ]=====================
-
-  useEffect(() => {
-
-    // Get sys-user from Previous LocalStorage
-    GetSysUser()
-
-
-    FetchItems()
-    // FetchItems4Tauri()
-
-    FetchAccRecs()
-    // FetchAccRecs4Tauri()
-
-    FetchCatItems()
-    // FetchCatItems4Tauri()
-
-    // alert(CtxMainState._DocsRef.length)
-
-  }, [])
-
 
 
   return (
@@ -209,26 +57,12 @@ function App() {
         <Route element={<LayoutLogin />}>
           <Route exact path='/' element={<Home />} />
           {/* <Route path='Dashboard' element={<Dashboard />} /> */}
-          <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
+          <Route path='Items' element={<Items />} />
           <Route path='About' element={<About />} />
-          <Route path='Contact' element={<Home />} />
+          <Route path='Home' element={<Home />} />
+          <Route path='Contact' element={<Contact />} />
           {/* <Route path='Services' element={<Services />} /> */}
-
-          <Route path='Items' element={<ManageItems />} />
-          <Route path='Distributors' element={<ManageCust />} />
-          <Route path='Vendors' element={<ManageSplr />} />
-
-          <Route path='Sales' element={<ManageSales />} />
-          <Route path='Receipts' element={<ManageReceiptCust />} />
-
-          <Route path='Test1' element={<MobApp1 />} />
-          <Route path='CodeTestPage' element={<CodeTestPage />} />
-          <Route path='TestReactSelect' element={<MyTestReactSelect />} />
-
-          <Route path='SignIn' element={<SignIn/>} />
-          <Route path='SignUp' element={<SignUp/>} />
-
 
           {/* <Route path='Services' element={<About />} /> */}
 

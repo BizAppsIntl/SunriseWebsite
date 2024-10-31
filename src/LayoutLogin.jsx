@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import Nav4mFlowbite from './Components/Nav_Login/Nav4mFlowbite'
 import Footer from './Components/Footer.jsx'
-import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
+// import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
 
 // const Layout = ({ children }) => {
   export default function LayoutLogin() {
@@ -13,10 +13,10 @@ import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
       {/* <div className="w-full px-0 flex flex-col "> */}
       {/* <div className="w-full md:min-h-screen  "> */}
       
-      <div id='Footer' className="flex flex-col min-h-screen">
+      <div id='WebPage' className="flex flex-col min-h-screen bg-amber-100">
         {/* Navbar at the top */}
-        {/* <Nav4mFlowbite /> */}
-        <div id='TopNavMega1'><TopNavMega/></div>
+        <Nav4mFlowbite />
+        {/* <div id='TopNavMega1'><TopNavMega/></div> */}
         
 
         {/* Main Content in the middle */}
@@ -27,8 +27,7 @@ import TopNavMega from './Components/MegaNav/TopNavMega.jsx'
 
         {/* Footer at the bottom */}
          
-        <div id='Footer1'><Footer/></div>
-
+        <div id='Footer'><Footer/></div>
          {/* <div>This is footer line</div> */}
     </div >
     </>

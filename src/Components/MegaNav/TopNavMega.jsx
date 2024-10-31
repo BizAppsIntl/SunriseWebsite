@@ -143,6 +143,19 @@ const RandomNumberInRange = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const handleRedirect = () => {
+  window.location.href = 'sunrisewebapp.vercel.app'; // open the external URL in the current tab
+
+  // window.open('https://example.com', '_blank'); // open the external URL in the other tab
+
+  // //Optionally, you can add a third argument, 'noopener noreferrer', to enhance security
+  //window.open('https://example.com', '_blank', 'noopener noreferrer');
+
+//  noopener: prevents the new page from gaining a reference to the originating page. Without this, the new tab can access the original tab via window.opener.
+//  noreferrer: also blocks the referer header from being sent, so the new page cannot see the originating page's URL in the HTTP request headers.
+  //Adding these options enhances security by ensuring that the new tab can't interact with the original page, which is especially important when linking to third-party or untrusted websites.
+
+};
 
 const ToastWaitTime = 5000
 
