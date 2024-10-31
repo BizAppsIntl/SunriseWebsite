@@ -43,7 +43,7 @@ export default function Nav4mFlowbite() {
               <img src="/Images/SunriseLogo.jpg" className="h-8 sm:h-9 md:h-12" alt="Flowbite React Logo" 
                       onDoubleClick={() => handleRedirect()}
               />
-              <div className="self-center whitespace-nowrap text-xl md:text-3xl leading-none font-poppins  tracking-wide ">
+              <div className="self-center whitespace-nowrap text-2xl md:text-3xl leading-none font-poppins  tracking-wide ">
                 Sunrise Dairy <span className=" font-thin hidden md:inline" >Pvt Ltd</span>
                 </div>
               {/* <div className="flex flex-col text-left justify-center">
@@ -64,10 +64,12 @@ export default function Nav4mFlowbite() {
         </Link>
       </Navbar.Brand>
 
+      <Navbar.Toggle />
 
       <Navbar.Collapse>
-        <Navbar.Link href="/" active>
-          Home
+        {/* <Navbar.Link href="/" active> */}
+        <Navbar.Link>
+        <Link to="/">Home</Link>
         </Navbar.Link>
         {/* <Navbar.Link href="/Services">Services</Navbar.Link> */}
 
@@ -75,9 +77,12 @@ export default function Nav4mFlowbite() {
         {/* <Navbar.Link href="/Items">Items</Navbar.Link>
         <Navbar.Link href="/About">About Us</Navbar.Link>
         <Navbar.Link href="/Contact">Contact Us</Navbar.Link> */}
-        <Link to="/Items">Products</Link>
-        <Link to="/About">About Us</Link>
-        <Link to="/Contact">Contact Us</Link>
+        <Navbar.Link ><Link to="/Items">Products</Link></Navbar.Link>
+        <Navbar.Link ><Link to="/About">About Us</Link></Navbar.Link>
+        <Navbar.Link ><Link to="/Contact">Contact Us</Link></Navbar.Link>
+        
+        
+        
 
         {/* <div className="my-2 mx-3 md:m-0">
           <Dropdown
@@ -102,7 +107,6 @@ export default function Nav4mFlowbite() {
 
       </Navbar.Collapse>
 
-      <Navbar.Toggle />
     </Navbar>
   );
 }
